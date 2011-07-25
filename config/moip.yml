@@ -1,0 +1,10 @@
+development:
+    uri: https://desenvolvedor.moip.com.br/sandbox
+    token: YAOFNUIN1AAY9HRR4NCAYI8IJSO26CM7
+    key: BODJAYZ9UDPFKGJAM5KWXVWPYCXADCWC3NFK1DYG
+
+production:
+    uri:
+    token:
+    key:
+

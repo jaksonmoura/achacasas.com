@@ -1,0 +1,101 @@
+<%= content_for :head do %>
+    <% content_for :title do %>Pagamento - <% end %>
+    <%= stylesheet_link_tag 'ctfull' %>
+<% end %>
+<div id='ctfull'>
+    <h1>Formas de pagamento</h1>
+    <p>Abaixo estão os planos de pagamento para anunciar seu imóvel.<br/>
+    Você será redirecionado para a página do PagSeguro para dar continuidade ao pagamento.
+    </p>
+    <h2>Você está prestes a anunciar o seguinte imóvel:</h2>
+    <div id="ImovelPS">
+      <div id="miniatura">
+        <% @temminiatura = false %>
+	      <% for photo in @imovel.photos %>
+		      <% if photo.miniatura  and not @temminiatura %>
+		        <% @temminiatura = true %>
+			      <%= link_to image_tag(photo.photo.url(:small)), @imovel%>
+		      <% end -%>
+	      <% end %>
+      </div>
+      <div id="info">
+        <p><%= @imovel.tipoImovel %> para <%= @imovel.negocio.downcase %></p>
+        <p><%= @imovel.logradouro %>, <%= @imovel.numero %> - <%= @imovel.bairro %> </p>
+        <p><%= number_to_currency(@imovel.valor, :unit => "R$ ", :delimiter => ".", :separator => ",") %></p>
+      </div>
+    </div>
+    <p>Escolha o plano que melhor se adequa a você.</p>
+    <div id='planoescolha'>
+        <h2>Plano Mensal</h2>
+        <p>Valor: R$ 30,00</p>
+        <br/>
+        <form id='frmensal' target="pagseguro" method="post" action="https://pagseguro.uol.com.br/v2/checkout/payment.html">
+          <input type="hidden" name="email_cobranca" value="jrochelly@gmail.com" />
+          <input type="hidden" name="code" value="B4B0051CBDBD6A1CC4D7BF96D9441894" />
+          <input type="hidden" name="tipo" value="CBR" />
+          <input type="hidden" name="moeda" value="BRL" />
+          <input type="hidden" name="item_id" value="<%=@imovel.id%>" />
+          <input type="hidden" name="item_descr" value="Serviço de anúncio de um(a) <%=@imovel.tipoImovel%> (1 mês)" />
+          <input type="hidden" name="item_quant" value="1" />
+          <input type="hidden" name="item_valor" value="3000" />
+          <input type="hidden" name="frete" value="0" />
+          <input type="hidden" name="peso" value="0" />
+          <input type="image" name="submit" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/164x37-pagar-assina.gif" alt="Pague com PagSeguro - é rápido, grátis e seguro!" />
+        </form>
+    </div>
+    <div id='planoescolha'>
+        <h2>Plano Trimestral</h2>
+        <p>Valor: R$ 75,00</p>
+        <small>Equivalente à R$ 25,00 por mês</small>
+        <form id='frmtri' target="pagseguro" method="post" action="https://pagseguro.uol.com.br/v2/checkout/payment.html">
+          <input type="hidden" name="email_cobranca" value="jrochelly@gmail.com" />
+          <input type="hidden" name="code" value="0DAC90DFFFFF5FF334E24FA87225F84C" />
+          <input type="hidden" name="tipo" value="CBR" />
+          <input type="hidden" name="moeda" value="BRL" />
+          <input type="hidden" name="item_id" value="<%=@imovel.id%>" />
+          <input type="hidden" name="item_descr" value="Serviço de anúncio de um(a) <%=@imovel.tipoImovel%> (3 meses)" />
+          <input type="hidden" name="item_quant" value="1" />
+          <input type="hidden" name="item_valor" value="7500" />
+          <input type="hidden" name="frete" value="0" />
+          <input type="hidden" name="peso" value="0" />
+          <input type="image" name="submit" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/164x37-pagar-assina.gif" alt="Pague com PagSeguro - é rápido, grátis e seguro!" />
+        </form>
+    </div>
+    <div id='planoescolha'>
+        <h2>Plano Semestral</h2>
+        <p>Valor: R$ 140,00</p>
+        <small>Equivalente à R$ 23,00 por mês</small>
+        <form id='frmse' target="pagseguro" method="post" action="https://pagseguro.uol.com.br/v2/checkout/payment.html">
+          <input type="hidden" name="email_cobranca" value="jrochelly@gmail.com" />
+          <input type="hidden" name="code" value="9C41A4E00E0E020AA4660FBD41497844" />
+          <input type="hidden" name="tipo" value="CBR" />
+          <input type="hidden" name="moeda" value="BRL" />
+          <input type="hidden" name="item_id" value="<%=@imovel.id%>" />
+          <input type="hidden" name="item_descr" value="Serviço de anúncio de um(a) <%=@imovel.tipoImovel%> (semestre)" />
+          <input type="hidden" name="item_quant" value="1" />
+          <input type="hidden" name="item_valor" value="14000" />
+          <input type="hidden" name="frete" value="0" />
+          <input type="hidden" name="peso" value="0" />
+          <input type="image" name="submit" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/164x37-pagar-assina.gif" alt="Pague com PagSeguro - é rápido, grátis e seguro!" />
+        </form>
+    </div>
+    <div id='planoescolha'>
+        <h2>Plano Anual</h2>
+        <p>Valor: R$ 240,00</p>
+        <small>Equivalente à R$ 20,00 por mês</small>
+        <form id='frmanu' target="pagseguro" method="post" action="https://pagseguro.uol.com.br/v2/checkout/payment.html">
+          <input type="hidden" name="email_cobranca" value="jrochelly@gmail.com" />
+          <input type="hidden" name="code" value="9C72E72DE1E1E03AA4619F9B9C7F6F41" />
+          <input type="hidden" name="tipo" value="CBR" />
+          <input type="hidden" name="moeda" value="BRL" />
+          <input type="hidden" name="item_id" value="<%=@imovel.id%>" />
+          <input type="hidden" name="item_descr" value="Serviço de anúncio de um(a) <%=@imovel.tipoImovel%> (1 ano)" />
+          <input type="hidden" name="item_quant" value="1" />
+          <input type="hidden" name="item_valor" value="24000" />
+          <input type="hidden" name="frete" value="0" />
+          <input type="hidden" name="peso" value="0" />
+          <input type="image" name="submit" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/164x37-pagar-assina.gif" alt="Pague com PagSeguro - é rápido, grátis e seguro!" />
+        </form>
+    </div>
+</div>
+

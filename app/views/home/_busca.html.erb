@@ -1,0 +1,75 @@
+<div id="buscas">
+  <div id="busca">
+	  <div id="form_busca">
+		  <%= form_for @search, :url => root_path do |f| %>
+			  <%= f.search_field :bairro_or_cidade_or_logradouro_or_referencia_or_cep_or_tipoImovel_contains, :id => "campo_busca", :placeholder => "Pesquise por logradouro, bairro, cidade, referência ou CEP", :title => "Pesquise por logradouro, bairro, cidade, referência ou CEP" %>
+        <%= f.select(:estado_like, properties_for_select, :prompt => 'UF') %>
+			  <%= f.submit "Buscar", :id => "btn_busca", :title => "Pesquise por logradouro, bairro, cidade, estado, CEP ou tipo de imóvel", :name => ''%>
+      </div>
+  </div>
+  	<div id="filtros">
+			  <div id='tipo'>
+			    <p>TIPO DE IMÓVEL</p>
+      			<ul>
+      				<% f.checks :tipoImovel_contains, [['Casa'], ['Apartamento'], ['Terreno']] do |check| %>
+			          <li><%= check.label %><%= check.box %></li>
+      				<% end %>
+      			</ul>
+  			</div>
+				<div id="negocio">
+				  <p>NEGÓCIO</p>
+    			<ul>
+    				<% f.checks :negocio_contains, [['Vender'], ['Alugar']] do |check| %>
+			        <li><%= check.label %><%= check.box %></li>
+    				<% end %>
+    			</ul>
+  			</div>
+  			<div id="carac">
+  				<p>CARACTERÍSTICAS</p>
+				  <ul>
+					  <% f.checks :quartos_lt, [['1-2 quartos', 3]] do |check| %>
+					    <li><%= check.label %><%= check.box %></li>
+					  <% end %>
+					  <% f.checks :quartos_gte, [['Mais de 2 quartos', 3]] do |check| %>
+					    <li><%= check.label %><%= check.box %></li>
+					  <% end %>
+					  <% f.checks :wc_lt, [['1-2 banheiros', 3]] do |check| %>
+					    <li><%= check.label %><%= check.box %></li>
+					  <% end %>
+					  <% f.checks :wc_gte, [['mais de 2 banheiros', 3]] do |check| %>
+					    <li><%= check.label %><%= check.box %></li>
+					  <% end %>
+				  </ul>
+				  <ul>
+					  <% f.checks :suites_lt, [['1-2 suites', 3]] do |check| %>
+					    <li><%= check.label %><%= check.box %></li>
+					  <% end %>
+					  <% f.checks :suites_gte, [['Mais de 2 suites', 3]] do |check| %>
+					    <li><%= check.label %><%= check.box %></li>
+					  <% end %>
+					  <% f.checks :vagas_lt, [['1-2 vagas', 3]] do |check| %>
+					    <li><%= check.label %><%= check.box %></li>
+					  <% end %>
+					  <% f.checks :vagas_gte, [['mais de 2 vagas', 3]] do |check| %>
+					    <li><%= check.label %><%= check.box %></li>
+					  <% end %>
+				  </ul>
+			  </div>
+			  <div id="advanced">
+			    <p>AVANÇADO</p>
+			    <div id="fields"><span>Valor entre</span><%= f.text_field :valor_gte, :onKeyUp => "this.value = mascara_global('[###.]###,##', this.value)", :onBlur => "this.value = mascara_global('[###].##', this.value)" %> <span>e</span> <%= f.text_field :valor_lte, :onKeyUp => "this.value = mascara_global('[###.]###,##', this.value)", :onBlur => "this.value = mascara_global('[###].##', this.value)" %></div>
+			  </div>
+		</div>
+  	<p id="filtros_link">Filtros de pesquisa &raquo;</p>
+      <% end %>
+</div>
+<% content_for :foot do %>
+  <%= javascript_include_tag 'mascara' %>
+  <script>
+    $('#search_valor_gte').bind('keypress', function(e) {
+        if(e.keyCode==13){return false}});
+    $('#search_valor_lte').bind('keypress', function(e) {
+        if(e.keyCode==13){return false}});
+  </script>
+<% end %>
+

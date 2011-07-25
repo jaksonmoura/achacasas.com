@@ -1,0 +1,13 @@
+<div id="buscas">
+<div id="busca">
+	<div id="form_busca">
+		<%= form_tag "busca", {:method => 'get', :id => "property_search", :name => ''} do %>
+		<%= text_field_tag :search, nil, :id => "campo_busca" ,:placeholder => "Pesquise por logradouro, bairro, cidade, estado ou CEP", :title => "Pesquise por logradouro, bairro, cidade, estado ou CEP" %>
+		<%= submit_tag "Buscar", :id => "btn_busca", :title => "Pesquise por logradouro, bairro, cidade, estado ou CEP", :name => '' %>
+    </div>
+</div>
+
+    	<a id="filtros_link" href="#">Filtros de pesquisa &raquo;</a>
+<% end %>
+</div>
+

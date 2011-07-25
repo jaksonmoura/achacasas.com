@@ -1,0 +1,68 @@
+
+<%= render 'busca' %>
+<div id="_main">
+	<div id="_houses">
+	<% if @homes.empty? %>
+	  <div id="_notfound">
+      <p>Nenhum imóvel foi encontrado!</p>
+        <div id="_search_troubles">
+          <h3>Por que não vejo nenhum imóvel?</h3>
+          <ul>
+            <li>Talvez os termos de pesquisa estejam incorretos, dê uma olhada!</li>
+            <li>Se você estiver procurando um imóvel que acabou de criar, verifique se este já foi publicado.</li>
+          </ul>
+        </div>
+    </div>
+	<% else %>
+	<div id="_sortlinks">
+	  <p>Organizar por:</p>
+		<%= sort_link @search, :valor, "Preço" %>
+		<%= sort_link @search, :created_at, "Data de criação" %>
+	</div>
+	<% @homes.each do |home| %>
+		<div class="property" onclick="location.href='/i/<%= home.id %>';">
+			<div class="img_property">
+		  <% temminiatura = false %>
+		  <% homephoto = home.photos.find_by_miniatura(true) %>
+		  <% unless homephoto.nil? %>
+		    <%= link_to image_tag(homephoto.photo.url(:small)), home%>
+		    <% temminiatura = true %>
+		  <% end %>
+			<% unless temminiatura %>
+				<%= link_to image_tag("../system/photos/defaulthome_thumb.png"), home%>
+			<% end %>
+			</div>
+			<div class="info_property">
+				<% imovel = home.tipoImovel + " para " + home.negocio %>
+				<div class="valor"><%= link_to "#{number_to_currency(home.valor, :precision => 2, :unit => "R$ ", :delimiter => ".", :separator => ",")}", :search => {:valor_lteq => "#{home.valor}"} %></div>
+				<h2><%= link_to imovel, home %></h2>
+					<p><b>Cidade:</b> <%= home.cidade %>, <%= home.estado %></p>
+					<p><b>Bairro:</b> <%= home.bairro %></p>
+					<p>Data de criação: <%= (home.created_at).strftime("%d-%m-%Y") %></p>
+			</div>
+		</div>
+	<% end %>
+	<% end %>
+
+	</div>
+	<%= paginate @homes %>
+</div>
+
+<div id="_side">
+	<div class="ads">
+	<script type="text/javascript"><!-- google_ad_client = "ca-pub-1283818748762554";
+    /* Página Inicial (Retangulo) */
+    google_ad_slot = "4990170457"; google_ad_width = 300; google_ad_height = 250; //-->
+  </script>
+  <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+	</div>
+	<div class="side_block">
+	</div>
+</div>
+<% content_for :foot do %>
+        <script>$(document).ready(function () {	$('#filtros ul, #cities_menu ul').hide();$('#carac, #carac p, #tipo, #negocio, #advanced').hide();
+				$('#filtros_link').click(function () {$('#carac p, #carac, #tipo, #negocio, #advanced').fadeToggle('fast');
+				$('#filtros ul').slideToggle('medium');	}); ;});
+        </script>
+<% end %>
+

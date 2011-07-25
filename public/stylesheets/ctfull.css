@@ -1,0 +1,508 @@
+.passo{
+    float: left;
+    width: 300px;
+    margin-right: 10px;
+}
+
+.passo a{
+    text-decoration: underline;
+}
+
+.passo h2{
+    font-size: 14px;
+    text-align: center;
+}
+
+.passo p{
+    margin: 0 auto;
+    font-size: 13px;
+    text-align: justify;
+}
+
+.passo small{
+    float: right;
+    color: #555;
+}
+
+#passo1_text, #passo2_text, #passo3_text{
+    background: url(../images/passos_num.gif) no-repeat;
+    width: 300px;
+    height: 46px;
+}
+
+#passo2_text{
+    background-position: -309px 0px;
+}
+
+#passo3_text{
+    background-position: -601px 0px;
+}
+
+#passo1_s, #passo2_s, #passo3_s{
+    background: url(../images/passos_samples.png) no-repeat;
+    width: 300px;
+    height: 180px;
+}
+
+#passo1_s{
+    display: block;
+}
+
+#passo2_s{
+    display: block;
+    background-position: center center;
+}
+
+#passo3_s{
+    background-position: center right;
+}
+
+hr{
+    float: left;
+    width: 890px;
+    margin: 15px 20px;
+    border: 1px #eee solid;
+}
+
+.passo img{
+    float: left;
+    margin: 0 auto;
+    width: 300px;
+    text-align: center;
+}
+
+#planos{
+    float: left;
+    background: #d0f0ff;
+    background-position: 730px center;
+    width: 600px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    padding: 5px;
+}
+
+#planos h2{
+    color: #0062d5;
+}
+
+#pagseguro{
+    float: right;
+    margin-left: 10px;
+    width: 310px;
+}
+
+#pagseguro h2{
+    text-align: center;
+}
+
+#pagseguro img{
+    margin-left: 30px;
+}
+
+#faqct{
+    float: left;
+    width: 650px;
+}
+
+#faqct a{
+    color: #0062d5;
+    text-decoration: underline;
+}
+
+#faqct h3{
+    color: #0062d5;
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+.resposta{
+    color: #333;
+    padding-left: 10px;
+}
+
+#faqinfo{
+    background: #d7d7d7;
+    border: 1px #aaa solid;
+    border-radius: 3px;
+    display: block;
+    float: right;
+    margin-left: 10px;
+    width: 250px;
+    padding: 5px;
+}
+
+#faqinfo ul{
+    margin: 5px 0 0 -30px;
+}
+
+#faqinfo li{
+    font-size: 12px;
+    margin-left: 20px;
+}
+
+.planoM, .planoT, .planoS, .planoA{
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    float: left;
+    margin: 0 10px 10px 0;
+    padding: 5px;
+    text-align: center;
+    width: 206px;
+    height: 70px;
+    -webkit-transition: border .3s ease-in;
+    -moz-transition: border .3s ease-in;
+    -o-transition: border .3s ease-in;
+    transition: border .3s ease-in;
+}
+
+.planoM{
+    background: #0074fb;
+    border: 3px #0074fb solid;
+}
+
+.planoT{
+    background: #0068e0;
+    border: 3px #0068e0 solid;
+}
+
+.planoS{
+    background: #0059c0;
+    border: 3px #0059c0 solid;
+}
+
+.planoA{
+    background: #00489b;
+    border: 3px #00489b solid;
+}
+
+.planoM:hover, .planoT:hover, .planoS:hover, .planoA:hover{
+    border-color: rgba(0,0,0, 0.3);
+    box-shadow: 0 0 10px #666;
+    -o-box-shadow: 0 0 10px #666;
+    -moz-box-shadow: 0 0 10px #666;
+    -webkit-box-shadow: 0 0 10px #666;
+}
+
+.planoM h2, .planoT h2, .planoS h2, .planoA h2{
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    text-shadow: 0 -1px 0 #333;
+    -o-text-shadow: 0 -1px 0 #333;
+    -moz-text-shadow: 0 -1px 0 #333;
+    -webkit-text-shadow: 0 -1px 0 #333;
+}
+
+.planoM p, .planoT p, .planoS p, .planoA p{
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
+#ImovelPS{
+    float: left;
+    width: 100%;
+    background: #0062d5;
+    border: 1px #ccc solid;
+    border-radius: 8px;
+    -o-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    margin: 0 0 10px 0;
+}
+
+#ImovelPS #miniatura{
+    float: left;
+    padding: 8px;
+}
+
+#ImovelPS #miniatura img{
+    border: 2px solid #fff;
+}
+
+#ImovelPS #info{
+    float: right;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    height: 123px;
+    width: 87%;
+    background: rgba(100%,100%,100%, 0.7);
+    border-radius: 7px;
+    -o-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    text-shadow: 0 1px 1px #fff;
+    -moz-text-shadow: 0 1px 1px #fff;
+    -o-text-shadow: 0 1px 1px #fff;
+    -webkit-text-shadow: 0 1px 1px #fff;
+}
+
+#ImovelPS #info p{
+    width: 97%;
+    padding: 8px 0 0 0;
+    margin: 0 0 5px 10px;
+    border-bottom: 1px #555 dotted;
+}
+
+#note{
+    background: #caefff url(../images/tip.png) no-repeat;
+    background-position: 20px;
+    border-radius: 10px;
+    -o-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    color: #333;
+    float: left;
+    padding: 10px 10px 10px 50px;
+    margin: 10px 0;
+    width: 870px;
+}
+
+#selecione{
+    background: #333;
+    border-radius: 10px;
+    -o-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    color: #fff;
+    font-size: 14px;
+    float: left;
+    padding: 5px;
+    margin: 10px 0 -36px 10px;
+    width: 0 auto;
+}
+
+#action{
+    float: left;
+	margin: 0 auto;
+	width: 910px;
+	text-align: center;
+}
+
+#action input{
+
+	font-size: 18px;
+	color: #fff;
+	border: 0;
+	background-color: #007100;
+    background-image: -moz-linear-gradient(top, #007100, #004b00); /* FF3.6 */
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #007100),color-stop(1, #004b00)); /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient(#007100, #004b00); /* Chrome 10+, Saf6 */
+    background-image: linear-gradient(top, #007100, #004b00);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#007100', EndColorStr='#004b00'); /* IE6–IE9 */
+	padding: 10px 22px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	margin: 0 auto;
+}
+
+#action input:hover{
+	background-color: #3b8c00;
+    background-image: -moz-linear-gradient(top, #3b8c00, #004b00); /* FF3.6 */
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #3b8c00),color-stop(1, #004b00)); /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient(#3b8c00, #004b00); /* Chrome 10+, Saf6 */
+    background-image: linear-gradient(top, #3b8c00, #004b00);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#3b8c00', EndColorStr='#004b00'); /* IE6–IE9 */
+}
+
+#action input:active{
+	box-shadow: 0 0 15px #003300 inset;
+	-moz-box-shadow: 0 0 15px #003300 inset;
+	-o-box-shadow: 0 0 15px #003300 inset;
+	-webkit-box-shadow: 0 0 15px #003300 inset;
+}
+
+#newproperty{
+    float: left;
+    background: url("../images/newproperty.png") no-repeat;
+    background-position: left -5px;
+    height: 90px;
+    padding: 10px 0 0 0;
+}
+
+#newproperty a{
+    text-decoration: underline;
+}
+
+#newproperty p{
+    font-size: 16px;
+    margin: 5px 0 5px 110px;
+}
+
+#propertystatus{
+    float: left;
+    background: url("../images/propertystatus.png") no-repeat;
+    background-position: left 0px;
+    height: 110px;
+    padding: 10px 0 0 0;
+}
+
+#propertystatus a{
+    text-decoration: underline;
+}
+
+#propertystatus p{
+    font-size: 16px;
+    margin: 5px 0 5px 130px;
+}
+
+#propertystatus h2{
+    margin: 5px 0 5px 130px;
+}
+
+#links_pratico{
+	float: right;
+	width: 100%;
+	margin: 20px 0 -10px 0;
+	padding: 0;
+}
+
+#links_pratico p{
+	margin: 0;
+}
+
+#links_pratico a:hover{
+	background-color: #eee;
+}
+
+#links_pratico a{
+	background-color: #fff;
+	float: right;
+	border-radius: 3px 0 3px 3px;
+	-moz-border-radius: 3px 0 3px 3px;
+	-o-border-radius: 3px 0 3px 3px;
+	-webkit-border-radius: 3px 0 3px 3px;
+	padding: 2px 5px;
+	width: auto;
+	margin: 0 0 0 10px;
+}
+
+
+#form_contato {
+    background-color: #fff;
+	float:right;
+	margin: -30px 35px 0 0;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-o-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	padding: 10px;
+}
+
+#form_contato{
+    width: 390px;
+}
+
+#email_contato, #nome_contato, #mensagem, #email_amigo_contato, #nome_amigo_contato{
+    border: 1px #c3c3c3 solid;
+	background: #E5E5E5; /* old browsers */
+	background: -moz-linear-gradient(top, #E5E5E5 0%, #FFFFFF 50%, #FFFFFF 100%); /* firefox */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#E5E5E5), color-stop(50%,#FFFFFF), color-stop(100%,#FFFFFF)); /* webkit */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#E5E5E5', endColorstr='#FFFFFF',GradientType=0 ); /* ie */
+	padding: 5px;
+}
+
+#email_contato, #nome_contato, #email_amigo_contato, #nome_amigo_contato{
+    width: 175px;
+}
+
+#seu_contato{
+    float: left;
+    width: 190px;
+    margin-right: 5px;
+}
+
+#seu_contato_dono{
+    float: left;
+    width: 490px;
+    margin-right: 5px;
+}
+
+#contato_amigo{
+    float: left;
+    width: 175px;
+}
+
+#form_contato textarea{
+    width: 370px;
+    height: 100px;
+}
+
+#form_contato span{
+    color: #0062d5;
+    font-size: 12px;
+}
+
+#form_contato p{
+    margin-bottom: 5px;
+    color: #333;
+}
+
+#imovel_indicado{
+    float: left;
+    width: 400px;
+    margin: 10px 0 0 20px;
+    background: #f1f1f1;
+    padding: 10px;
+    border-radius: 5px;
+    -o-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    box-shadow: 0 0 5px #ccc inset;
+    -o-box-shadow: 0 0 5px #ccc inset;
+    -moz-box-shadow: 0 0 5px #ccc inset;
+    -webkit-box-shadow: 0 0 5px #ccc inset;
+}
+
+#imovel_indicado h4, #imovel_indicado #valor, #imovel_indicado h3{
+    width: 100%;
+    text-align: center;
+}
+
+#imovel_indicado #valor{
+    background: #ffd100;
+    border: 1px solid #d87600;
+    border-radius: 5px;
+    -o-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    color: #222;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px 0;
+    text-shadow: 0 1px 0 #fff;
+    -o-text-shadow: 0 1px 0 #fff;
+    -moz-text-shadow: 0 1px 0 #fff;
+    -webkit-text-shadow: 0 1px 0 #fff;
+}
+
+#imovel_indicado #dados_imovel{
+    font-size: 16px;
+    color: #333;
+}
+
+#imovel_indicado #fotos_imovel{
+    float: left;
+    background: #ccc;
+    border-radius: 5px;
+    -o-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    box-shadow: 0 0 10px #333;
+    width: 310px;
+    height: 150px;
+    margin-left: 45px;
+    overflow: hidden;
+}
+
+#imovel_indicado #fotos_imovel img{
+    width: 310px;
+    margin: 0 auto;
+}
+

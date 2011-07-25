@@ -1,0 +1,52 @@
+<% content_for :head do %>
+    <% content_for :title do %>Cadastre-se - <% end %>
+    <%= javascript_include_tag "jquery.validationEngine-en.js" %>
+	<%= javascript_include_tag "jquery.validationEngine.js" %>
+	<%= stylesheet_link_tag 'validationEngine.jquery' %>
+	<script>jQuery(document).ready(function(){jQuery("#user_new").validationEngine({promptPosition : "centerRight"});});</script>
+    <%= stylesheet_link_tag 'users' %>
+<% end %>
+<div id="cadastro">
+	<div id="cadnew">
+		<h2>Cadastrar-se</h2>
+		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+		  <%= devise_error_messages! %>
+		  <div class="field">
+		  <p><%= f.label "Nome/Empresa" %><br />
+		  <%= f.text_field :nome, :class => "validate[required]", :autofocus => true %></p>
+		  </div>
+		  <div class="field">
+		  <p><%= f.label "E-mail" %><br />
+		  <%= f.text_field :email, :class => "validate[required,custom[email]]" %></p>
+		  </div>
+		  <div class="field">
+		  <p><%= f.label "Senha" %> <small><i>(mínimo 6 caracteres)</i></small><br />
+		  <%= f.password_field :password, :class => "validate[required,minSize[6]]" %></p>
+		  </div>
+		  <div class="field">
+		  <p><%= f.label "Confirmação da senha" %><br />
+		  <%= f.password_field :password_confirmation, :class => "validate[required,minSize[6],password[user_password]]" %></p>
+		  </div>
+		  <p><label>Receber e-mails com novidades sobre imóveis</label><%= f.check_box :newsletter, :checked=>false%></p>
+		  <p id="termos">Ao cadastrar você está aceitando os <a href="#">Termos de Compromisso</a>.</p>
+		  <div class="actions"><%= f.submit "Cadastre me" %></div>
+		<% end %>
+
+	</div>
+	<div id="infocad">
+		<h1>O Acha-Casas foi criado para facilitar a busca de casas,<br/>
+		apartamentos e imóveis em geral de todo o Brasil.
+		</h1>
+		<h2>Cadastrando-se no Acha-Casas você...</h2>
+		<p>Recebe novidades sobre imóveis no seu e-mail</p>
+		<p>Anuncia seu imóvel rapidamente</p>
+
+		<h2>Vantagens de anunciar seu imóvel aqui:</h2>
+		<p>Tenha um perfil público</p>
+		<p>Imóveis com localização geográfica</p>
+		<p>Coloque até 10 fotos por imóvel</p>
+		<p>Saiba se alguem está interessado no seu imóvel</p>
+		<p>Pagamento rápido e seguro <i>(Através do PagSeguro)</i></p>
+	</div>
+</div>
+

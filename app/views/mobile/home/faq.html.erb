@@ -1,0 +1,67 @@
+<%= content_for :head do %>
+    <% content_for :title do %>Dúvidas Frequentes - <% end %>
+    <%= stylesheet_link_tag 'ctfull' %>
+<% end %>
+<div id="ctfull">
+    <div id='faqct'>
+        <h1>Perguntas Frequentes</h1>
+        <h2>Questões em geral</h2>
+        <h3>1. Posso comprar ou alugar um imóvel no Acha-Casas?</h3>
+        <p class="resposta">Não, o Acha-Casas é apenas um buscador de imóveis.</p>
+
+        <h3>2. O Acha-Casas é de abrangência nacional?</h3>
+        <p class="resposta">Sim, imóveis de todo o brasil pode ser encontrados aqui.</p>
+
+        <h3>3. Quem procuro para obter mais informações sobre um imóvel?</h3>
+        <p class="resposta">Na página do imóvel que você quer há um link para o perfil do dono do imóvel,
+        lá você encontra informações de contato.</p>
+
+        <h3>4. Qual a frequência de atualização das informações no Acha-Casas?</h3>
+        <p class="resposta">A atualização dos imóveis, descrição, contato, preço, entre outras, são de responsabilidade do anunciante cadastrado no Acha-Casas.</p>
+
+        <h3>5. O Acha-Casas é um serviço gratuito?</h3>
+        <p class="resposta">O registro no site e o serviço de busca são gratuitos, mas para anunciar um imóvel você deve pagar.</p>
+
+        <h3>6. Como anunciar meu imóvel no Acha-Casas?</h3>
+        <p class="resposta">Para saber como anúnciar no Acha-Casas, <%= link_to 'clique aqui', como_anunciar_path, :title => "Saiba como anunciar" %> e sigas os passos informados.</p>
+
+        <h3>7. Por que usar o PagSeguro?</h3>
+        <p class="resposta">O PagSeguro é um serviço de pagamentos digitais da UOL, ele é seguro e prático, além disso você pode pagar de várias formas, de boletos à cartões de créditos internacionais.</p>
+
+        <h3>8. Já fiz o pagamento, quanto tempo tenho que esperar até meu imóvel ir pro ar?</h3>
+        <p class="resposta">Após efetuar o pagamento, em média, o processo de confirmação leva 48h.
+        Você pode acompanhar o processo de pagamento tanto no PagSeguro quanto na página de seu perfil cliquando no link abaixo do valor do imóvel.</p>
+
+        <h3>9. Uns imóveis anunciados aqui são 100% seguros?</h3>
+        <p class="resposta">Não podemos afirmar isso, uma vez que os imóveis tem sua responsabilidade de preenchimento
+        dada ao seu dono, por isso, seja cauteloso e se informe bem antes de qualquer coisa.</p>
+
+        <h2>Imóveis</h2>
+        <h3>1. Quantas fotos posso ter por imóvel?</h3>
+        <p class="resposta">Até 10 fotos.</p>
+        <h3>2. Quantos imóveis posso anunciar?</h3>
+        <p class="resposta">O quanto você quiser.</p>
+        <h3>3. Meu imóvel possui fotos, mas aparece a imagem "sem foto". O que devo fazer?</h3>
+        <p class="resposta">Você deve editar seu imóvel e marcar uma foto como capa para que seja exibida como padrão.</p>
+    </div>
+    <div id='faqinfo'>
+      <h3>Perguntas respondidas aqui:</h3>
+        <ul><h4>Questões em geral</h4>
+          <li>Posso comprar ou alugar um imóvel no Acha-Casas?</li>
+          <li>O Acha-Casas é de abrangência nacional?</li>
+          <li>Quem procuro para obter mais informações sobre um imóvel?</li>
+          <li>Qual a frequência de atualização das informações no Acha-Casas?</li>
+          <li>O Acha-Casas é um serviço gratuito?</li>
+          <li>Como anunciar meu imóvel no Acha-Casas?</li>
+          <li>Por que usar o PagSeguro?</li>
+          <li>Já fiz o pagamento, quanto tempo tenho que esperar até meu imóvel ir pro ar?</li>
+          <li>Uns imóveis anunciados aqui são 100% seguros?</li>
+        </ul>
+        <ul><h4>Imóveis</h4>
+          <li>Quantas fotos posso ter por imóvel?</li>
+          <li>Quantos imóveis posso anunciar?</li>
+          <li>Meu imóvel possui fotos, mas aparece a imagem "sem foto". O que devo fazer?</li>
+        </ul>
+    </div>
+</div>
+

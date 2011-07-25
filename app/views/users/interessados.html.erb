@@ -1,0 +1,69 @@
+<% content_for :head do %>
+  <% content_for :title do %>Lista de interessados - <% end %>
+  <%= stylesheet_link_tag "users" %>
+  <%= javascript_include_tag "jquery.qtip-1.0.0-rc3.min.js" %>
+    <script>
+    	$(document).ready(function()
+		{
+		   $('.int_list li img').qtip({
+			  content: {
+				 text: false
+			  },
+			  style: {
+			   name: 'dark',
+			   tip: 'bottomMiddle'
+			  },
+			  position: {
+				  corner: {
+					 target: 'topMiddle',
+					 tooltip: 'bottomMiddle'
+				  }
+			   }
+		   });
+		 });
+    </script>
+<% end %>
+<div id="ctfull">
+<h1>Interessados</h1>
+<p>Abaixo está a relação de pessoas que estão interessadas nos seus imóveis:</p>
+<% @properties.each do |property| %>
+  <% @interesses = Interessado.where("property_id = ?", property.id)%>
+  <ul class="int_list">
+  <div class="int_imovel">
+    <% @mini = property.photos.find_by_miniatura(true) %>
+    <% unless @mini %>
+      <%= link_to image_tag("../system/photos/defaulthome_thumb.png") , property, :class => "int_miniatura"%>
+      <p><%= @interesses.count %> interessados</p>
+    <% else %>
+		    <%= link_to image_tag(@mini.photo.url(:small)), property, :class => "int_miniatura"%>
+		    <p><%= @interesses.count %> interessados</p>
+		<% end %>
+  </div>
+  <% unless @interesses.nil? or @interesses.empty? %>
+    <p class="maisint">Mais »</p>
+    <div class="list_avatars">
+	    <% @interesses.each do |interessado| %>
+		    <% @user = User.where("id = ?", interessado.user_id).first %>
+		    <li><%= link_to image_tag (@user.avatar.url, :alt => @user.nome, :title => @user.nome), @user %></li>
+		  <% end %>
+		</div>
+	<% else %>
+    <div class="list_avatars">
+      <p class="desc_interesse">Ninguém se interessou por seus imóveis ainda. Calma!</p>
+    </div>
+  <% end %>
+<% end %>
+  </ul>
+<% if @properties.nil? %>
+    <p id="desc_interesse">Você não tem imóveis cadastrados, por isso não há interessados.</p>
+<% end %>
+<%= paginate @properties %>
+</div>
+<% content_for :foot do %>
+    <script>jQuery(document).ready(function() {
+      jQuery(".maisint").click(function(){ a = jQuery(this).html();
+        if (a == "Mais »") {jQuery(this).html("« Menos");jQuery(this).next(".list_avatars").css("height","auto");jQuery.break();}
+        if (a == "« Menos") {jQuery(this).html("Mais »");jQuery(this).next(".list_avatars").css("height","60px");jQuery.break();}
+      });});</script>
+<% end %>
+

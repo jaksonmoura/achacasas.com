@@ -1,0 +1,32 @@
+<% content_for :head do %>
+  <% content_for :title do %>Escolher plano - <% end %>
+  <%= stylesheet_link_tag "ctfull" %>
+<% end %>
+<div id="ctfull">
+<h1>Escolher plano</h1>
+  <h2>O seguinte imóvel será anunciado:</h2>
+    <div id="ImovelPS">
+          <div id="miniatura">
+            <% @temminiatura = false %>
+	            <% for photo in @property.photos %>
+		            <% if photo.miniatura  and not @temminiatura %>
+		              <% @temminiatura = true %>
+			            <%= link_to image_tag(photo.photo.url(:small)), @property%>
+		            <% end -%>
+	            <% end %>
+	            <% if @property.photos == [] or !@temminiatura %>
+              <%= link_to image_tag("../system/photos/defaulthome_thumb.png"), @property %>
+			      <% else %>
+	          <% end %>
+          </div>
+          <div id="info">
+            <p><%= @property.tipoImovel %> para <%= @property.negocio.downcase %> - <i>Ref. <%= @property.referencia %></i></p>
+            <p><%= @property.logradouro %>, <%= @property.numero %> - <%= @property.bairro %> </p>
+            <p><%= @property.cidade %>, <%= @property.estado %> - Valor
+            <%= number_to_currency(@property.valor, :unit => "R$ ", :delimiter => ".", :separator => ",") %></p>
+          </div>
+        </div>
+  <p>Escolha o plano que melhor se adequa a você.</p>
+  <%= render "form" %>
+</div>
+

@@ -1,0 +1,27 @@
+<%= content_for :head do %>
+    <% content_for :title do %>Confirmar plano - <% end %>
+    <%= stylesheet_link_tag 'ctfull' %>
+<% end %>
+<div id='ctfull'>
+    <h1>Confirmar Plano</h1>
+    <p>O pedido para o imóvel de referência "<b><%= @property.referencia %></b>" já foi criado no nosso banco de dados, agora você só precisa confirmar o pagamento.</p>
+    <p>Você escolheu o <b>
+          <% case @announce.plano.to_i %>
+          <% when 0 %>
+            Plano Mensal - valor R$ 30,00.</b></p>
+          <% when 1 %>
+            Plano Trimestral - valor R$ 75,00.</b></p>
+          <% when 2 %>
+            Plano Semestral - valor R$ 140,00.</b></p>
+          <% when 3 %>
+            Plano Anual - valor R$ 240,00.</b></p>
+        <% end %>
+        <div id="note">
+        <p>Se todos os dados estiverem corretos, clique em <b>"Efetuar Pagamento"</b>.
+        Você será redirecionado para a página do <%= link_to "PagSeguro", "http://pagseguro.uol.com.br/para_voce/protecao_contra_fraudes.jhtml", {:title => "Por quê usar o PagSeguro?"} %>.</p>
+        </div>
+    <div id="action">
+    <%= link_to "Efetuar pagamento", Moip.charge_url(@response["Token"]) %>
+    </div>
+</div>
+

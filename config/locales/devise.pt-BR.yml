@@ -1,0 +1,40 @@
+pt-BR:
+  errors:
+    messages:
+      not_found: "Não foi encontrado"
+      already_confirmed: "Já foi confirmado"
+      not_locked: "A conta não estava bloqueado"
+
+  devise:
+    failure:
+      unauthenticated: 'Você precisa entrar antes de continuar.'
+      unconfirmed: 'Você precisa confirmar sua conta antes de continuar.'
+      locked: 'Sua conta está bloqueada.'
+      invalid: 'E-mail ou senha inválido.'
+      invalid_token: 'Token de autenticação inválido.'
+      timeout: 'Sua sessão experou, por favor entre novamente para continuar.'
+      inactive: 'Sua conta ainda não foi ativada.'
+    sessions:
+      signed_in: 'Você entrou!'
+      signed_out: 'Você saiu!'
+    passwords:
+      send_instructions: 'Você irá receber um e-mail com as intruções para resetar sua senha em alguns minutos.'
+      updated: 'Sua senha foi alterada com sucesso!.'
+    confirmations:
+      send_instructions: 'Você irá receber um e-mail com instruções para confirmar sua conta em alguns minutos.'
+      confirmed: 'Sua conta foi confirmada com sucesso! Você também já está logado.'
+    registrations:
+      signed_up: 'Você foi cadastrado com sucesso! Você irá receber um e-mail de confirmação!'
+      updated: 'Sua conta foi alterada com sucesso!'
+      destroyed: 'Sua conta foi cancelada. É uma pena! Esperamos ver você de novo em breve.'
+    unlocks:
+      send_instructions: 'Você irá receber um e-mail com instruções para desbloquear sua conta em alguns minutos.'
+      unlocked: 'Sua conta foi desbloqueada com sucesso! Você também já está logado.'
+    mailer:
+      confirmation_instructions:
+        subject: 'Bem-vindo ao Acha-Casas!'
+      reset_password_instructions:
+        subject: 'Acha-Casas | Solicitação para resetar senha'
+      unlock_instructions:
+        subject: 'Acha-Casas | Instruções para desbloquear conta'
+

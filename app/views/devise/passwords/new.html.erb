@@ -1,0 +1,35 @@
+<% content_for :head do %>
+    <%= stylesheet_link_tag 'users' %>
+<% end %>
+<div id="form_login">
+  <h1>Problemas com sua conta?</h1>
+  <div id="account_fields_f">
+	  <div id="forgot_pass_div">
+		  <h3>Recupere sua senha!</h3>
+		  <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+		    <%= devise_error_messages! %>
+		    <p class="passos">Insira seu e-mail no campo abaixo para enviarmos os passos para você recuperar sua senha.</p>
+		    <div class="field">
+		    <p><%= f.label "E-mail" %><br />
+		    <%= f.text_field :email %></p>
+		    </div>
+		    <%= f.submit "Enviar instruções", :class => "link" %>
+		  <% end %>
+	  </div>
+	</div>
+	<div id="account_fields_r">
+    <div id="resend_confirmation">
+			  <h3>Receba e-mail de confirmação</h3>
+			  <%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
+        <%= devise_error_messages! %>
+        <p class="passos">Insira seu e-mail no campo abaixo para enviarmos os passos para você confirmar seu cadastro.</p>
+		    <div class="field">
+		      <p><label>E-mail</label><br />
+		      <%= f.text_field :email, :class => "validate[required,custom[email]]" %></p>
+		    </div>
+			    <%= f.submit "Re-enviar confirmação", :class => "link" %>
+			  <% end %>
+	  </div>
+	</div>
+</div>
+

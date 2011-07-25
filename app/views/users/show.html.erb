@@ -1,0 +1,128 @@
+<% if @donologado %>
+    <% @tituloimoveis = "Meus imóveis" %>
+    <% @titulopg = "Meu perfil - "%>
+  <% else %>
+    <% @tituloimoveis = "Imóveis de #{@user.nome}" %>
+    <% @titulopg = "Perfil de #{@user.nome} - "%>
+  <% end %>
+<% content_for :head do %>
+  <% content_for :title do %><%= @titulopg %><% end %>
+  <%= stylesheet_link_tag 'users' %>
+<% end %>
+<div id="user_info">
+		<%= image_tag @user.avatar.url, :alt => "#{@user.nome}", :title => "#{@user.nome}" %>
+		<p id="username"><%= truncate(@user.nome, :length => 33, :truncate_string => "...") %></p>
+		<p>Imóveis cadastrados: <b><%= @imoveis %></b></p>
+		<p>Cadastrado desde: <b><%= @user.created_at.strftime("%d/%m/%Y") %></b></p>
+		<% unless @user.descricao.blank? %>
+			<p id="descricao"><%= @user.descricao %></p>
+		<% end %>
+		<div id="info_list">
+			<ul>
+				<% if @user.publico or @donologado %>
+					<% unless @user.telefone1.blank? %>
+						<li><div id="user_phone"></div><%= @user.telefone1 %></li>
+					<% end %>
+					<% unless @user.celular.blank? %>
+						<li><div id="user_phone"></div><%= @user.celular %></li>
+					<% end %>
+				<% end %>
+				<% unless @user.email.blank? %>
+					<li><div id="user_mail"></div><%= link_to "#{truncate(@user.email, :length => 23, :truncate_string => "...")}", "mailto:#{@user.email}", :title => @user.email %></li>
+				<% end %>
+			</ul>
+		</div>
+		<% if @donologado %>
+		<div id="quem_interessado">
+		  <%= link_to "Interessados", interessados_path, :id => "interessados" %>
+		</div>
+			<%= link_to "Editar perfil", edit_user_registration_path, :class => "linkright" %>
+		<% end %>
+</div>
+<div id="user_properties_ct">
+  <div id="user_details">
+    <h2><%= @tituloimoveis %></h2>
+    <% @publicos = false %>
+    <% @properties.each do |home| %>
+        <% @publico = true %>
+		    <div class="user_properties" onclick="location.href='/i/<%= home.id %>';">
+            <% unless home.capa.nil? %>
+              <div class="img_property"><%= link_to image_tag(home.capa.photo.url(:small)), home, :class => "user_prop_img"%></div>
+            <% else %>
+		          <div class="img_property"><%= link_to image_tag("../system/photos/defaulthome_thumb.png"), home %></div>
+		        <% end %>
+			      <div class="info_user_property" title="Detalhes do imóvel">
+			        <div class="right_data">
+			          <%= link_to "#{number_to_currency(home.valor, :precision => 2, :unit => "R$ ", :delimiter => ".", :separator => ",")}", home, :class => "user_valor" %>
+			          <%= link_to "Status anúncio: #{home.status}", confirmacao_de_pagamento_path(:pid => home.id), :id => "statuspag", :title => "Ver mais detalhes sobre o status desse imóvel" if @donologado %>
+			          <span id="imovel_publico"><%= "Imóvel público até #{home.data_fim.strftime("%d/%m/%Y")}" if home.visivel and @donologado %></span>
+			        </div>
+
+				      <h4><%= link_to "#{home.tipoImovel} para #{home.negocio} - #{home.referencia}", home %></h4>
+				      <div class="data_user_property">
+					      <p><%= home.logradouro %>, <%= home.numero %> <%= home.bairro %><br/>
+					      <%= home.cidade %>, <%= home.estado %><br/>
+				        Criado em - <%= (home.updated_at).strftime("%d/%m/%Y") %></p>
+				      </div>
+  			    </div>
+  			    <% if @donologado %>
+			      <div class="user_property_actions">
+			        <%= link_to 'Editar', edit_property_path(home), :class => "link" %>
+				      <%= link_to 'Anunciar', {:controller => 'announces', :action => 'new', :const => SecureRandom.hex(16) + home.id.to_s}, :alt => 'Pague com PagSeguro - é rápido, grátis e seguro!', :class => 'link' %>
+			      </div>
+			      <% end %>
+		    </div>
+	  <% end %>
+	  <% if !@publico and !@donologado or @properties.empty? %>
+      <p>Não há imóveis cadastrados.</p>
+    <% end %>
+	  <%= paginate @properties%>
+	  <% if @donologado %><div id="buttons"><%= link_to "Cadastrar imóvel", new_property_path, :class => "linkright" %></div><% end %>
+
+  </div>
+  <% if @donologado %>
+  <div id="user_details">
+    <h2>Meus interesses</h2>
+    <% unless @interesses.nil? or @interesses.empty? %>
+	  <% @interesses.each do |interesse|%>
+		  <% @homeinteresse = Property.where("id = ?", interesse.property_id).includes(:capa).first %>
+			  <div class="user_properties" onclick="location.href='/i/<%= @homeinteresse.id %>';">
+			      <% if @homeinteresse.capa.photo.empty? %>
+			        <div class="img_property">
+              <%= link_to image_tag("../system/photos/defaulthome_thumb.png"), interesse %>
+              </div>
+			      <% else %>
+						  <div class="img_property">
+						  <%= link_to image_tag(@homeinteresse.capa.photo.url(:small)), @homeinteresse, :class => "user_prop_img"%>
+						  </div>
+						<% end %>
+				  <div class="info_user_property" title="Detalhes do imóvel">
+			    <%= link_to "#{number_to_currency(@homeinteresse.valor, :precision => 2, :unit => "R$ ", :delimiter => ".", :separator => ",")}", @homeinteresse, :class => "user_valor" %>
+				  <% @imovel = @homeinteresse.tipoImovel + " para " + @homeinteresse.negocio %>
+				  <h4><%= link_to @imovel, @homeinteresse %></h4>
+				  <div class="data_user_property">
+					  <p><%= @homeinteresse.logradouro %>, <%= @homeinteresse.numero %> <%= @homeinteresse.bairro %><br/>
+					  <%= @homeinteresse.cidade %>, <%= @homeinteresse.estado %><br/>
+				    Criado em - <%= (@homeinteresse.updated_at).strftime("%d-%m-%Y")  %></p>
+				  </div>
+			  </div>
+			  </div>
+	  <% end %>
+    <% else %>
+        <p>Você não está interessado em nenhum imóvel.</p>
+    <% end %>
+  </div>
+</div>
+<% end %>
+<% content_for :foot do %>
+<script>$(".user_property_actions").hide(); $(".user_properties").mouseover(function() {$(this).find(".user_property_actions").show();}).mouseout(function(){$(this).find(".user_property_actions").hide(); });</script>
+  <%= javascript_include_tag "jquery.qtip-1.0.0-rc3.min.js" %>
+  <script>$(document).ready(function(){
+		   $('#interessados').qtip({
+			  content: "Em <b>Interessados</b> você poderá ver a relação de pessoas interessadas para cada um de seus imóveis.",
+			  style: {name: 'cream', tip: 'bottomMiddle', padding: '7px 13px', width: { max: 250, min: 0 }, tip: true },
+			  position: { corner: { target: 'topRight', tooltip: 'bottomLeft' } }
+		   }); });
+	</script>
+<% end %>
+

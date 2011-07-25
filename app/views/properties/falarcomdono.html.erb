@@ -1,0 +1,39 @@
+<%= content_for :head do %>
+    <% content_for :title do %>Indique a um amigo - <% end %>
+    <%= stylesheet_link_tag 'ctfull' %>
+    <%= javascript_include_tag "jquery.validationEngine-en" %>
+	  <%= javascript_include_tag "jquery.validationEngine" %>
+	  <%= stylesheet_link_tag 'validationEngine.jquery' %>
+	  <script>$(document).ready(function(){$("#form_contato").validationEngine('attach', {promptPosition : "topLeft"});});</script>
+<% end %>
+<div id="links_pratico">
+	<p><%= link_to "« Voltar para o imóvel", property_path(@property), :class => "voltar" %></p>
+</div>
+<div id='ctfull'>
+    <h1>Fale com o dono deste imóvel!</h1>
+    <div id="imovel_indicado">
+      <h3>Nós enviaremos um e-mail ao dono deste imóvel:</h3>
+      <div id="dados_imovel">
+        <h4><%= @property.tipoImovel.capitalize %> para <%= @property.negocio.downcase %></h4>
+        <p id="valor"><%= number_to_currency(@property.valor, :unit => "R$ ", :delimiter => ".", :separator => ",") %></p>
+        <p><%= @property.logradouro%>, <%= @property.numero%>  Bairro - <%= @property.bairro%> Cidade - <%= @property.cidade %></p>
+      </div>
+      <div id="fotos_imovel">
+        <% @fotos = @property.photos.limit(3) %>
+        <% @fotos.each do |foto| %>
+          <%= image_tag(foto.photo.url(:medium)) %>
+        <% end %>
+      </div>
+    </div>
+    <div id="form_contato">
+      <%= form_tag ("/contato_amigo")  %>
+      <%= hidden_field_tag :property_id, @property.id %>
+      <div id="seu_contato_dono">
+        <p><%= label_tag "Seu nome:" %><br/><%= text_field_tag :nome_contato, "" , :class => "validate[required]" %></p>
+        <p><%= label_tag "Seu email:" %><br/><%= text_field_tag :email_contato, "" , :class => "validate[required]" %></p>
+      </div>
+      <p>Deixe sua mensagem aqui: <%= text_area_tag :mensagem %></p>
+      <%= submit_tag "Enviar email", :class => "link" %> <span>Todos os campos são obrigatórios!</span>
+    </div>
+</div>
+

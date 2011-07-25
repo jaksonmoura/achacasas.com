@@ -1,0 +1,54 @@
+<%= form_for @announce do |f| %>
+  <% if @announce.errors.any? %>
+	<div id="error_explanation">
+	  <h2>Ops! Alguma coisa deu errado! Verifica os dados inseridos!</h2>
+	  <ul>
+	  <% @announce.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+	  <% end %>
+	  </ul>
+	</div>
+  <% end %>
+
+  <div class='planoM' onclick="$('#planomensal').attr('checked', 'checked');">
+      <h2>Plano Mensal <%= f.radio_button :plano, 0, :id => "planomensal" %></h2>
+      <p>Valor: R$ 30,00</p><br/>
+  </div>
+  <div class='planoT' onclick="$('#planotrimestral').attr('checked', 'checked');">
+      <h2>Plano Trimestral <%= f.radio_button :plano, 1, :id => "planotrimestral" %></h2>
+      <p>Valor: R$ 75,00</p>
+      <small>Equivalente à R$ 25,00 por mês</small>
+  </div>
+  <div class='planoS' onclick="$('#planosemestral').attr('checked', 'checked');">
+      <h2>Plano Semestral <%= f.radio_button :plano, 2, :id => "planosemestral" %></h2>
+      <p>Valor: R$ 140,00</p>
+      <small>Equivalente à R$ 23,00 por mês</small>
+  </div>
+  <div class='planoA' onclick="$('#planoanual').attr('checked', 'checked');">
+      <h2>Plano Anual <%= f.radio_button :plano, 3, :id => "planoanual" %></h2>
+      <p>Valor: R$ 240,00</p>
+      <small>Equivalente à R$ 20,00 por mês</small>
+  </div>
+  <%= f.hidden_field :property_id, :value => @property.id %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <p id="selecione"></p>
+  <div id="action">
+  <%= f.submit "Definir plano" %>
+  </div>
+
+<% end %>
+<% content_for :foot do %>
+    <script>$(document).ready(function() {
+      $("#selecione").hide();
+      $("#announce_submit").click(function()
+      {
+        if (!$("input[@name='announce[plano]']:checked").length) {
+          $("#selecione").empty();
+          $("#selecione").append("Você deve selecionar um plano para poder prosseguir.");
+          $("#selecione").fadeIn().delay(5000).fadeOut();
+          return false;}
+        });
+    });
+   </script>
+<% end %>
+

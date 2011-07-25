@@ -1,0 +1,39 @@
+<%= content_for :head do %>
+    <% content_for :title do %>Como anunciar - <% end %>
+    <%= stylesheet_link_tag 'ctfull' %>
+<% end %>
+<div id="ctfull">
+    <h1>Como anunciar no Acha-Casas?</h1>
+    <p><big>Para anunciar no Acha-Casas é muito simples e em poucos passos você tem seu imóvel no ar.</big></p>
+    <div class="passo">
+        <div id="passo1_text"></div>
+        <%= link_to "", new_user_registration_path, :id => "passo1_s" %>
+        <p><%= link_to 'Crie uma conta', new_user_registration_path%>, ela é necessária para você criar imóveis.</p>
+    </div>
+    <div class="passo">
+        <div id="passo2_text"></div>
+        <%= link_to "", new_property_path, :id => "passo2_s" %>
+        <p><%= link_to 'Adicione um novo imóvel', new_property_path%> no Acha-Casas de forma fácil e prática.</p>
+    </div>
+    <div class="passo">
+        <div id="passo3_text"></div>
+        <div id="passo3_s"></div>
+        <p>Efetue o pagamento e em até 48h você terá seu imóvel efetivamente no ar.</p>
+    </div>
+    <hr>
+    <div id='planos'>
+       <h2>Planos do Acha-Casas</h2>
+        <p>Os imóveis que você cria precisam ser publicados. Abaixo estão os planos de publicação para cada imóvel.</p>
+        <ul>
+            <li><b>R$ 30,00</b> - mensal</li>
+            <li><b>R$ 75,00</b> - trimestral (equivalente à R$ 25,00 mensais)</li>
+            <li><b>R$ 140,00</b> - semestral (equivalente à aprox. R$ 23,00 mensais)</li>
+            <li><b>R$ 240,00</b> - anual (equivalente à R$ 20,00 mensais)</li>
+        </ul>
+    </div>
+    <div id='pagseguro'>
+        <h2>Pagamentos com:</h2>
+        <%= link_to image_tag("../images/pagseguro.jpg"), 'https://pagseguro.uol.com.br/sobre_o_pagseguro.jhtml', :alt => 'PagSeguro', :title => 'Sobre o PagSeguro'  %>
+    </div>
+</div>
+

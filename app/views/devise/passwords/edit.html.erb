@@ -1,0 +1,23 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'users' %>
+<% end %>
+<div id="form_login">
+	<div id="campos">
+		<h2>Mude sua senha</h2>
+		<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
+      <%= devise_error_messages! %>
+      <%= f.hidden_field :reset_password_token %>
+      <p class="passos">Insira uma nova senha para sua conta.</p>
+      <div class="field">
+        <p><%= f.label "Nova senha" %><br />
+        <%= f.password_field :password %></p>
+      </div>
+      <div class="field">
+        <p><%= f.label "Confirme sua senha" %><br />
+        <%= f.password_field :password_confirmation %></p>
+      </div>
+      <p><%= f.submit "Mudar minha senha" , :class => "link"%></p>
+    <% end %>
+	</div>
+</div>
+

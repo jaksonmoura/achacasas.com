@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Parece que alguma coisa deu errado | Acha-Casas</title>
+  <%= stylesheet_link_tag "erro" %>
+</head>
+<body>
+  <div id="conteudo">
+
+    <div id="header">
+      <h1>Opa!</h1>
+      <h2>Parece que alguma coisa deu errado.</h2>
+    </div>
+
+    <div id="detalhes">
+      <p>Por favor, tente novamente mais tarde.</p>
+      <p>Sinta-se livre para entrar em <a href="mailto:suporte@achacasas.com">contato</a> conosco a qualquer momento.</p>
+    </div>
+
+    <%= link_to "Voltar", :back, {:id => "voltar"} %>
+
+  </div>
+</body>
+</html>
+

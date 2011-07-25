@@ -1,0 +1,253 @@
+#property_logradouro, #property_numero, #property_bairro, #property_estado,
+#property_referencia, #property_cidade, #property_cep, #area, #property_tipoImovel,
+#property_negocio, #valor{
+	margin-right: 5px;
+}
+#property_descricao{
+	width: 500px;
+}
+
+#property_logradouro{
+	width: 240px;
+}
+
+#property_numero{
+	width: 70px;
+}
+
+#valor{
+    width: 120px;
+}
+
+#property_bairro, #property_cidade{
+	width: 91px;
+}
+
+#property_estado{
+	width: 55px;
+}
+
+#property_referencia{
+	width: 283px;
+}
+
+#property_cep{
+	width: 85px;
+}
+
+#area{
+	width: 81px;
+}
+
+#property_tipoImovel{
+	width: 130px;
+}
+
+#property_negocio{
+	width: 75px;
+}
+
+#form_ h2{
+	width: 80%;
+	border-bottom: 1px #007100 solid;
+}
+
+
+#new_up{
+	float: left;
+	width: 520px;
+}
+
+#im_list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#im_list li{
+    background: #f5f5f5;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    float: left;
+    font-size: 14px;
+    color: #444;
+    height: 60px;
+    padding: 2px;
+    margin: 0 0 5px 0;
+    width: 520px;
+}
+
+#im_list p{
+    padding: 0;
+    margin: 3px 0 0 0;
+}
+
+#im_list input{
+    margin: 0;
+    padding: 0;
+}
+
+#property_photos_file{
+    width: 100%;
+    margin: 0 0 20px 0;
+    padding: 0;
+}
+
+#property_photos_file input{
+    float: left;
+}
+
+#capa{
+    float: right;
+    padding: 0 5px;
+    margin: 3px 0;
+}
+
+#property_photos_destricao{
+    margin: -5px 0 0 0;
+    width: 520px;
+}
+
+#property_photos_destricao input{
+    width: 360px;
+    font-size: 14px;
+    padding: 3px 0;
+}
+
+#old_up{
+	float: left;
+	width: 520px;
+	margin-left: 10px;
+}
+
+#old_up img{
+    float: left;
+    width: 55px;
+    margin: 0 5px 0 0;
+    padding: 0;
+}
+
+#imgs_old{
+    float: left;
+    background: #c5e0ff;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    margin: 0 5px 5px 0;
+    padding: 5px;
+    width: 240px;
+}
+#imgs_old p{
+    float: left;
+    font-size: 12px;
+    width: 160px;
+    margin: 0;
+    padding: 0 2px 0 2px;
+    text-shadow: 0 1px 1px #fff;
+    -o-text-shadow: 0 1px 1px #fff;
+    -webkit-text-shadow: 0 1px 1px #fff;
+}
+
+#imgs_old .descricao{
+    margin: 0;
+    padding: 0;
+    width: 170px;
+    background: #ace5ff;
+    border: 0;
+    border-bottom: 1px #0062d5 solid;
+    font-size: 12px;
+    font-style: italic;
+}
+
+#imgs_old p:hover{
+    background: #82d8ff;
+    border-radius: 3px;
+    -o-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+
+#address{
+    width: 65%;
+    margin: 0 0 5px 0;
+}
+
+#queueactions{
+    float: left;
+    border-top: 3px #ccc solid;
+    background: #f7f7f7;
+    padding: 5px 5px 0 5px;
+    width: 515px;
+}
+
+#queuephotos, #address_search{
+    cursor: pointer;
+    color: #333;
+    display: block;
+    border: 1px #c3c3c3 solid;
+	background: #E5E5E5; /* old browsers */
+	background: -moz-linear-gradient(top, #fff 0%, #E5E5E5 50%, #E5E5E5 100%); /* firefox */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fff), color-stop(50%,#E5E5E5), color-stop(100%,#E5E5E5)); /* webkit */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff', endColorstr='#E5E5E5',GradientType=0 ); /* ie */
+	border-radius: 3px;
+	-o-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+#queuephotos{
+    float: right;
+    padding: 2px 5px;
+	margin: 0 0 10px 5px;
+}
+
+#address_search{
+    float: right;
+    padding: 4px 10px;
+    margin: 0 0 5px 0;
+    width: 30%;
+}
+
+#queuephotos:hover{
+    background: #ccc; /* old browsers */
+	background: -moz-linear-gradient(top, #fff 0%, #E5E5E5 50%, #ccc 100%); /* firefox */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fff), color-stop(50%,#E5E5E5), color-stop(100%,#ccc)); /* webkit */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff', endColorstr='#ccc',GradientType=0 ); /* ie */
+}
+
+#map_canvas{
+    width: 355px;
+    height: 300px;
+    border: 2px #007100 solid;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+
+#clear{
+    background: url(../images/clear.png) no-repeat;
+    background-position: center right;
+    color: #0051d5;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 2px 23px 2px 5px;
+    margin: 1px;
+    float: left;
+}
+#restart{
+    cursor: pointer;
+    font-weight: bold;
+    padding: 2px 5px 2px 5px;
+    margin: 1px 1px 1px 5px;
+    float: left;
+}
+

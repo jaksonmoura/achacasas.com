@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<%= csrf_meta_tag %>
+	<%= stylesheet_link_tag "scaffold" %>
+	<%= stylesheet_link_tag "standard" %>
+	<%= javascript_include_tag :defaults %>
+	<%= yield :head %>
+	<title><%= yield :title %>Acha-Casas - Onde você encontra seu lugar</title>
+</head>
+<body>
+	<% unless notice.blank? %>
+<script>$(document).ready(function(){$('#notice').hide().slideDown().delay(5000).slideUp();});</script>
+<div id="notice"><%= notice %></div>
+	<% end %>
+<div id="page">
+    <header>
+        <div id="logo"><%= link_to image_tag("../images/achacasas_logo.png"), root_path, :title => "Início"%></div>
+        <div id="ads_head">
+        <script type="text/javascript"><!--google_ad_client = "ca-pub-1283818748762554";
+          /* Cabeçalho */
+          google_ad_slot = "4298001363"; google_ad_width = 728; google_ad_height = 90;
+        </script>
+        <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+        </div>
+        <nav id="standard_menu">
+            <div id="standard_links">
+            	<ul>
+            		<li><%= link_to "Início", root_path, :title => "Ir para o início" %></li>
+            		<li><%= link_to "Como Anunciar", como_anunciar_path, :title => 'Como anunciar?' %></li>
+            		<li><%= link_to "Dúvidas Frequentes", faq_path, :title => "Dúvidas Frequentes"%></li>
+            		<li id="criarimovel"><%= link_to "Cadastrar Imóvel", new_property_path, :title => "Criar Imóvel" %></li>
+            	</ul>
+            </div>
+            <div id="user_menu">
+            <% if user_signed_in? %>
+              <li><%= link_to 'Meu perfil', user_path(current_user), :title => "Editar sua conta", :id => "meu_perfil" %></li>
+              <li><%= link_to 'Sair', logout_path, :title => "Sair do sistema" %></li>
+            <% else %>
+              <li><%= link_to 'Cadastrar-se', new_user_registration_path, :title => "Criar uma conta" %></li>
+              <li><%= link_to 'Entrar', login_path, :title => "Entrar no sistema" %></li>
+            <% end %>
+            </div>
+    </header>
+    </nav>
+    <div id="content">
+    		<%= yield %>
+    </div>
+    <footer>
+    	<div id="footer">
+			<ul>
+				<li><%= link_to("Início", root_path, :title => "Ir para o início")%></li>
+        <li><%= link_to "Como Anunciar", como_anunciar_path, :title => 'Como anunciar no Acha-Casas' %></li>
+				<li><%= link_to "Dúvidas Frequentes", faq_path, :title => "Dúvidas Frequentes"%></li>
+				<li><a href="#" title="Blog">Blog</a></li>
+				<li><a href="#" title="Sobre">Sobre</a></li>
+			</ul>
+			<a id="conptus" href="http://conptus.com" title="Conptus - Soluções Web"><img src="/images/logo_conptus.png" alt="Conptus"/></a>
+			<p id="dev_by">Acha-Casas © 2011 - por</p>
+    	</div>
+    </footer>
+</div>
+	  <%= javascript_include_tag "css_browser_selector.js" %>
+    <%= javascript_include_tag "jquery.placeholder.js" %>
+    <script>$(document).ready(function() {$('[placeholder]').placeholder();});</script>
+    <%= yield :foot %>
+</body>
+</html>
+

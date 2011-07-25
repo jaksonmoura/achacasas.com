@@ -1,0 +1,179 @@
+<% content_for :head do %>
+	<% content_for :title do %>Detalhes do imóvel - <% end %>
+	<%= stylesheet_link_tag "show_p" %>
+	<%= stylesheet_link_tag "colorbox" %>
+<% end %>
+<%= render 'home/busca' %>
+<div id="links_pratico">
+	<p><%= link_to "« Voltar", :back, :class => "voltar" %></p>
+	<p><%= link_to "Ver mais #{@property.tipoImovel}s", root_path(:search => {:tipoImovel_like => "#{@property.tipoImovel}"}) %></p>
+</div>
+<div id="left_content">
+<div id="main">
+  <% if 1 == 0 %>
+  <%= link_to "", {:controller => :properties, :action => :denunciar, :pid => @property.id}, html_options = {:id => "flag", :alt => "Denunciar", :title => "Denunciar este imóvel"} if @last_user_flag.nil?%>
+	<%= link_to "", {:controller => :properties, :action => :denunciar, :pid => @property.id}, html_options = {:id => "flagged", :alt => "Exluir denúncia", :title => "Exluir denúncia"} unless @last_user_flag.nil?%>
+	<% end %>
+	<% case @property.negocio %>
+	  <% when "Vender" %>
+		<div id="vender"><p>Vende-se</p></div>
+	  <% when "Alugar" %>
+		<div id="alugar"><p>Aluga-se</p></div>
+		<% when "Alugar por temporada" %>
+		<div id="altemp"><p>Aluguel Temporada</p></div>
+	<% end %>
+	<div id="photos">
+	  <% temminiatura = false %>
+	  <% mini_p = @property.photos.find_by_miniatura(true) %>
+	  <% unless mini_p.nil? %>
+	    <%= link_to image_tag(mini_p.photo.url(:medium)), mini_p.photo.url(:original), :rel => "lightbox"%>
+	    <% temminiatura = true %>
+	  <% end %>
+		<% if @property.photos.empty? or !temminiatura %>
+			<%= image_tag "../system/photos/defaulthome.png", :title => "Este imóvel não possui fotos", :alt => "Sem foto" %>
+			<% if user_signed_in? and @property.user_id == current_user.id %>
+			  <div class="property_advice" onclick="$(this).fadeOut(500);"><p>Seu imóvel não possui fotos ou nenhuma foi marcada como capa, por isso a foto acima aparece como principal. Altere seu imóvel!</p></div>
+			  <% if @property.updated_at.strftime("%d-%m-%Y") == @property.created_at.strftime("%d-%m-%Y")%>
+		      <div id="new_property_advice" onclick="$(this).fadeOut(500);"><p>Deixe seu anúncio <b>mais atraente</b>, coloque algumas fotos!</p></div>
+		    <% end %>
+			<% end %>
+		<% end %>
+		<div id="thumbs">
+			<% for photo in @property.photos %>
+				<% unless photo.miniatura %>
+					<%= link_to image_tag(photo.photo.url(:small)), photo.photo.url(:original), html_options = {:rel => "lightbox", :title => photo.descricao}%>
+				<% end %>
+			<% end %>
+		</div>
+		<% if user_signed_in? %>
+		  <% @last_user_flag = Flag.where("user_id = ? AND flaggable_id = ?", current_user.id, @property.id).last %>
+		<% end %>
+	</div>
+</div>
+</div>
+
+<div id="side">
+	<div class="side_block">
+		<h1>Detalhes do imóvel</h1>
+		<div id="donoimovel">
+			<% dono = User.where("id = ?", @property.user_id).first %>
+			<p>Publicado por: <%= link_to dono.nome, user_path(dono), :title => "Dono do imóvel" %> -	Cód. referência: <%= @property.referencia %></p>
+		</div>
+		<% if @property.status == "Criado" and user_signed_in? and current_user.id == @property.user_id %>
+    <div id="recemcriado">
+      <p>Seu imóvel ainda não está visível à todos. Para mudar isso, vá no seu perfil e clique em <b>"Anunciar"</b> no respectivo imóvel.</p>
+    </div>
+    <% end %>
+		<div id="valor_show"><p><%= number_to_currency(@property.valor, :unit => "R$ ", :delimiter => ".", :separator => ",") %></p></div>
+		<div id="info"><p><%= @property.descricao.html_safe %><hr></p>
+			<p>Localização - <%= link_to "#{@property.logradouro}", root_path(:search => {:logradouro_like => "#{@property.logradouro}"}), :title => "Procurar imóveis neste logradouro" %></p>
+			<p>Bairro - <%= link_to "#{@property.bairro}", root_path(:search => {:bairro_like => "#{@property.bairro}"}), :title => "Procurar imóveis neste bairro" %></p>
+			<p>Cidade - <%= link_to "#{@property.cidade}", root_path(:search => {:cidade_like => "#{@property.cidade}"}), :title => "Procurar imóveis nesta cidade" %>, <%= link_to "#{@property.estado}", root_path(:search => {:estado_like => "#{@property.estado}"}), :title => "Procurar imóveis neste estado" %> - <%= link_to "#{@property.cep}", root_path(:search => {:cep_like => "#{@property.cep}"}), :title => "Procurar imóveis com este CEP" %></p>
+			<p><% unless @property.pontoreferencia.nil? or @property.pontoreferencia.empty? %>Ponto de referência - <%= @property.pontoreferencia %><% end %></p>
+			  <hr>
+			  <h2>Possui:</h2>
+			  <ul id="possui">
+				  <% unless @property.quartos.blank? or @property.quartos == 0 %>
+				  <li>
+				  <%= link_to "#{pluralize(@property.quartos, "quarto")}", root_path(:search => {:quartos_eq => "#{@property.quartos}"}), :title => "Procurar imóveis com #{pluralize(@property.quartos, "quarto")}" %>
+				  </li>
+				  <% end %>
+				  <% unless @property.suites.blank? or @property.suites == 0 %>
+				  <li>
+				  <%= link_to "#{pluralize(@property.suites, "suite")}", root_path(:search => {:suites_eq => "#{@property.suites}"}), :title => "Procurar imóveis com #{pluralize(@property.suites, "suite")}" %>
+				  </li>
+				  <% end %>
+				  <% unless @property.salas.blank? or @property.salas == 0%>
+				  <li>
+				  <%= link_to "#{pluralize(@property.salas, "sala")}", root_path(:search => {:salas_eq => "#{@property.salas}"}), :title => "Procurar imóveis com #{pluralize(@property.salas, "sala")}" %>
+				  </li>
+				  <% end %>
+				  <% unless @property.wc.blank? or @property.wc == 0%>
+				  <li>
+				  <%= link_to "#{pluralize(@property.wc, "banheiro")}", root_path(:search => {:wc_eq => "#{@property.wc}"}), :title => "Procurar imóveis com #{pluralize(@property.wc, "banheiro")}" %>
+				  </li>
+				  <% end %>
+				  <% unless @property.vagas.blank? or @property.vagas == 0%>
+				  <li>
+				  <%= link_to "#{pluralize(@property.vagas, "vaga")}", root_path(:search => {:vagas_eq => "#{@property.vagas}"}), :title => "Procurar imóveis com #{pluralize(@property.vagas, "vaga")}" %>
+				  </li>
+				  <% end %>
+			  </ul>
+			<% unless @property.area.blank? %><p id="area"><b>Área - </b><%=@property.area %>m²</p><% end %>
+		</div>
+	<% if user_signed_in? %>
+		<div class="actions">
+			<% if current_user.id != @property.user_id %>
+			  <% if @userint.empty?  %>
+				    <%= button_to 'Estou Interessado', {:controller => 'properties', :action => 'interessado', :userid => current_user.id, :propertyid => @property.id, :method => :put}, :id => "link" %>
+				<% else %>
+            <%= button_to 'Perdi o interesse', {:controller => 'interesses', :action => 'destroy', :userid => current_user.id, :propertyid => @property.id, :method => :delete}, :class => "interessado" %>
+        <% end %>
+      <% else %>
+        <%= link_to "Editar imóvel", edit_property_path(@property), {:class => "link"} %>
+			<% end %>
+		</div>
+	<% end %>
+    <% if @property.negocio == "Vender" %>
+		  <%= link_to image_tag("../images/caixa.png"), "http://www8.caixa.gov.br/siopiinternet/simulaOperacaoInternet.do?method=inicializarCasoUso", :target => "_blank", :class => "caixa" %>
+		<% end %>
+	</div>
+	<div class="social">
+      <%= link_to image_tag("../images/email.png"), indicar_path(:id => @property.id), :alt => "Indique para um amigo", :title => "Indique este imóvel para um amigo!", :id => "mail"%>
+      <%= link_to image_tag("../images/facebook.png"), "http://www.facebook.com/sharer/sharer.php?u=http://www.achacasas.com/i/#{@property.id}", :target => "_blank", :alt => "Compartilhe no Facebook!", :title => "Compartilhe no Facebook!" %>
+      <% status = 'Acabei de ver um(a) '+@property.tipoImovel.downcase+' muito boa no @achacasas - http://www.achacasas.com/i/' + @property.id.to_s %>
+      <%= link_to image_tag("../images/twitter.png"), "https://twitter.com/intent/tweet?source=webclient&text=#{URI.encode status}", :target => "_blank", :alt => "Compartilhe no Twitter!", :title => "Compartilhe no Twitter!"  %>
+	</div>
+	<div class="social">
+	  <%= link_to image_tag("../images/email_dono.png"), falarcomdono_path(:id => @property.id), :alt => "Fale com o dono", :title => "Fale com o dono do imóvel!", :id => "mail"%>
+	</div>
+	<% if @property.latitude %>
+	<div class="side_block">
+	  <h2>Localização Geográfica</h2>
+	  <div id="map_canvas">
+	    <img src="http://maps.google.com/maps/api/staticmap?center=<%= @property.latitude %>,<%= @property.longitude %>&zoom=16&size=360x300&maptype=roadmap
+&markers=icon:<%= request.domain %>:3000/images/mapicon.png|<%= @property.latitude %>,<%= @property.longitude %>&sensor=false"/>
+	  </div>
+	  <div id="iconmap">
+	    <p onclick="$('#map_canvas').empty(); initialize();">Mudar para mapa dinâmico</p>
+	    <small>Localização do imóvel</small><img src="../images/mapicon.png" alt="Ícone do mapa"/>
+	  </div>
+	</div>
+	<% end %>
+</div>
+<% content_for :foot do %>
+    <%= javascript_include_tag "jquery.colorbox-min" %>
+    <script>
+    $(document).ready(function () {
+    $("a[rel='lightbox']").colorbox();
+    $('#filtros ul, #cities_menu ul').hide();$('#carac, #carac p, #tipo, #negocio, #advanced').hide();
+				$('#filtros_link').click(function () {$('#carac p, #carac, #tipo, #negocio, #advanced').fadeToggle('fast');
+				$('#filtros ul').slideToggle('medium');	}); $('#more_cities').click(function () {$('#cities_menu ul').slideToggle('medium');});});
+		   $('#info a, #donoimovel a, #interessados_imovel img').qtip({
+			  content: { text: false },
+			  style: {name: 'dark', tip: 'bottomMiddle' },
+			  position: { corner: { target: 'topMiddle', tooltip: 'bottomMiddle' } }
+		   }); </script>
+    <% if @property.latitude %>
+      <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&region=pt-BR"></script>
+      <script type="text/javascript">
+      var latlng;
+      function initialize() {
+        latlng = new google.maps.LatLng(<%= @property.latitude %>, <%= @property.longitude %>);
+        var myOptions = {
+          zoom: 15,
+          center: latlng,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+        var marker = new google.maps.Marker({
+          position: latlng,
+          map: map,
+          title:"Este imóvel!",
+          icon: '../images/mapicon.png'
+        });
+      }
+    </script>
+    <% end %>
+<% end %>
+

@@ -1,0 +1,134 @@
+<% content_for :head do %>
+    <% content_for :title do %>Editar perfil - <% end %>
+    <%= stylesheet_link_tag 'users' %>
+    <%= javascript_include_tag 'jquery.jqEasyCharCounter.min.js' %>
+    <%= javascript_include_tag "jquery.maskedinput-1.3.js" %>
+    <%= javascript_include_tag 'jquery.qtip-1.0.0-rc3.min.js' %>
+    <script>$(document).ready(function(){$('#user_descricao').jqEasyCounter({'maxChars': 250,'maxCharsWarning': 230});});</script>
+    <script>$(document).ready(function(){$("#user_telefone1").mask("(99) 9999-9999",{placeholder:" "});$("#user_celular").mask("(99) 9999-9999",{placeholder:" "});});</script>
+<% end %>
+
+
+<div id="user_editor">
+<h2>Minha Conta</h2>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :multipart => true, :id => "useredit" }) do |f| %>
+  <div id="excluir">
+	<p><%= link_to "Excluir minha conta", "#", :id => "delete_user" %></p>
+  </div>
+  <%= devise_error_messages! %>
+  <div id="edit_avatar">
+  	  <p class="boxp">Avatar</p>
+  	  <%= image_tag @user.avatar.url if @user.avatar %>
+  	  <%= image_tag "../avatar/defaultavatar.png" unless @user.avatar %>
+  	  <div id="avatarinput">
+  	  <div class="user_avatar_upload"><%= f.file_field :avatar %><span>Escolher foto</span></div>
+  	  <p>A imagem será redimensionada (e cortada se necessário) para 200x200px.</p>
+  	  <p>Tamanho máximo do arquivo - 500Kb.</p>
+  	  </div>
+  </div>
+  <div id="edit_info">
+  	  <p class="boxp">Informações básicas</p>
+	  <div class="edit_content">
+	  	  <div class="edit_fields1">
+			  <p><label>Seu nome ou de sua empresa</label><br />
+			  <%= f.text_field :nome, :autofocus => true %></p>
+			  <p><label>Bio</label><br />
+			  <%= f.text_area :descricao %></p>
+			  <span id="counter"></span>
+		  </div>
+		  <div class="edit_fields">
+			  <p><label>Telefone fixo</label><br />
+			  <%= f.text_field :telefone1 %></p>
+			  <p><label>Celular <i class="hint">(adicional)</i></label><br />
+			  <%= f.text_field :celular %></p>
+			  <p><label>Email</label><br />
+			  <%= f.text_field :email %></p>
+			  <p id="publicar"><label title="Permite exibir seus telefones ao público">Tornar telefones públicos</label><%= f.check_box :publico %></p>
+		  </div>
+	  </div>
+  </div>
+  <script>$(document).ready(function () {	$('#new_password_fields').hide();
+				$('#new_password_more').click(function () {$('#new_password_fields').slideToggle('fast');
+				$('#boxp').css('background-color', '#ace5ff');
+				$("#boxp").css({"background-color":"#ace5ff"});
+				;});});
+        </script>
+  <div id="new_password">
+  	  <div id="new_password_more">
+  	  	<p class="boxp" title="Clique aqui para alterar senha">Nova senha &raquo;</p>
+  	  </div>
+	  <div id="new_password_fields">
+	  	  <p><label>Nova senha:</label><br />
+		  <%= f.password_field :password %></p>
+	  </div>
+  </div>
+  <div class="actions">
+  	<p><%= f.submit "Salvar mudanças" %></p><%= link_to '« Voltar', :back, :class => "link" %>
+  </div>
+<% end %>
+</div>
+<% content_for :foot do %>
+  <script>
+  $(document).ready(function()
+  {
+     $('#delete_user').qtip(
+     {
+        content: {
+           title: {
+              text: 'Tem certeza disso?',
+              button: 'cancelar'
+           },
+           text: 'Excluindo sua conta você também estará excluindo <b>todos seus imóveis</b>. <br /><br />' +
+                 'Quer realmente fazer isso? <br/>' +
+                 '<small><i>se não, clique em <b>cancelar</b> logo acima.</i></small> <br/> <br/>' +
+                 '<%= link_to "Sim, excluir minha conta!", registration_path(resource_name), :method => :delete %>'
+        },
+        position: {
+           target: $(document.body),
+           corner: 'center'
+        },
+        show: {
+           when: 'click',
+           solo: true
+        },
+        hide: false,
+        style: {
+           width: { max: 350 },
+           padding: '14px',
+           border: {
+              width: 9,
+              radius: 9,
+              color: '#666666'
+           },
+           name: 'light'
+        },
+        api: {
+           beforeShow: function()
+           {
+              $('#qtip-blanket').fadeIn(this.options.show.effect.length);
+           },
+           beforeHide: function()
+           {
+              $('#qtip-blanket').fadeOut(this.options.hide.effect.length);
+           }
+        }
+     });
+     $('<div id="qtip-blanket">')
+        .css({
+           position: 'absolute',
+           top: $(document).scrollTop(),
+           left: 0,
+           height: $(document).height(),
+           width: '100%',
+           opacity: 0.7,
+           backgroundColor: 'black',
+           zIndex: 5000
+        })
+        .appendTo(document.body) // Append to the document body
+        .hide(); // Hide it initially
+  });
+</script>
+
+<% end %>
+

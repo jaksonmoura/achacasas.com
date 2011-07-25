@@ -1,0 +1,67 @@
+<%= render 'busca' %>
+<div id="main">
+	<div id="houses">
+	<% if @homes == [] %>
+	  <div class="property">
+	  <h2>Nada encontrado!</h2>
+    <p>Nenhum imóvel em "<%= params[:search] %>" foi encontrado!</p>
+    <hr>
+    <h3>Verifique se o termo pesquisado está digitado corretamente.</h3>
+    </div>
+	<% else %>
+	<div id="sortlinks">
+		<!-- <%#= sort_link @search, :valor, "Preço" %> -->
+		<%= link_to 'Menor Preço', {:controller => 'search', :action => 'index', :sortby => 'menor_preco', :search => params[:search]} %>
+		<%= link_to 'Maior Preço', {:controller => 'search', :action => 'index', :sortby => 'maior_preco', :search => params[:search]} %>
+		<span>Organizar por: </span>
+		<%= select :estado, {:id =>"estados"}, {:AC, :AC, :AL, :AL,:AP, :AP,:AM, :AM,:BA, :BA,:CE, :CE,:DF, :DF,:ES, :ES,:GO, :GO,:MA, :MA,:MT, :MT,:MS, :MS,:MG, :MG,:PA, :PA,:PB, :PB,:PR, :PR,:PE, :PE,:PI, :PI,:RJ, :RJ,:RN, :RN,:RS, :RS,:RO, :RO,:RR, :RR,:SC, :SC,:SP, :SP,:SE, :SE,:TO, :TO} %>
+	</div>
+	<% @homes.each do |home| -%>
+		<div class="property">
+			<div class="img_property">
+				<% for photo in home.photos %>
+					<% if photo.miniatura -%>
+						<%= link_to image_tag(photo.photo.url(:small)), home%>
+					<% end %>
+				<% end %>
+				<% @photo = Photo.where('property_id = ?', home.id).first %>
+				<% if @photo == nil -%>
+    				<% @semphoto = true -%>
+			    <% else -%>
+    				<% @semphoto = false -%>
+    			<% end -%>
+					<% if @semphoto %>
+						<%= link_to image_tag("../system/photos/defaulthome_thumb.png"), home%>
+					<% end -%>
+			</div>
+			<div class="info_property">
+				<% @imovel = home.tipoImovel + " para " + home.negocio -%>
+				<h2><%= link_to @imovel, home %></h2>
+				<div class="valor"><%= link_to "#{number_to_currency(home.valor, :precision => 2, :unit => "R$ ", :delimiter => ".", :separator => ",")}", :search => {:valor_eq => "#{home.valor}"} %></div>
+					<p><b>Cidade:</b> <%= home.cidade %>, <%= home.estado %><br/>
+					<b>Bairro:</b> <%= home.bairro %></p>
+				<%= (home.updated_at).strftime("%d-%m-%Y")  -%>
+			</div>
+		</div>
+	<% end -%>
+<% end %>
+	</div>
+	<%= paginate @homes, :per_page => 1 %>
+</div>
+
+
+<div id="side">
+	<div class="ads">
+	<%= image_tag("../images/adsense.png") -%>
+	</div>
+	<div class="side_block">
+	</div>
+</div>
+
+<% content_for :foot do %>
+        <script>$(document).ready(function () {	$('#filtros ul, #cities_menu ul').hide();$('#carac, #carac p, #tipo, #negocio').hide();
+				$('#filtros_link').click(function () {$('#carac p, #carac, #tipo, #negocio').fadeToggle('fast');
+				$('#filtros ul').slideToggle('medium');	}); $('#more_cities').click(function () {$('#cities_menu ul').slideToggle('medium');});});
+        </script>
+<% end %>
+

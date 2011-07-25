@@ -1,0 +1,273 @@
+	<div id="form_">
+			<%= form_for @property, :property, :html => { :multipart => true,
+			:name => "pform", :id => "pform", :class => "pform" } do |f| %>
+			  <% if @property.errors.any? %>
+				<div id="error_explanation">
+				  <h2>Ops! Alguma coisa deu errado! Verifica os dados inseridos!</h2>
+				  <ul>
+				  <% @property.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				  <% end %>
+				  </ul>
+				</div>
+			  <% end %>
+			  <div class="field">
+				<h2>Informações básicas</h2>
+				<%= f.text_area :descricao, :rows => 10, :cols => 60, :class => "mceEditor", :autofocus => true %>
+			  </div>
+			  <h2>Localização</h2>
+			  <div id="local">
+				  <div class="field">
+					*<%= f.label "Logradouro" %><br />
+					<%= f.text_field :logradouro, :size => 37, :placeholder => "Ex.: Av. Miguel Rosa, 789", :class => "validate[required]" %>
+				  </div>
+				  <div class="field">
+					*<%= f.label "Número:" %><br />
+					<%= f.text_field :numero, :size => 5, :class => "validate[required]" %>
+				  </div>
+				  <div class="field">
+					*<%= f.label "Bairro" %><br />
+					<%= f.text_field :bairro, :size => 10, :class => "validate[required]" %>
+				  </div>
+				  <div class="field">
+					*<%= f.label "Estado" %><br />
+					<%= f.select :estado, ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"], {:include_blank => true}, { :class => 'validate[required]'} %>
+				  </div>
+				  <div class="field">
+					<%= f.label "Ponto de referencia" %><br />
+					<%= f.text_field :pontoreferencia, :size => 42, :placeholder => "Ex.: Próximo ao Posto Fiscal" %>
+				  </div>
+				  <div class="field">
+					*<%= f.label "Cidade" %><br />
+					<%= f.text_field :cidade, :size => 10, :class => "validate[required]" %>
+				  </div>
+				  <div class="field">
+					*<label>CEP</label><br />
+					<%= f.text_field :cep, :size => 9, :maxlength => 9, :onKeyUp => "this.value = mascara_global('######-###', this.value)", :id => "cep", :class => "validate[required]" %>
+				  </div>
+				</div>
+			  <div id="caracteristicas">
+			  <h2>Características:</h2>
+				  <div class="field">
+					<%= f.text_field :quartos, :size => 1, :maxlength => 2, :onKeyPress => "return numbersonly(this, false)" %>
+					<label>quarto(s)</label>
+				  </div>
+				  <div class="field">
+					<%= f.text_field :wc, :size => 1, :maxlength => 2, :onKeyPress => "return numbersonly(this, false)" %>
+					<label>banheiro(s)</label>
+				  </div>
+				  <div class="field">
+					<%= f.text_field :salas, :size => 1, :maxlength => 2, :onKeyPress => "return numbersonly(this, false)" %>
+					<label>sala(s)</label>
+				  </div>
+				  <div class="field">
+					<%= f.text_field :suites, :size => 1, :maxlength => 2, :onKeyPress => "return numbersonly(this, false)" %>
+					<label>suite(s)</label>
+				  </div>
+				  <div class="field">
+					<%= f.text_field :vagas, :size => 1, :maxlength => 2, :onKeyPress => "return numbersonly(this, false)" %>
+					<label>vaga(s)</label>
+				  </div>
+			  </div>
+			  <div id="outros">
+			  	<h2>Outros</h2>
+				  <div class="field">
+					<%= f.label "Área (em m²)" %><br />
+					<%= f.text_field :area, :size => 8, :id => "area", :class => "validate[required]", :onKeyUp => "this.value = mascara_global('[###.]###', this.value)" %>
+				  </div>
+				  <div class="field">
+					<%= f.label "Tipo do imóvel" %><br />
+					<%= f.select :tipoImovel, ["Apartamento", "Casa", "Terreno", "Fazenda", "Ponto Comercial", "Outros"], {:include_blank => true}, { :class => 'validate[required]'} %>
+					</select>
+				  </div>
+				  <div class="field">
+					<%= f.label "Negócio" %><br />
+					<%= f.select :negocio, ["Vender", "Alugar", "Alugar por temporada"], {:include_blank => true}, { :class => 'validate[required]'} %>
+					</select>
+				  </div>
+				  <div class="field">
+					<label>Valor R$</label><br />
+					<%= f.text_field :valor, :size => 6, :id => "valor", :alt => "valor", :class => "validate[required]", :onKeyUp => "this.value = mascara_global('[###.]###,##', this.value)" %>
+				  </div>
+			  </div>
+			  <script>
+			      var last;
+			      <% if params[:action] == 'new'%>
+              <% @L = 10 %>
+            <% else %>
+              <% @L = @left %>
+            <% end %>
+            var photoset_photo_limit = <%= @L %>;
+            var next_offset_id = <%= @next %>;
+            function add_photo() {
+                if ($('#im_list li').length == photoset_photo_limit) return;
+                $('#im_list').append($('<li id="fl_'+next_offset_id+'"><div id="property_photos_file"><input class="filenew" id="property_photos_attributes_'+next_offset_id+'_photo" name="property[photos_attributes]['+next_offset_id+'][photo]" type="file" /><div id="capa"><input name="property[photos_attributes]['+next_offset_id+'][miniatura]" type="hidden" value="0" /><input id="sel_capa" name="property[photos_attributes]['+next_offset_id+'][miniatura]" type="checkbox" value="1" /> Usar como capa</div></div><br/><div id="property_photos_descricao">Descrição da imagem <input name="property[photos_attributes]['+next_offset_id+'][descricao]" size="30" type="text" /></div></li>').hide().fadeIn(500));
+                <% if params[:action] == 'new' %>
+                if ( next_offset_id == <%= @next %>){
+                  $("#sel_capa").attr('checked', true);
+                }
+                <% end %>
+                last = next_offset_id;
+                next_offset_id++;
+            }
+            function removeLast() {
+              if (last > 0) {
+                var el = "#fl_"+last;
+                $(el).fadeOut( 500 , function() {
+                    $(this).remove();
+                });
+                next_offset_id -= 1;
+                last -= 1;
+              }
+            }
+        </script>
+			  <div id="new_up">
+			    <h2>Imagens do imóvel</h2>
+          <ol id="im_list"></ol>
+				  <div id="queueactions"><p id="queuephotos" onclick="add_photo();">Adicionar imagem</p><p id="queuephotos" onclick="removeLast();">Remover image</p></div>
+			  </div>
+			  <% unless f.object.new_record? %>
+			   <div id="old_up">
+			    	<h4>Imagens Atuais</h4>
+			    	<% f.fields_for :photos do |p| %>
+				    	<% unless p.object.new_record? %>
+						  <div id="imgs_old">
+							  <%= link_to image_tag(p.object.photo.url(:small)), p.object.photo.url(:original) %>
+							  <p>Usar como capa <%= p.radio_button :miniatura, true, :id => 'sel_capa' %></p>
+							  <p>Remover imagem <%= p.check_box :_destroy %></p>
+							  <p><%= p.text_field :descricao, :class => "descricao" %></p>
+						  </div>
+					  <% end %>
+			     <% end %>
+			   </div>
+			 <% end %>
+			 <%= f.hidden_field :latitude %><%= f.hidden_field :longitude %>
+	<div class="actions">
+		<%= f.submit "Salvar"%><% if params[:action] == 'edit'%><p id="delete_property" class="link">Excluir Imóvel</p><% end %><%= link_to '« Voltar', :back, :class => "link" %>
+	  </div>
+	</div>
+<% end %>
+<% content_for :foot do %>
+  <%= javascript_include_tag 'mascara' %>
+  <%= javascript_include_tag 'jquery.alerts' %>
+  <%= javascript_include_tag "jquery.qtip-1.0.0-rc3.min" %>
+  <%= stylesheet_link_tag "jquery.alerts" %>
+  <% if user_signed_in? and current_user.id == @property.user_id and params[:action] == 'edit' %>
+      <script>
+      $(document).ready(function()
+      {
+         $('#delete_property').qtip(
+         {
+            content: {
+               title: {
+                  text: 'Tem certeza disso?',
+                  button: 'cancelar'
+               },
+               text: 'Não há como voltar atrás após executar essa operação. <br /><br />' +
+                     'Quer realmente excluir seu imóvel? <br/>' +
+                     '<small><i>se não, clique em <b>cancelar</b> logo acima.</i></small> <br/> <br/>' +
+                     '<%= link_to 'Sim, quero excluir este imóvel!', property_path(:id => @property.id), :method => :delete, :remote=>true%>'
+            },
+            position: {
+               target: $(document.body),
+               corner: 'center'
+            },
+            show: {
+               when: 'click',
+               solo: true
+            },
+            hide: false,
+            style: {
+               width: { max: 450 },
+               padding: '14px',
+               border: {
+                  width: 9,
+                  radius: 9,
+                  color: '#666666'
+               },
+               name: 'light'
+            },
+            api: {
+               beforeShow: function()
+               {
+                  $('#qtip-blanket').fadeIn(this.options.show.effect.length);
+               },
+               beforeHide: function()
+               {
+                  $('#qtip-blanket').fadeOut(this.options.hide.effect.length);
+               }
+            }
+         });
+         $('<div id="qtip-blanket">')
+            .css({
+               position: 'absolute',
+               top: $(document).scrollTop(),
+               left: 0,
+               height: $(document).height(),
+               width: '100%',
+               opacity: 0.7,
+               backgroundColor: 'black',
+               zIndex: 5000
+            })
+            .appendTo(document.body) // Append to the document body
+            .hide(); // Hide it initially
+      });
+    </script>
+    <% end %>
+  <script>
+    $("#property_submit").click(function()
+      {
+      if ($("#new_up").find("li").size() > 0) {
+        if (!$("input[@class='filenew']:checked").length) {
+        jAlert("Você deve marcar uma foto como capa desse imóvel!", "Opa!");
+          return false;}
+        }
+        });
+	  function numbersonly(e, decimal) {var key;var keychar;if (window.event) {key = window.event.keyCode;}
+	  else if (e) {key = e.which;}else {return true;}	keychar = String.fromCharCode(key);
+	  if ((key==null) || (key==0) || (key==8) ||  (key==9) || (key==13) || (key==27) ) {return true;}
+	  else if ((("0123456789,.-").indexOf(keychar) > -1)) {return true;}
+	  else if (decimal && (keychar == ".")) {return true;}else return false;}
+  </script>
+  <script src="http://maps.google.com/maps/api/js?sensor=false&region=pt-BR"></script>
+  <script>
+    var first;
+    <% if params[:action] == 'new' %>
+       first = false;
+    <% end %>
+    var map; var marker = null; var geocoder;  var icon = '/images/mapicon.png';
+    function initialize() {
+      geocoder = new google.maps.Geocoder();
+      <% if @property.latitude.blank? %>
+      latlng = new google.maps.LatLng(-5.024462,-42.792206);
+      <% else %>
+      latlng = new google.maps.LatLng(<%= @property.latitude.to_f %>,<%= @property.longitude.to_f %>);
+      <% end %>
+      var mapOptions = {zoom: 16, center: latlng, mapTypeId: google.maps.MapTypeId.ROADMAP, icon: icon};
+      map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+      <% if params[:action] == 'edit' %>
+      marker = new google.maps.Marker({ position: latlng, map: map, title:"Seu imóvel está aqui!", icon: icon });
+      <% end %>
+      google.maps.event.addListener(map, 'click', function(event) {addMarker(event.latLng);});
+    }
+    function addMarker(location) {
+      if (marker == null){ marker = new google.maps.Marker({position: location, map: map, icon: icon});
+      document.getElementById('property_latitude').value = location.lat(); document.getElementById('property_longitude').value = location.lng();}
+    }
+    function clearOverlays() {if (marker != null) {marker.setMap(null); marker = null;}}
+    function codeAddress() {
+      var address = document.getElementById("address").value;
+      geocoder.geocode( { 'address': address}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          map.setCenter(results[0].geometry.location);
+        } else {alert("Alguma coisa deu errado com a localização. " + status);}});}
+    function latitude(){return map.lat();}
+    function longitude(){return map.lng();}
+    function buscar() { if (first == false) { first = true; initialize(); clearOverlays();  }  codeAddress(); }
+    function searchKeyPress(e) {if (window.event) { e = window.event; } if (e.keyCode == 13) { buscar();} }
+  </script>
+  <% if params[:action] == 'edit' %>
+  <script>$(window).load(function () { initialize();});</script>
+  <% end %>
+<% end %>
+

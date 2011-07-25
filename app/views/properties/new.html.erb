@@ -1,0 +1,37 @@
+<% content_for :head do -%>
+	<% content_for :title do %>Novo imóvel - <% end %>
+	<%= stylesheet_link_tag 'property' %>
+	<%= javascript_include_tag "jquery.validationEngine-en" %>
+	<%= javascript_include_tag "jquery.validationEngine" %>
+	<%= stylesheet_link_tag 'validationEngine.jquery' %>
+	<script>$(document).ready(function(){$(".pform").validationEngine('attach', {promptPosition : "topLeft"});});</script>
+<% end %>
+<div id="main">
+	<h1>Novo Imóvel</h1>
+	<%= render 'form' %>
+</div>
+<div id="side">
+	<div class="side_block">
+		<h2>Dicas de preenchimento</h2>
+  		<p id="nota">Os campos com <big>*</big> são obrigatórios.</p>
+  		<p><b>Informações básicas</b> se refere as informações como: os aredores do imóvel, a sua vista, o estilo de vida do local, ambiente, etc.</p>
+   		<p>Os campos de <b>Características</b> não são obrigatórios, porém eles serão úteis para as pesquisas.
+	    <u>Sem eles, seu imóvel não será encontrado facilmente.</u></p>
+	    <h3>Localização geográfica</h3>
+	    <p>Para especificar melhor a localização geográfica do seu imóvel, use o modo de vizualização "Satélite".</p>
+	</div>
+	<div class="side_block">
+	  <div class="googlemaps">
+	    <h2>Onde está seu imóvel?</h2>
+      <input id="address" type="textbox" placeholder="Endereço" onKeyPress="searchKeyPress(event);">
+      <input type="button" id="address_search" value="Ir ao local" onclick="buscar();">
+	    <div id="map_canvas" onclick="addMarker();"></div>
+	    <p onclick="clearOverlays();" id="clear" title="Limpar marcação no mapa">Limpar marcação</p>
+	    <p onclick="initialize();" id="restart">Voltar à posição original</p>
+	  </div>
+	</div>
+</div>
+<% content_for :foot do %>
+  <%= include_tiny_mce_if_needed %>
+<% end %>
+

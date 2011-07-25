@@ -1,0 +1,408 @@
+#flag, #flagged{
+    background-color: #fff;
+    border-radius: 10px 10px 0 0;
+    float: right;
+    margin: -20px 0 0 0;
+    padding: 5px 5px 0 5px;
+    width: 25px;
+    height: 25px;
+}
+
+#flag{
+    background: #fff url("../images/flag.png") no-repeat center center;
+}
+
+#flag:hover{
+    background: #fff url("../images/flagged.png") no-repeat center center;
+    background-image: url("../images/flagged.png"), -webkit-gradient(linear, left top, left bottom, from(#f1f1f1), to(#ffffff)); /* Saf4+, Chrome */
+    background-image: url("../images/flagged.png"), -webkit-linear-gradient(top, #f1f1f1, #ffffff); /* Chrome 10+, Saf5.1+ */
+    background-image: url("../images/flagged.png"), -moz-linear-gradient(top, #f1f1f1, #ffffff); /* FF3.6 */
+    background-image: url("../images/flagged.png"), -ms-linear-gradient(top, #f1f1f1, #ffffff); /* IE10 */
+    background-image: url("../images/flagged.png"), -o-linear-gradient(top, #f1f1f1, #ffffff); /* Opera 11.10+ */
+    background-image: url("../images/flagged.png"), linear-gradient(top, #f1f1f1, #ffffff);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f1f1f1', EndColorStr='#ffffff'); /* IE6–IE9 */
+}
+
+#flagged{
+    background: #fff url("../images/flagged.png") no-repeat center center;
+    background-image: url("../images/flagged.png"), -webkit-gradient(linear, left top, left bottom, from(#f1f1f1), to(#ffffff)); /* Saf4+, Chrome */
+    background-image: url("../images/flagged.png"), -webkit-linear-gradient(top, #f1f1f1, #ffffff); /* Chrome 10+, Saf5.1+ */
+    background-image: url("../images/flagged.png"), -moz-linear-gradient(top, #f1f1f1, #ffffff); /* FF3.6 */
+    background-image: url("../images/flagged.png"), -ms-linear-gradient(top, #f1f1f1, #ffffff); /* IE10 */
+    background-image: url("../images/flagged.png"), -o-linear-gradient(top, #f1f1f1, #ffffff); /* Opera 11.10+ */
+    background-image: url("../images/flagged.png"), linear-gradient(top, #f1f1f1, #ffffff);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f1f1f1', EndColorStr='#ffffff'); /* IE6–IE9 */
+}
+
+#flagged:hover{
+    background: #fff url("../images/flag.png") no-repeat center center;
+}
+
+#links_pratico{
+	float: right;
+	width: 100%;
+	margin: 20px 0 -10px 0;
+	padding: 0;
+}
+
+#links_pratico p{
+	margin: 0;
+}
+
+#links_pratico a:hover{
+	background-color: #eee;
+}
+
+#links_pratico a{
+	background-color: #fff;
+	float: right;
+	border-radius: 3px 0 3px 3px;
+	-moz-border-radius: 3px 0 3px 3px;
+	-o-border-radius: 3px 0 3px 3px;
+	-webkit-border-radius: 3px 0 3px 3px;
+	padding: 2px 5px;
+	width: auto;
+	margin: 0 0 0 10px;
+}
+
+#recemcriado{
+    float: left;
+    width: 360px;
+    text-align: center;
+}
+
+#recemcriado p{
+    color: #333;
+    background: #ace5ff;
+    border-radius: 3px;
+    -o-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    margin: 5px 0 1px 0;
+    padding: 5px 2px;
+}
+
+#recemcriado a{
+    color: #333;
+    font-weight: bold;
+}
+
+#photos{
+	float: left;
+	width: 530px;
+	margin: 10px;
+}
+
+hr{
+	border: 1px solid #e5e5e5;
+	width: 95%;
+}
+
+#thumbs{
+	float: left;
+	width: 530px;
+	margin-left: 3px;
+}
+
+#thumbs img{
+	margin-right: 2px;
+}
+
+#info{
+	color: #222;
+	float: left;
+	width: 350px;
+	display: block;
+}
+
+#info p{
+    padding: 0;
+	margin: 0;
+}
+
+#info span{
+	color: #222;
+}
+
+#info h2{
+	color: #307100;
+}
+
+#area{
+    float: left;
+    padding: 5px;
+    margin: 10px 0 15px 0;
+    height: 20px;
+}
+
+#vender{
+	background: url(../images/vender.png) no-repeat;
+}
+
+#alugar, #altemp{
+	background: url(../images/alugar.png) no-repeat;
+}
+
+#vender, #alugar, #altemp{
+	font-family: Impact, Arial, sans-serif;
+	font-size: 20px;
+	color: #fff;
+	width: 100px;
+	height: 100px;
+	position: relative;
+	-webkit-transform: rotate(-30deg);
+	-o-transform: rotate(-30deg);
+	-moz-transform: rotate(-30deg);
+	top: -40px;
+	left: -30px;
+	margin-bottom: -120px;
+}
+
+#vender p, #alugar p, #altemp p{
+	position: relative;
+	text-shadow: 1px 1px 0px #333;
+	top: 35px;
+	text-align: center;
+	width: 100px;
+}
+
+#altemp p{
+    font-size: 17px;
+    top: 30px;
+}
+
+#new_property_advice p, .property_advice p{
+    background: #ace5ff;
+    border-radius: 5px;
+    -o-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    color: #0062d5;
+    padding: 5px 0px;
+    text-align: center;
+    margin: 3px 0 3px 0;
+    cursor: pointer;
+}
+
+#new_property_advice p{
+    background: #ace5ff url("../images/new_property_advice.png") no-repeat;
+    background-position: 55px 5px;
+}
+
+#valor_show{
+	color: #333;
+	float: right;
+	font-size: 20px;
+	font-style: italic;
+	font-weight: bold;
+	margin: 5px 0 5px 0;
+	border: 1px solid #d87600;
+	background-color: #ffd100;
+	border-radius: 5px 0 0 5px;
+	-moz-border-radius: 5px 0 0 5px;
+	-o-border-radius: 5px 0 0 5px;
+	-ms-border-radius: 5px 0 0 5px;
+	-webkit-border-radius: 5px 0 0 5px;
+	padding: 5px 25px 5px 30px;
+	margin-right: -22px;
+}
+
+#valor_show p:after{
+	content:"";
+    position:absolute;
+	background: url(../images/valor_side.png) no-repeat;
+	width:11px;
+    height:8px;
+	left: 100%;
+	margin-left: 14px;
+}
+
+.gecko #valor_show p:after{
+	top: 32px;
+}
+
+.opera #valor_show p:after, .webkit #valor_show p:after{
+	top: 30px;
+}
+
+#left_content{
+    float: left;
+    width: 550px;
+}
+
+#valor_show p{
+	position: relative;
+	float: right;
+	padding: 0;
+	margin: 0;
+	text-shadow: 0 1px 1px #fff1b2;
+	-moz-text-shadow: 0 1px 1px #fff1b2;
+	-o-text-shadow: 0 1px 1px #fff1b2;
+	-webkit-text-shadow: 0 1px 1px #fff1b2;
+}
+
+#possui{
+	display: block;
+	float: left;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#possui a{
+	color: #333;
+	text-shadow: 0 1px 1px #eee;
+	-moz-text-shadow: 0 1px 1px #eee;
+	-o-text-shadow: 0 1px 1px #eee;
+	-webkit-text-shadow: 0 1px 1px #eee;
+}
+
+#possui li{
+	display: inline;
+	float: left;
+	font-size: 16px;
+	font-weight: bold;
+	margin: 0 5px 5px 0;
+	padding: 5px 20px;
+	background: #ccc;
+	height: 20px;
+}
+
+#possui li:hover{
+	background: #ddd;
+}
+
+#interessado{
+    float: left;
+	background-color: #0062d5;
+	color: #fff;
+	padding: 5px 10px;
+	border-radius: 3px;
+	-o-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-msborder-radius: 3px;
+}
+
+#anunciar{
+    float: left;
+    background: url(../images/publicar.png) no-repeat;
+    background-position: 5px center;
+    background-color: #ff9000;
+    color: #333;
+    padding: 6px 10px 6px 25px;
+    margin: 2px 5px 10px 0;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+
+#anunciar:hover{
+    background-color: #ffaa3b;
+}
+
+.social{
+    float: right;
+    width: auto;
+    padding: 20px 10px 10px 5px;
+    background: rgba(0,0,0, .3);
+   	border-radius: 0 0 10px 10px;
+   	-o-border-radius: 0 0 10px 10px;
+   	-moz-border-radius: 0 0 10px 10px;
+   	-webkit-border-radius: 0 0 10px 10px;
+	margin: -20px 10px 10px 0;
+}
+
+.social a{
+    float: left;
+    margin: 0 0 0 5px;
+    opacity: .8;
+}
+
+.social a:hover{
+    opacity: 1;
+}
+
+#fb-root{
+    background: url("../images/facebook.png") no-repeat;
+    float: left;
+    margin: 4px 5px 0 0;
+}
+
+#gplus{
+    float: left;
+    background: url("../images/gplus.png") no-repeat;
+    width: 32px;
+    height: 32px;
+    margin: 0 0 0 5px;
+    opacity: .8;
+    cursor: pointer
+}
+
+#gplus:hover{
+    opacity: 1;
+}
+
+#gframe{
+    opacity: 0;
+    width: 32px;
+    height: 32px;
+    margin-top: 5px;
+}
+
+
+#delete_property{
+    cursor: pointer;
+}
+
+#iconmap{
+    float: left;
+    width: 100%;
+    margin-top: 5px;
+}
+
+#iconmap p{
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0;
+    cursor: pointer;
+    background-color: #e1e1e1;
+    border: 1px #0062d5 solid;
+    padding: 1px 5px;
+}
+
+#iconmap p:hover{
+    color: #fff;
+    background: #0062d5;
+}
+
+#iconmap p:active{
+    background: #004da2;
+}
+
+#iconmap small{
+    float: right;
+    padding-top: -5px;
+}
+
+#iconmap img{
+    float: right;
+    width: 16px;
+    margin-right: 2px;
+}
+
+#map_canvas{
+    float: left;
+    width: 360px;
+    height: 300px;
+}
+
+.caixa{
+    float: left;
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+

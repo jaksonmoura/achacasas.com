@@ -1,0 +1,38 @@
+<%= content_for :head do %>
+    <% content_for :title do %>Dúvidas Frequentes - <% end %>
+    <%= stylesheet_link_tag 'ctfull' %>
+<% end %>
+<div id="ctfull">
+    <div id='faqct'>
+        <h1>Perguntas Frequentes</h1>
+        <p>Abaixou estão algumas das perguntas comuns que podem ajudá-lo a solucionar seu problema.</p>
+        <div id='pergunta1'><a href='#'><h3>Posso comprar ou alugar um imóvel no Portal Acha-Casas?</h3></a></div>
+        <div id='resposta1'><p>Não, o Portal Acha-Casas é apenas um buscador online de casas, apartamentos, terrenos, pontos comercias, ou seja, busca imóveis diversos cadastrados em nosso portal.</p></div>
+
+        <div id='pergunta2'><a href='#'><h3>O Portal Acha-Casas é de abrangência nacional?</h3></a></div>
+        <div id='resposta2'><p>Sim, funcionamos na web e por isso estamos disponíveis em qualquer lugar que possua internet.</p></div>
+
+        <div id='pergunta3'><a href='#'><h3>Quem eu devo procurar para obter mais informações sobre um imóvel?</h3></a></div>
+        <div id='resposta3'><p>Após escolher um imóvel de seu interesse, você entra em contato com a imobiliária ou pessoa física que está anunciando.</p></div>
+
+        <div id='pergunta4'><a href='#'><h3>Qual a frequência de atualização das informações no Portal Acha-Casas?</h3></a></div>
+        <div id='resposta4'><p>A atualização dos imóveis, descrição, contato, preço, entre outras, são de responsabilidade do anunciante cadastrado no Acha-Casas.</p></div>
+
+        <div id='pergunta5'><a href='#'><h3>Acha-Casas é um serviço gratuito?</h3></a></div>
+        <div id='resposta5'><p>O registro no site e o serviço de busca são gratuitos, mas para anunciar um imóvel o usuário deve pagar uma taxa de anuncio. CLIQUE AQUI E ANUNCIE.</p></div>
+
+        <div id='pergunta6'><a href='#'><h3>Como anunciar meu imóvel no Acha-Casas?</h3></a></div>
+        <div id='resposta6'><p>Para saber como anúnciar no Acha-Casas, <%= link_to 'clique aqui', como_anunciar_path %> e sigas os passos informados.</p></div>
+    </div>
+    <div id='faqinfo'>
+    </div>
+</div>
+<script>$(document).ready(function () {	$('#resposta1,#resposta2,#resposta3,#resposta4,#resposta5,#resposta6').hide();
+$('#pergunta1').click(function () {$('#resposta1').slideToggle('fast');});
+$('#pergunta2').click(function () {$('#resposta2').slideToggle('fast');});
+$('#pergunta3').click(function () {$('#resposta3').slideToggle('fast');});
+$('#pergunta4').click(function () {$('#resposta4').slideToggle('fast');});
+$('#pergunta5').click(function () {$('#resposta5').slideToggle('fast');});
+$('#pergunta6').click(function () {$('#resposta6').slideToggle('fast');});
+});</script>
+
