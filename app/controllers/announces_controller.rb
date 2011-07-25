@@ -1,6 +1,6 @@
 class AnnouncesController < ApplicationController
   before_filter :authenticate_user!, :except => [:confirmacao_de_pagamento]
-  skip_before_filter :verify_authenticity_token
+  skip_before_filter :verify_authenticity_token, :only => [:payment_return]
 
   def new
     @announce = Announce.new
@@ -42,10 +42,11 @@ class AnnouncesController < ApplicationController
 
   def pagamento
     @property = Property.find_by_id(params[:pid])
-    @announce = Announce.find_by_token!(params[:token])
+    @announce = Announce.find_by_token(params[:token])
     if current_user.id == @property.user_id and current_user.id == @announce.user_id and @property.id == @announce.property_id
       # Instanciando o objeto para geração do formulário
       #@order = PagSeguro::Order.new(@announce.token)
+      @order = Moip::Order.new(@announce.token)
       case @announce.plano.to_i
         when 0
           @valorpag = 3000
@@ -60,7 +61,7 @@ class AnnouncesController < ApplicationController
           @valorpag = 24000
           @desc = "Publicação de imóvel por um ano no Acha-Casas.com - ref. #{@property.referencia}"
       end
-      @response = Moip.checkout(attributes = {:reason => @desc,:id => @announce.toke.to_s,:value=>@valorpag, :id_carteira=>"jrochelly"})
+      @order.add :id => @announce.token, :price => @valorpag, :description => @desc
     else
       redirect_to(@property, :notice => 'Ocorreu algum erro! Por favor, tente novamente!')
     end
@@ -71,12 +72,12 @@ class AnnouncesController < ApplicationController
 
   def payment_return
     if request.post? and params[:MoIPpost] == "Nasp_true"
-      notification = Moip.notification(params)
-      announce = Announce.find_by_token(notification.id_transacao)
+      notification = Moip::Notification.new(params)
+      announce = Announce.find_by_token(notification.order_id)
       property = Property.find_by_id(announce.property_id)
 
       announce.update_payment_data!(notification)
-      case notification.status
+      case notification.status.to_i
         when 1
           property.update_attribute(:status, "autorizado")
         when 2

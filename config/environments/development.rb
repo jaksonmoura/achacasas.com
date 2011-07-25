@@ -5,12 +5,7 @@ AchaCasas::Application.configure do
   # every request.  This slows down response time but is perfect for development
   # since you don't have to restart the webserver when you make code changes.
   config.cache_classes = false
-  #require "moip"
-  #MoIP.setup do |config|
-  #  config.uri = https://desenvolvedor.moip.com.br/sandbox
-  #  config.token = YAOFNUIN1AAY9HRR4NCAYI8IJSO26CM7
-  #  config.key = BODJAYZ9UDPFKGJAM5KWXVWPYCXADCWC3NFK1DYG
-  #end
+
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true
 

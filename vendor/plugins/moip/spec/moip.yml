@@ -1,10 +1,9 @@
 development: &development
   sandbox: true
-  email: jrochelly@conptus.com
+  email: user@example.com
 
 test:
   <<: *development
 
 production:
-  email: jrochelly@gmail.com
-
+  email: user@example.com

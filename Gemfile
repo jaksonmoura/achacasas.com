@@ -5,7 +5,7 @@ gem 'rails', '3.0.4'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
+gem 'mysql2', '~> 0.2.7'
 
 gem 'devise', '1.1.8'
 gem 'paperclip', '~> 2.3'
@@ -18,7 +18,6 @@ gem 'kaminari'
 gem "delocalize"
 gem 'whenever', :require => false
 gem 'can_be_flagged'
-gem 'moip', :git => 'git://github.com/joaomilho/moip-ruby.git'
 gem "httparty"
 gem 'nokogiri'
 

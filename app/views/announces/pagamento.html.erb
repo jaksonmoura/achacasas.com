@@ -21,7 +21,7 @@
         Você será redirecionado para a página do <%= link_to "PagSeguro", "http://pagseguro.uol.com.br/para_voce/protecao_contra_fraudes.jhtml", {:title => "Por quê usar o PagSeguro?"} %>.</p>
         </div>
     <div id="action">
-    <%= link_to "Efetuar pagamento", Moip.charge_url(@response["Token"]) %>
+    <%= moip_form @order, :submit => "Efetuar pagamento!" %>
     </div>
 </div>
 
