@@ -40,7 +40,7 @@ class PropertiesMailer < ActionMailer::Base
       @email_amigo = email_amigo
       @mensagem = mensagem
       mail(:to => @dono.email,
-           :subject => "Acha-Casas | <%= @nome_amigo%> quer que você veja algo")
+           :subject => "Acha-Casas | #{@nome_amigo} quer que você veja algo")
   end
 
   def falar_com_dono(property_id, nome_contato, email_contato, mensagem)

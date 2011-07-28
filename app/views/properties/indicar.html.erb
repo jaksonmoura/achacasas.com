@@ -14,14 +14,18 @@
     <div id="imovel_indicado">
       <h3>Você está indicando o seguinte imóvel:</h3>
       <div id="dados_imovel">
-        <h4><%= @property.tipoImovel.capitalize %> para <%= @property.negocio.downcase %></h4>
+        <h2><%= @property.tipoImovel.capitalize %> para <%= @property.negocio.downcase %></h2>
         <p id="valor"><%= number_to_currency(@property.valor, :unit => "R$ ", :delimiter => ".", :separator => ",") %></p>
         <p><%= @property.logradouro%>, <%= @property.numero%>  Bairro - <%= @property.bairro%> Cidade - <%= @property.cidade %></p>
       </div>
       <div id="fotos_imovel">
         <% @fotos = @property.photos.limit(3) %>
-        <% @fotos.each do |foto| %>
-          <%= image_tag(foto.photo.url(:medium)) %>
+        <% unless @fotos.empty? %>
+          <% @fotos.each do |foto| %>
+            <%= image_tag(foto.photo.url(:medium)) %>
+          <% end %>
+        <% else %>
+          <%= image_tag("../system/photos/defaulthome.png") %>
         <% end %>
       </div>
     </div>

@@ -1,0 +1,34 @@
+<% content_for :head do %>
+  <% content_for :title do %>Sobre - <% end %>
+  <%= stylesheet_link_tag "ctfull" %>
+<% end %>
+
+<div id="ctfull">
+  <div id="about_text">
+    <h1>Sobre o Acha-Casas</h1>
+    <p>O Acha-Casas é um sistema de catálogo online de imóveis. Aqui você pode buscar casas, apartamentos, terrenos, pontos comerciais, entre outros.
+    Além disso, você pode anunciar no Acha-Casas por um preço muito baixo.</p>
+    <p>Estamos sempre buscando inovar e melhorar tanto nosso sistema como a forma de divulgação dos imóveis.</p>
+
+    <h3>Acha-Casas na rede</h3>
+    <div id="gp_ac">
+    <g:plusone count="false" href="http://achacasas.com"></g:plusone>
+    </div>
+    <div id="tw_ac">
+    <a href="http://twitter.com/achacasas" class="twitter-follow-button" data-show-count="false" data-lang="pt">Siga-nos</a>
+    </div>
+    <div id="fb_ac"></div>
+    <div id="produto_conptus">
+    Acha-Casas um produto <%= link_to image_tag('../images/logo_conptus.png'), "http://conptus.com", { :alt => "Conptus", :title => "Conptus - Soluções Web"} %>
+    </div>
+  </div>
+  <div id="about_image">
+    <p><%= link_to image_tag('../images/achacasas_logo.png'), root_path, {:alt => "Acha-Casas", :title => "Acha-Casas | Onde você encontra seu lugar"} %></p>
+    <%= link_to image_tag('../images/rails.png'), "http://www.rubyonrails.pro.br/", {:alt => "Rails", :title => "Desenvolvido em Rails"} %>
+  </div>
+</div>
+<% content_for :foot do %>
+  <script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'pt-BR'}</script>
+  <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+<% end %>
+

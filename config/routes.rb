@@ -18,6 +18,7 @@ AchaCasas::Application.routes.draw do
 
   #criar /faq para a action faq da Controller Home
   match '/faq', :to => 'home#faq', :as => :faq
+  match '/about', :to => 'home#about', :as => :about
   match '/notfound', :to => 'search#notfound', :as => :notfound
   match '/properties/interessado', :to => 'properties#interessado', :as => 'interessado'
   match '/interesses/destroy', :to => 'interesses#destroy', :as => 'desinteressado'

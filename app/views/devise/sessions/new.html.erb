@@ -11,7 +11,9 @@
 			<h2>Entrar no Acha-Casas</h2>
 			<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 			<%= devise_error_messages! %>
-			<div id="form_errors"><%= flash[:alert] %></div>
+			<% if flash[:alert] %>
+			  <div id="form_errors"><%= flash[:alert] %></div>
+			<% end %>
 			  <div class="field">
 			    <p><label>E-mail</label><br />
 			    <%= f.text_field :email, :class => "validate[required,custom[email]]" %></p>

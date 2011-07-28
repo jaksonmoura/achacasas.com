@@ -1,5 +1,5 @@
 class AnnouncesController < ApplicationController
-  before_filter :authenticate_user!, :except => [:confirmacao_de_pagamento]
+  before_filter :authenticate_user!, :except => [:payment_return]
   skip_before_filter :verify_authenticity_token, :only => [:payment_return]
 
   def new
@@ -55,7 +55,7 @@ class AnnouncesController < ApplicationController
           @valorpag = 7500
           @desc = "Publicação de imóvel por três meses no Acha-Casas.com - ref. #{@property.referencia}"
         when 2
-          @valorpag = 12000
+          @valorpag = 14000
           @desc = "Publicação de imóvel por um semestre no Acha-Casas.com - ref. #{@property.referencia}"
         when 3
           @valorpag = 24000
@@ -68,10 +68,14 @@ class AnnouncesController < ApplicationController
   end
 
   def confirmacao_de_pagamento
+    if params[:pid]
+      @property = Property.find(params[:pid])
+      @announce = @property.announces.last
+    end
   end
 
   def payment_return
-    if request.post? and params[:MoIPpost] == "Nasp_true"
+    if request.post?
       notification = Moip::Notification.new(params)
       announce = Announce.find_by_token(notification.order_id)
       property = Property.find_by_id(announce.property_id)
@@ -92,7 +96,7 @@ class AnnouncesController < ApplicationController
           property.update_attribute(:status, "em análise")
       end
 
-      logger.info { notification.to_yml }
+      #logger.info { notification.to_yml }
       render :text=>"Status changed", :status=>200
     else
       redirect_to(root_path, :notice => "Solicitação inválida!")

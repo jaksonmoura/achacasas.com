@@ -5,6 +5,7 @@
 	<%= stylesheet_link_tag "scaffold" %>
 	<%= stylesheet_link_tag "standard" %>
 	<%= javascript_include_tag :defaults %>
+	<link rel="shortcut icon" href="../favicon.ico">
 	<%= yield :head %>
 	<title><%= yield :title %>Acha-Casas - Onde você encontra seu lugar</title>
 </head>
@@ -27,8 +28,8 @@
             <div id="standard_links">
             	<ul>
             		<li><%= link_to "Início", root_path, :title => "Ir para o início" %></li>
-            		<li><%= link_to "Como Anunciar", como_anunciar_path, :title => 'Como anunciar?' %></li>
-            		<li><%= link_to "Dúvidas Frequentes", faq_path, :title => "Dúvidas Frequentes"%></li>
+            		<li><%= link_to "Como anunciar", como_anunciar_path, :title => 'Como anunciar?' %></li>
+            		<li><%= link_to "Dúvidas frequentes", faq_path, :title => "Dúvidas Frequentes"%></li>
             		<li id="criarimovel"><%= link_to "Cadastrar Imóvel", new_property_path, :title => "Criar Imóvel" %></li>
             	</ul>
             </div>
@@ -49,11 +50,10 @@
     <footer>
     	<div id="footer">
 			<ul>
-				<li><%= link_to("Início", root_path, :title => "Ir para o início")%></li>
-        <li><%= link_to "Como Anunciar", como_anunciar_path, :title => 'Como anunciar no Acha-Casas' %></li>
-				<li><%= link_to "Dúvidas Frequentes", faq_path, :title => "Dúvidas Frequentes"%></li>
-				<li><a href="#" title="Blog">Blog</a></li>
-				<li><a href="#" title="Sobre">Sobre</a></li>
+				<li><%= link_to "Início", root_path, :title => "Ir para o início"%></li>
+        <li><%= link_to "Como anunciar", como_anunciar_path, :title => 'Como anunciar no Acha-Casas' %></li>
+				<li><%= link_to "Dúvidas frequentes", faq_path, :title => "Dúvidas Frequentes"%></li>
+				<li><%= link_to "Sobre", about_path, {:title => 'Sobre'} %></li>
 			</ul>
 			<a id="conptus" href="http://conptus.com" title="Conptus - Soluções Web"><img src="/images/logo_conptus.png" alt="Conptus"/></a>
 			<p id="dev_by">Acha-Casas © 2011 - por</p>

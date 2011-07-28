@@ -8,7 +8,7 @@ class InteresseMailer < ActionMailer::Base
     @photo = @imovel.photos.find_by_miniatura(true)
     @photoloc = @photo.photo.url(:small) if @photo
     @photoloc = "/system/photos/defaulthome_thumb.png" unless @photo
-    mail(:to => "#{@dono.email}", :subject => "Acha-Casas | Alguém se interessou pelo seu imóvel!")
+    mail(:to => @dono.email, :subject => "Acha-Casas | Alguém se interessou pelo seu imóvel!")
   end
 end
 

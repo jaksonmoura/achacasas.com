@@ -1,7 +1,5 @@
 #user_info p{
 	text-shadow: 0 1px 0 #fff;
-	-moz-text-shadow: 0 1px 0 #fff;
-	-o-text-shadow: 0 1px 0 #fff;
 	-webkit-text-shadow: 0 1px 0 #fff;
 }
 
@@ -53,8 +51,6 @@ h4{
     filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f1f1f1', EndColorStr='#cccccc'); /* IE6–IE9 */
     border: 1px solid #ccc;
     border-radius: 3px;
-    -o-border-radius: 3px;
-    -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     margin: 5px 0 0 5px;
 }
@@ -112,8 +108,6 @@ h4{
   background-image: linear-gradient(top, #f7f7f7, #e5e5e5);
             filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f7f7f7', EndColorStr='#e5e5e5'); /* IE6–IE9 */
   box-shadow: 0 0 7px #ccc;
-  -moz-box-shadow: 0 0 7px #ccc;
-  -o-box-shadow: 0 0 7px #ccc;
   -webkit-box-shadow: 0 0 7px #ccc;
   -ms-box-shadow: 0 0 7px #ccc;
 }
@@ -157,8 +151,6 @@ h4{
     font-style: italic;
     margin-top: 20px;
     text-shadow: 0 1px 0px #fff;
-    -o-text-shadow: 0 1px 0px #fff;
-    -moz-text-shadow: 0 1px 0px #fff;
     -webkit-text-shadow: 0 1px 0px #fff;
 }
 
@@ -299,8 +291,6 @@ h4{
             filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f1f1f1', EndColorStr='#f9f9f9'); /* IE6–IE9 */
     border: 1px #ddd solid;
     border-radius: 3px;
-    -o-border-radius: 3px;
-    -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
 	float: left;
 	width: 690px;
@@ -346,7 +336,7 @@ h4{
 	font-weight: bold;
 	padding: 0 0 0 20px;
 	margin: 5px 3px 0 5px;
-	width: 0 auto;
+	width: auto
 }
 
 .data_user_property{
@@ -513,8 +503,6 @@ h4{
 	margin-top: 10px;
 	padding: 1px 10px;
 	border-radius: 3px;
-	-moz-border-radius: 3px;
-	-o-border-radius: 3px;
 	-webkit-border-radius: 3px;
 }
 
@@ -533,7 +521,7 @@ h4{
 }
 
 .boxp{
-	width: 100%-1px;
+	width: 100%;
 	background-color: #ddd;
 	margin: 0;
 	padding: 2px 0 2px 5px;
@@ -609,12 +597,12 @@ h4{
 
 #forgot_pass_div, #resend_confirmation{
     width: 300px;
-    margin: 0 auto;
+    margin: auto
 }
 
 #campos{
 	width: 310px;
-	margin: 0 auto;
+	margin: auto
 }
 
 #campos .field{
@@ -643,7 +631,7 @@ h4{
 	font-size: 13px;
 	color: #777;
 	padding: 0 0 0 20px;
-	width: 0 auto;
+	width: auto
 }
 
 #forgot_pass{
@@ -715,8 +703,6 @@ h4{
     height: 59px;
     background: #ccc;
     border-radius: 5px;
-    -moz-border-radius: 5px;
-    -o-border-radius: 5px;
     -webkit-border-radius: 5px;
     margin: 0 0 18px 0;
     padding: 5px 5px 5px 10px;
@@ -725,8 +711,6 @@ h4{
 
 .list_avatars img:hover{
     box-shadow: 0 0 5px #333;
-    -moz-box-shadow: 0 0 5px #333;
-    -o-box-shadow: 0 0 5px #333;
     -webkit-box-shadow: 0 0 5px #333;
 }
 
@@ -764,13 +748,9 @@ h4{
     background: #ccc;
     margin: -14px 0 -4px 0;
     border-radius: 5px 5px 0 0;
-    -moz-border-radius: 5px 5px 0 0;
-    -o-border-radius: 5px 5px 0 0;
     -webkit-border-radius: 5px 5px 0 0;
     padding: 2px 5px 2px 5px;
     text-shadow: 0 1px 0px #fff;
-    -o-text-shadow: 0 1px 0px #fff;
-    -moz-text-shadow: 0 1px 0px #fff;
     -webkit-text-shadow: 0 1px 0px #fff;
 }
 
@@ -782,7 +762,7 @@ h4{
     font-weight: bold;
     color: #fff;
     padding: 2px 0 2px 10px;
-    margin: 0 auto;
+    margin: auto;
     width: 95%;
     text-shadow: 0 -1px 0px rgba(0,0,0, 0.4);
 }
@@ -820,8 +800,6 @@ h4{
     background-image:      -o-linear-gradient(top, #f9f9f9, #f1f1f1); /* Opera 11.10+ */
     background-image:         linear-gradient(top, #f9f9f9, #f1f1f1);
     border-radius: 3px;
-    -o-border-radius: 3px;
-    -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
 }
 
@@ -829,8 +807,6 @@ h4{
     background: #0062d5;
     border: 1px solid #004ba2;
     box-shadow: 0 -5px 5px rgba(0,0,0, 0.2) inset;
-    -o-box-shadow: 0 -5px 5px rgba(0,0,0, 0.2) inset;
-    -moz-box-shadow: 0 -5px 5px rgba(0,0,0, 0.2) inset;
     -webkit-box-shadow: 0 -5px 5px rgba(0,0,0, 0.2) inset;
     color: #fff;
 }
@@ -842,5 +818,35 @@ h4{
     padding: 0;
     width: 100%;
     text-align: right;
+}
+
+#sem_imoveis_cadastre{
+    float: left;
+    background: #e5e5e5;
+    width: 670px;
+    padding: 2px 10px;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+#arrow_cadastre_imovel{
+    float: left;
+    background: url("../images/arrow_cadastre_imovel.png") no-repeat;
+    margin: -15px 0 -30px 460px;
+    width: 80px;
+    height: 70px;
+}
+
+#explain_interessado{
+    float: left;
+    width: 500px;
+}
+
+#exemplo_interessado{
+    float: right;
+    background: url("../images/interessado.png") no-repeat;
+    width: 150px;
+    height: 75px;
+    margin-right: 20px;
 }
 

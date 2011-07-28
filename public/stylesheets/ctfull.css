@@ -87,17 +87,23 @@ hr{
     color: #0062d5;
 }
 
-#pagseguro{
-    float: right;
-    margin-left: 10px;
-    width: 310px;
+#moip_banner_pag{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5px;
 }
 
-#pagseguro h2{
+#moip{
+    float: right;
+    margin: -5px 60px 0 0;
+    width: 0 auto;
+}
+
+#moip h2{
     text-align: center;
 }
 
-#pagseguro img{
+#moip img{
     margin-left: 30px;
 }
 
@@ -335,6 +341,10 @@ hr{
     margin: 5px 0 5px 110px;
 }
 
+#newproperty h2{
+    margin: 5px 0 5px 110px;
+}
+
 #propertystatus{
     float: left;
     background: url("../images/propertystatus.png") no-repeat;
@@ -485,6 +495,7 @@ hr{
 #imovel_indicado #dados_imovel{
     font-size: 16px;
     color: #333;
+    text-align: center;
 }
 
 #imovel_indicado #fotos_imovel{
@@ -504,5 +515,41 @@ hr{
 #imovel_indicado #fotos_imovel img{
     width: 310px;
     margin: 0 auto;
+}
+
+#about_image{
+    float: right;
+    margin-right: 100px;
+    text-align: center;
+}
+
+#about_text{
+    float: left;
+    width: 500px;
+    margin-left: 100px;
+}
+
+#produto_conptus{
+    float: left;
+    background: #f1f1f1;
+    border-radius: 5px;
+    -o-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    color: #333;
+    padding: 10px;
+    text-align: justify;
+    width: 480px;
+    margin-top: 5px;
+}
+
+#produto_conptus img{
+    margin-bottom: -5px;
+}
+
+#tw_ac, #gp_ac, #fb_ac{
+    float: left;
+    padding: 0;
+    margin: 0 5px 0 0;
 }
 

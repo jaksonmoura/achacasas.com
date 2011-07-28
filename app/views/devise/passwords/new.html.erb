@@ -8,6 +8,9 @@
 		  <h3>Recupere sua senha!</h3>
 		  <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
 		    <%= devise_error_messages! %>
+		    <% if flash[:alert] %>
+			  <div id="form_errors"><%= flash[:alert] %></div>
+			  <% end %>
 		    <p class="passos">Insira seu e-mail no campo abaixo para enviarmos os passos para você recuperar sua senha.</p>
 		    <div class="field">
 		    <p><%= f.label "E-mail" %><br />
@@ -22,6 +25,9 @@
 			  <h3>Receba e-mail de confirmação</h3>
 			  <%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
         <%= devise_error_messages! %>
+        <% if flash[:alert] %>
+			  <div id="form_errors"><%= flash[:alert] %></div>
+			  <% end %>
         <p class="passos">Insira seu e-mail no campo abaixo para enviarmos os passos para você confirmar seu cadastro.</p>
 		    <div class="field">
 		      <p><label>E-mail</label><br />

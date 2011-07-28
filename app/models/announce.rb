@@ -9,7 +9,7 @@ class Announce < ActiveRecord::Base
   #symbolize :payment_method, :allow_blank => true, :in => Hash[*PagSeguro::Notification::PAYMENT_METHOD.map { |k,v| [v, v.to_s] }.flatten]
 
   def update_payment_data!(notification)
-    self.payment_method = notification.payment_type
+    self.payment_method = notification.payment_method
     self.status = notification.status
     property = Property.find_by_id(self.property_id)
     if notification.status == 4

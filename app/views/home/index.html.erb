@@ -14,7 +14,7 @@
     </div>
 	<% else %>
 	<div id="sortlinks">
-	  <p>Organizar por:</p>
+	  <p>Classificar por:</p>
 		<%= sort_link @search, :valor, "Preço" %>
 		<%= sort_link @search, :created_at, "Data de criação" %>
 		<div id="per_page_p">
@@ -60,9 +60,9 @@
 	</div>
 </div>
 <% content_for :foot do %>
-        <script>$(document).ready(function () {	$('#filtros ul, #cities_menu ul').hide();$('#carac, #carac p, #tipo, #negocio, #advanced').hide();
+        <script>$('#filtros ul, #cities_menu ul').hide();$('#carac, #carac p, #tipo, #negocio, #advanced').hide();
 				$('#filtros_link').click(function () {$('#carac p, #carac, #tipo, #negocio, #advanced').fadeToggle('fast');
-				$('#filtros ul').slideToggle('medium');	}); ;});
+				$('#filtros ul').slideToggle('medium');	});
         </script>
 <% end %>
 

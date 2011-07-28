@@ -76,6 +76,12 @@
 	  <% if !@publico and !@donologado or @properties.empty? %>
       <p>Não há imóveis cadastrados.</p>
     <% end %>
+    <% if @donologado and @properties.empty? %>
+      <div id="sem_imoveis_cadastre">
+      <p>Ei, que tal anunciar um imóvel? Você pode começar clicando no botão abaixo!</p>
+      </div>
+      <div id="arrow_cadastre_imovel"></div>
+    <% end %>
 	  <%= paginate @properties%>
 	  <% if @donologado %><div id="buttons"><%= link_to "Cadastrar imóvel", new_property_path, :class => "linkright" %></div><% end %>
 
@@ -110,6 +116,13 @@
 	  <% end %>
     <% else %>
         <p>Você não está interessado em nenhum imóvel.</p>
+        <% if Time.now < @user.created_at + 7.days %>
+        <div id="explain_interessado">
+        <p><b>Interesses</b> são uma forma de marcar imóveis que você gostou e/ou tem em vista a sua aquisição.</p>
+        <p>Para marcar-se interessado em um imóvel visite a página de detalhes de um determinado imóvel e clique no botão <b>Estou interessado</b>.</p>
+        </div>
+        <div id="exemplo_interessado"></div>
+        <% end %>
     <% end %>
   </div>
 </div>

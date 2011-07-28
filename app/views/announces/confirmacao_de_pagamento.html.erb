@@ -3,6 +3,30 @@
     <%= stylesheet_link_tag 'ctfull' %>
 <% end %>
 <div id="ctfull">
+    <% if params[:pid] %>
+      <h1>Andamento do pagamento</h1>
+      <% case @property.status.downcase %>
+      <% when "criado" %>
+        <div id="newproperty">
+        <p>Seu imóvel está criado, mas ainda não é possível que outras pessoas além
+        de você o veja.</p>
+        <h2>Para torna-ló público, <%= link_to 'Clique aqui!', {:controller => 'announces', :action => 'new', :const => SecureRandom.hex(16) + @property.id.to_s}, :title => 'Anunciar' %>.</h2>
+        <p>e você será redirecionado para a página de pagamento, é fácil e simples. Você consegue!</p>
+        </div>
+      <% when "cancelado" %>
+        <p>Seu pedido foi cancelado!</p>
+        <h3>Isso está estranho pra você?</h3>
+        <p>Se você deseja saber mais, por favor, entre em contato com a equipe do MoIP.</p>
+        <p>Clique aqui para ir para a <b><%= link_to "Central de Suporte", "http://moip.zendesk.com/" %></b>.</p>
+      <% else %>
+        <div id="propertystatus">
+        <p>Seu pedido foi confirmado! Em até 48h seu imóvel já estará público à todos.</p>
+        <p>Status do imóvel: <b><%= @property.status %></b> | Última atualização: <b><%= @announce.updated_at.strftime("%d-%m-%Y") if @announce %></b></p>
+        <p>Imóvel no ar até: <b><%= @property.data_fim.strftime("%d-%m-%Y") unless @property.data_fim.blank? %></b></p>
+        <h2>Obrigado!</h2>
+        </div>
+      <% end %>
+    <% else %>
     <h1>Pagamento Confirmado!</h1>
     <p>Seu pagamento foi confirmado! Seu imóvel está à um passo de ficar público!</p>
     <p>Para acompanhar seu pedido, vá em seu perfil ou então acesse o PagSeguro.</p>
@@ -13,5 +37,6 @@
 		  <li>Não é necessário confirmar este pagamento.</li>
 	  </ul>
     <p>Obrigado!</p>
+    <% end %>
 </div>
 

@@ -143,12 +143,13 @@
 </div>
 <% content_for :foot do %>
     <%= javascript_include_tag "jquery.colorbox-min" %>
+    <script>$('#filtros ul, #cities_menu ul').hide();$('#carac, #carac p, #tipo, #negocio, #advanced').hide();
+				$('#filtros_link').click(function () {$('#carac p, #carac, #tipo, #negocio, #advanced').fadeToggle('fast');
+				$('#filtros ul').slideToggle('medium');	});
+        </script>
     <script>
     $(document).ready(function () {
     $("a[rel='lightbox']").colorbox();
-    $('#filtros ul, #cities_menu ul').hide();$('#carac, #carac p, #tipo, #negocio, #advanced').hide();
-				$('#filtros_link').click(function () {$('#carac p, #carac, #tipo, #negocio, #advanced').fadeToggle('fast');
-				$('#filtros ul').slideToggle('medium');	}); $('#more_cities').click(function () {$('#cities_menu ul').slideToggle('medium');});});
 		   $('#info a, #donoimovel a, #interessados_imovel img').qtip({
 			  content: { text: false },
 			  style: {name: 'dark', tip: 'bottomMiddle' },

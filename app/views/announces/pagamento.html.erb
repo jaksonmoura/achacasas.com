@@ -18,10 +18,10 @@
         <% end %>
         <div id="note">
         <p>Se todos os dados estiverem corretos, clique em <b>"Efetuar Pagamento"</b>.
-        Você será redirecionado para a página do <%= link_to "PagSeguro", "http://pagseguro.uol.com.br/para_voce/protecao_contra_fraudes.jhtml", {:title => "Por quê usar o PagSeguro?"} %>.</p>
+        Você será redirecionado para a página do <%= link_to "MoIP", "http://www.moip.com.br/MainMenu.do?method=securityconsumer", {:title => "Segurança para quem compra!"} %>.</p>
         </div>
     <div id="action">
-    <%= moip_form @order, :submit => "Efetuar pagamento!" %>
+    <%= moip_form @order, :submit => "Efetuar pagamento" %>
     </div>
 </div>
 
