@@ -31,8 +31,8 @@ AchaCasas::Application.configure do
   config.action_mailer.smtp_settings = {
     :address              => "smtp.gmail.com",
     :port                 => 587,
-    :user_name            => 'jrochelly@gmail.com',
-    :password             => '3d762j4af3',
+    :user_name            => 'robot@achacasas.com',
+    :password             => 'acha_c_robot2011B',
     :authentication       =>  :plain,
     :enable_starttls_auto => true  }
 end

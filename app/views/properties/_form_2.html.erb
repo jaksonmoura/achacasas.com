@@ -1,0 +1,27 @@
+<script>
+					$("#text_tipo").empty();
+					$("#text_tipo").hide();
+					$("#c_tipoImovel").hide();
+					$('#property_tipoImovel').change(function() {
+             // assign the value to a variable, so you can test to see if it is working
+              var selectVal = $('#property_tipoImovel :selected').val();
+              if (selectVal == "Outros") {
+                $("#text_tipo").html('<input class="validate[required]" id="field_tipoImovel" name="property[tipoImovel]" size="30" type="text" value="" />');
+                $("#field_tipoImovel").fadeIn();
+                $("#c_tipoImovel").fadeIn();
+                $("#select_tipo").empty();
+                $("#select_tipo").hide();
+              }
+          });
+          $('#c_tipoImovel').click(function() {
+             // assign the value to a variable, so you can test to see if it is working
+                $("#text_tipo").hide();
+                $("#text_tipo").empty();
+                $("#c_tipoImovel").fadeOut();
+                $('#select_tipo').html('<%= collection_select(:property, :tipoImovel, @tipos, :tipo, :tipo, {:include_blank=>true}) %>');
+                $("#select_tipo").fadeIn();
+          });
+
+
+					</script>
+

@@ -66,7 +66,7 @@
     <% end %>
 		<div id="valor_show"><p><%= number_to_currency(@property.valor, :unit => "R$ ", :delimiter => ".", :separator => ",") %></p></div>
 		<div id="info"><p><%= @property.descricao.html_safe %><hr></p>
-			<p>Localização - <%= link_to "#{@property.logradouro}", root_path(:search => {:logradouro_like => "#{@property.logradouro}"}), :title => "Procurar imóveis neste logradouro" %></p>
+			<p>Localização - <%= link_to "#{@property.logradouro}", root_path(:search => {:logradouro_like => "#{@property.logradouro}"}), :title => "Procurar imóveis neste logradouro" %>, <%= @property.numero  -%></p>
 			<p>Bairro - <%= link_to "#{@property.bairro}", root_path(:search => {:bairro_like => "#{@property.bairro}"}), :title => "Procurar imóveis neste bairro" %></p>
 			<p>Cidade - <%= link_to "#{@property.cidade}", root_path(:search => {:cidade_like => "#{@property.cidade}"}), :title => "Procurar imóveis nesta cidade" %>, <%= link_to "#{@property.estado}", root_path(:search => {:estado_like => "#{@property.estado}"}), :title => "Procurar imóveis neste estado" %> - <%= link_to "#{@property.cep}", root_path(:search => {:cep_like => "#{@property.cep}"}), :title => "Procurar imóveis com este CEP" %></p>
 			<p><% unless @property.pontoreferencia.nil? or @property.pontoreferencia.empty? %>Ponto de referência - <%= @property.pontoreferencia %><% end %></p>
@@ -127,6 +127,12 @@
 	<div class="social">
 	  <%= link_to image_tag("../images/email_dono.png"), falarcomdono_path(:id => @property.id), :alt => "Fale com o dono", :title => "Fale com o dono do imóvel!", :id => "mail"%>
 	</div>
+	<div class="ads">
+	  <script type="text/javascript"> google_ad_client = "ca-pub-1283818748762554";
+		google_ad_slot = "9143455857"; google_ad_width = 336; google_ad_height = 280;
+	  </script>
+	  <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+	</div>
 	<% if @property.latitude %>
 	<div class="side_block">
 	  <h2>Localização Geográfica</h2>
@@ -143,13 +149,13 @@
 </div>
 <% content_for :foot do %>
     <%= javascript_include_tag "jquery.colorbox-min" %>
+    <script>$("a[rel='lightbox']").colorbox();</script>
     <script>$('#filtros ul, #cities_menu ul').hide();$('#carac, #carac p, #tipo, #negocio, #advanced').hide();
 				$('#filtros_link').click(function () {$('#carac p, #carac, #tipo, #negocio, #advanced').fadeToggle('fast');
 				$('#filtros ul').slideToggle('medium');	});
         </script>
     <script>
     $(document).ready(function () {
-    $("a[rel='lightbox']").colorbox();
 		   $('#info a, #donoimovel a, #interessados_imovel img').qtip({
 			  content: { text: false },
 			  style: {name: 'dark', tip: 'bottomMiddle' },

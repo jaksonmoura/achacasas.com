@@ -24,7 +24,7 @@ pt-BR:
       send_instructions: 'Você irá receber um e-mail com instruções para confirmar sua conta em alguns minutos.'
       confirmed: 'Sua conta foi confirmada com sucesso! Você também já está logado.'
     registrations:
-      signed_up: 'Você foi cadastrado com sucesso! Você irá receber um e-mail de confirmação!'
+      signed_up: 'Você foi cadastrado com sucesso! Um e-mail foi enviado para que você confirme seu cadastro!'
       updated: 'Sua conta foi alterada com sucesso!'
       destroyed: 'Sua conta foi cancelada. É uma pena! Esperamos ver você de novo em breve.'
     unlocks:

@@ -1,7 +1,7 @@
 class CreatePhotos < ActiveRecord::Migration
   def self.up
     create_table :photos do |t|
-      t.string :destricao
+      t.string :descricao
       t.boolean :miniatura
       t.integer :property_id
 

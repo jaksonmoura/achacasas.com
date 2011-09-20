@@ -1,0 +1,35 @@
+<% content_for :head do %>
+  <% content_for :title do %>Fale com a gente - <% end %>
+  <%= stylesheet_link_tag "ctfull" %>
+<% end %>
+
+<div id="ctfull">
+  <div id="contact_content">
+    <h1>Contato</h1>
+    <p>Sua opinião é sempre bem-vinda! Queremos estar mais próximo de você, assim podemos melhora nossos serviços.</p>
+    <div id="contact_form">
+      <% form_for :contato, :url => {:controller => 'supports', :action => 'contato_mail'} do |f| %>
+        <div class="field">
+          <label>Seu nome:</label><br/>
+          <%= f.text_field :nome %>
+        </div>
+        <div class="field">
+          <label>Seu e-mail:</label><br/>
+          <%= f.text_field :email %>
+        </div>
+        <div class="field">
+          <label>Assunto:</label><br/>
+          <%= f.select :tipo, %w(Problemas Sugestão Crítica Outros), :include_blank => true %>
+        </div>
+        <div class="field">
+          <label>Mensagem:</label><br/>
+          <%= f.text_area :mensagem %>
+        </div>
+        <div class="actions">
+          <%= f.submit "Enviar mensagem" -%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,31 @@
+<% content_for :head do %>
+  <% content_for :title do %>Denuncie - <% end %>
+  <%= stylesheet_link_tag "ctfull" %>
+<% end %>
+
+<div id="ctfull">
+  <div id="flag_content">
+    <h1>Denuncie</h1>
+    <p>Denuncie imóveis com informações falsas/engonosas/suspeitas. Ajude-nos a manter o Acha-Casas, mais seguro.</p>
+    <div id="flag_form">
+      <%= form_for :flag, :url => {:controller => 'supports', :action => 'flag'} do |f| %>
+        <div class="field">
+          <label>Seu nome:</label><br/>
+          <%= f.text_field :nome %>
+        </div>
+        <div class="field">
+          <label>Seu e-mail:</label><br/>
+          <%= f.text_field :email %>
+        </div>
+        <div class="field">
+          <label>Mensagem:</label><br/>
+          <%= f.text_area :mensagem %>
+        </div>
+        <div class="actions">
+          <%= submit_tag "Denunciar" -%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+

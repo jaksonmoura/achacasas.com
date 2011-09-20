@@ -1,13 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
 	<%= csrf_meta_tag %>
-	<%= stylesheet_link_tag "scaffold" %>
-	<%= stylesheet_link_tag "standard" %>
+	<meta name="google-site-verification" content="DbJ5bQ_h-hDrFdPRwVkZA1vIioSN6O071t20DDSWOMI" />
+	<meta name="keywords" content="achacasas, acha-casas, acha, catalogo, imoveis, casa, terreno, apartamento, ponto comercial, chacara" />
+	<meta name="description" content="Catálogo online de imóveis em geral - casas, apartamentos, terrenos, ponto comercial, entre outros." />
+	<%= stylesheet_link_tag "scaffold", "standard" %>
 	<%= javascript_include_tag :defaults %>
 	<link rel="shortcut icon" href="../favicon.ico">
 	<%= yield :head %>
 	<title><%= yield :title %>Acha-Casas - Onde você encontra seu lugar</title>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-25650358-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
 </head>
 <body>
 	<% unless notice.blank? %>
@@ -18,8 +30,7 @@
     <header>
         <div id="logo"><%= link_to image_tag("../images/achacasas_logo.png"), root_path, :title => "Início"%></div>
         <div id="ads_head">
-        <script type="text/javascript"><!--google_ad_client = "ca-pub-1283818748762554";
-          /* Cabeçalho */
+        <script type="text/javascript">google_ad_client = "ca-pub-1283818748762554";
           google_ad_slot = "4298001363"; google_ad_width = 728; google_ad_height = 90;
         </script>
         <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
@@ -29,11 +40,11 @@
             	<ul>
             		<li><%= link_to "Início", root_path, :title => "Ir para o início" %></li>
             		<li><%= link_to "Como anunciar", como_anunciar_path, :title => 'Como anunciar?' %></li>
-            		<li><%= link_to "Dúvidas frequentes", faq_path, :title => "Dúvidas Frequentes"%></li>
-            		<li id="criarimovel"><%= link_to "Cadastrar Imóvel", new_property_path, :title => "Criar Imóvel" %></li>
+            		<li id="criarimovel"><%= link_to "Anunciar Imóvel", new_property_path, :title => "Criar Imóvel" %></li>
             	</ul>
             </div>
             <div id="user_menu">
+            <ul>
             <% if user_signed_in? %>
               <li><%= link_to 'Meu perfil', user_path(current_user), :title => "Editar sua conta", :id => "meu_perfil" %></li>
               <li><%= link_to 'Sair', logout_path, :title => "Sair do sistema" %></li>
@@ -41,9 +52,11 @@
               <li><%= link_to 'Cadastrar-se', new_user_registration_path, :title => "Criar uma conta" %></li>
               <li><%= link_to 'Entrar', login_path, :title => "Entrar no sistema" %></li>
             <% end %>
+            </ul>
             </div>
+        </nav>
     </header>
-    </nav>
+
     <div id="content">
     		<%= yield %>
     </div>
@@ -52,7 +65,7 @@
 			<ul>
 				<li><%= link_to "Início", root_path, :title => "Ir para o início"%></li>
         <li><%= link_to "Como anunciar", como_anunciar_path, :title => 'Como anunciar no Acha-Casas' %></li>
-				<li><%= link_to "Dúvidas frequentes", faq_path, :title => "Dúvidas Frequentes"%></li>
+				<li><%= link_to "Central de ajuda", ajuda_path, :title => "Ajuda"%></li>
 				<li><%= link_to "Sobre", about_path, {:title => 'Sobre'} %></li>
 			</ul>
 			<a id="conptus" href="http://conptus.com" title="Conptus - Soluções Web"><img src="/images/logo_conptus.png" alt="Conptus"/></a>

@@ -1,0 +1,36 @@
+<% content_for :head do %>
+  <% content_for :title do %>Ajuda - <% end %>
+  <%= stylesheet_link_tag "ctfull" %>
+<% end %>
+
+<div id="ctfull">
+  <h1>Precisa de ajuda?</h1>
+  <p>Aqui você encontra toda a ajuda necessária para resolver seu problema ou para se informar sobre como o Acha-Casas funciona.</p>
+  <div id="help_faq">
+    <h3>Dúvidas frequentes</h3>
+    <p>As respostas para perguntas comuns estão <%= link_to "aqui", faq_path %>.</p>
+  </div>
+  <div id="help_problems">
+    <h3>Problemas</h3>
+    <p>Se nenhuma resposta do FAQ ajudar, <%= link_to "fale diretamente conosco", contato_path %>!</p>
+  </div>
+  <div id="help_flag">
+    <h3>Denuncie</h3>
+    <p>Imóveis com informações erradas ou enganosas? <%= link_to "Denuncie", denuncie_path %>!</p>
+  </div>
+  <h2>Outras informações</h2>
+  <div id="help_tips">
+    <p id="security_tips"><%= link_to "Dicas de Segurança", seguranca_path %><br/>
+    Informações sobre como se proteger contra fraudes.
+    </p>
+    <% if 1 == 0%>
+    <p id="terms_tips"><%= link_to "Termos e Regras", termos_path %><br/>
+    Os termos e regras que regem o Acha-Casas.
+    </p>
+    <% end -%>
+    <p id="search_tips"><%= link_to "Dicas de busca", dicas_busca_path %><br/>
+    Descubra outras formas de pesquisar.
+    </p>
+  </div>
+</div>
+

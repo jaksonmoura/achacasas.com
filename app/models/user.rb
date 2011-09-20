@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   :path => ":rails_root/public/avatar/:id/:basename.:extension",
   :url => "/avatar/:id/:basename.:extension",
   :default_url => "/avatar/defaultavatar.png"
-  validates_attachment_size :avatar, :less_than => 500.kilobytes
+  validates_attachment_size :avatar, :less_than => 1.megabytes
 
 
   # Include default devise modules. Others available are:

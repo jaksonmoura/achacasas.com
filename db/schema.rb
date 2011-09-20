@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110718202550) do
+ActiveRecord::Schema.define(:version => 20110901022829) do
 
   create_table "announces", :force => true do |t|
     t.string   "pagamento"
@@ -19,15 +19,14 @@ ActiveRecord::Schema.define(:version => 20110718202550) do
     t.string   "status"
     t.decimal  "valor",          :precision => 10, :scale => 0
     t.string   "plano"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "shipping_type"
     t.integer  "transaction_id"
     t.string   "payment_method"
     t.datetime "processed_at"
-    t.string   "token"
     t.date     "data_inicio"
     t.date     "data_fim"
+    t.string   "token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "announces", ["token"], :name => "index_announces_on_token", :unique => true
@@ -37,19 +36,6 @@ ActiveRecord::Schema.define(:version => 20110718202550) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "flaggings", :force => true do |t|
-    t.string   "flaggable_type"
-    t.integer  "flaggable_id"
-    t.string   "flagger_type"
-    t.integer  "flagger_id"
-    t.text     "reason"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "flaggings", ["flaggable_type", "flaggable_id"], :name => "index_flaggings_on_flaggable_type_and_flaggable_id"
-  add_index "flaggings", ["flagger_type", "flagger_id", "flaggable_type", "flaggable_id"], :name => "access_flaggings"
 
   create_table "flags", :force => true do |t|
     t.text     "comment"
@@ -71,27 +57,17 @@ ActiveRecord::Schema.define(:version => 20110718202550) do
     t.datetime "updated_at"
   end
 
-  create_table "orders", :force => true do |t|
-    t.string   "pagamento"
-    t.integer  "property_id"
-    t.integer  "user_id"
-    t.string   "status"
-    t.decimal  "valor",       :precision => 10, :scale => 0
-    t.string   "plano"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "photos", :force => true do |t|
-    t.string   "descricao"
+    t.string   "destricao"
     t.boolean  "miniatura"
     t.integer  "property_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "descricao"
   end
 
   add_index "photos", ["property_id"], :name => "index_photos_on_property_id"
@@ -111,21 +87,21 @@ ActiveRecord::Schema.define(:version => 20110718202550) do
     t.integer  "salas"
     t.integer  "wc"
     t.integer  "vagas"
-    t.string   "area",            :limit => 50
+    t.float    "area"
     t.string   "tipoImovel"
     t.string   "negocio"
-    t.decimal  "valor",                          :precision => 16, :scale => 2
+    t.float    "valor"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "latitude",        :limit => 100
-    t.string   "longitude",       :limit => 100
+    t.integer  "flags_count"
+    t.string   "latitude"
+    t.string   "longitude"
     t.date     "data_inicio"
     t.date     "data_fim"
     t.string   "pontoreferencia"
     t.boolean  "publico"
     t.boolean  "visivel"
-    t.integer  "flags_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "properties", ["id", "visivel"], :name => "index_properties_on_id_and_visivel"
@@ -141,6 +117,12 @@ ActiveRecord::Schema.define(:version => 20110718202550) do
 
   add_index "slugs", ["name", "sluggable_type", "sequence", "scope"], :name => "index_slugs_on_n_s_s_and_s", :unique => true
   add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
+
+  create_table "tipoimoveis", :force => true do |t|
+    t.string   "tipo"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
@@ -161,17 +143,17 @@ ActiveRecord::Schema.define(:version => 20110718202550) do
     t.string   "descricao"
     t.boolean  "termo"
     t.boolean  "newsletter"
+    t.string   "cached_slug"
+    t.boolean  "publico"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "cached_slug"
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
-    t.boolean  "publico"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

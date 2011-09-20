@@ -18,19 +18,19 @@
 			  <h2>Localização</h2>
 			  <div id="local">
 				  <div class="field">
-					*<%= f.label "Logradouro" %><br />
+					<%= f.label "Logradouro" %><br />
 					<%= f.text_field :logradouro, :size => 37, :placeholder => "Ex.: Av. Miguel Rosa, 789", :class => "validate[required]" %>
 				  </div>
 				  <div class="field">
-					*<%= f.label "Número:" %><br />
+					<%= f.label "Número:" %><br />
 					<%= f.text_field :numero, :size => 5, :class => "validate[required]" %>
 				  </div>
 				  <div class="field">
-					*<%= f.label "Bairro" %><br />
+					<%= f.label "Bairro" %><br />
 					<%= f.text_field :bairro, :size => 10, :class => "validate[required]" %>
 				  </div>
 				  <div class="field">
-					*<%= f.label "Estado" %><br />
+					<%= f.label "Estado" %><br />
 					<%= f.select :estado, ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"], {:include_blank => true}, { :class => 'validate[required]'} %>
 				  </div>
 				  <div class="field">
@@ -38,12 +38,12 @@
 					<%= f.text_field :pontoreferencia, :size => 42, :placeholder => "Ex.: Próximo ao Posto Fiscal" %>
 				  </div>
 				  <div class="field">
-					*<%= f.label "Cidade" %><br />
+					<%= f.label "Cidade" %><br />
 					<%= f.text_field :cidade, :size => 10, :class => "validate[required]" %>
 				  </div>
 				  <div class="field">
-					*<label>CEP</label><br />
-					<%= f.text_field :cep, :size => 9, :maxlength => 9, :onKeyUp => "this.value = mascara_global('######-###', this.value)", :id => "cep", :class => "validate[required]" %>
+					<label>CEP</label><br />
+					<%= f.text_field :cep, :size => 9, :maxlength => 9, :onKeyUp => "this.value = mascara_global('#####-###', this.value)", :id => "cep", :class => "validate[required]" %>
 				  </div>
 				</div>
 			  <div id="caracteristicas">
@@ -73,12 +73,11 @@
 			  	<h2>Outros</h2>
 				  <div class="field">
 					<%= f.label "Área (em m²)" %><br />
-					<%= f.text_field :area, :size => 8, :id => "area", :class => "validate[required]", :onKeyUp => "this.value = mascara_global('[###.]###', this.value)" %>
+					<%= f.text_field :area, :size => 8, :id => "area", :onKeyUp => "this.value = mascara_global('[###.]###', this.value)" %>
 				  </div>
 				  <div class="field">
 					<%= f.label "Tipo do imóvel" %><br />
-					<%= f.select :tipoImovel, ["Apartamento", "Casa", "Terreno", "Fazenda", "Ponto Comercial", "Outros"], {:include_blank => true}, { :class => 'validate[required]'} %>
-					</select>
+					<%= collection_select(:property, :tipoImovel, @tipos, :tipo, :tipo, {:include_blank=>true }, html_options = {:class => 'validate[required]'}) %>
 				  </div>
 				  <div class="field">
 					<%= f.label "Negócio" %><br />
@@ -89,6 +88,11 @@
 					<label>Valor R$</label><br />
 					<%= f.text_field :valor, :size => 6, :id => "valor", :alt => "valor", :class => "validate[required]", :onKeyUp => "this.value = mascara_global('[###.]###,##', this.value)" %>
 				  </div>
+			  </div>
+			  <div id="publico">
+			    <p>Você pode alterar isso a qualquer momento.</p>
+			    <label><b>Tornar imóvel público</b></label>
+			    <%= f.check_box :publico %>
 			  </div>
 			  <script>
 			      var last;
@@ -129,7 +133,7 @@
 			  <% unless f.object.new_record? %>
 			   <div id="old_up">
 			    	<h4>Imagens Atuais</h4>
-			    	<% f.fields_for :photos do |p| %>
+			    	<%= f.fields_for :photos do |p| %>
 				    	<% unless p.object.new_record? %>
 						  <div id="imgs_old">
 							  <%= link_to image_tag(p.object.photo.url(:small)), p.object.photo.url(:original) %>
@@ -166,7 +170,7 @@
                text: 'Não há como voltar atrás após executar essa operação. <br /><br />' +
                      'Quer realmente excluir seu imóvel? <br/>' +
                      '<small><i>se não, clique em <b>cancelar</b> logo acima.</i></small> <br/> <br/>' +
-                     '<%= link_to 'Sim, quero excluir este imóvel!', property_path(:id => @property.id), :method => :delete, :remote=>true%>'
+                     '<%= link_to 'Sim, quero excluir este imóvel!', property_path(:id => @property.id), :method => :delete%>'
             },
             position: {
                target: $(document.body),
@@ -219,7 +223,7 @@
       {
       if ($("#new_up").find("li").size() > 0) {
         if (!$("input[@class='filenew']:checked").length) {
-        jAlert("Você deve marcar uma foto como capa desse imóvel!", "Opa!");
+        alert("Você deve marcar uma foto como capa desse imóvel!", "Opa!");
           return false;}
         }
         });
@@ -234,6 +238,7 @@
     var first;
     <% if params[:action] == 'new' %>
        first = false;
+       clearOverlays();
     <% end %>
     var map; var marker = null; var geocoder;  var icon = '/images/mapicon.png';
     function initialize() {

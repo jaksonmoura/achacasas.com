@@ -2,7 +2,7 @@ class Property < ActiveRecord::Base
   can_be_flagged
 	# Permite que os dados sejam gravados e acessados
     attr_accessible :photos_attributes, :logradouro, :complemento, :pontoreferencia, :wc, :negocio, :cep, :vagas, :valor,
-    :quartos, :estado, :area, :bairro, :suites, :salas, :numero, :cidade, :descricao, :status, :tipoImovel,
+    :quartos, :estado, :area, :bairro, :suites, :salas, :numero, :cidade, :descricao, :publico, :tipoImovel,
     :latitude, :longitude
     belongs_to :user
     has_many :photos, :dependent => :destroy
@@ -30,51 +30,6 @@ class Property < ActiveRecord::Base
     validates_presence_of 		:tipoImovel, :message => "O Tipo de imóvel é um campo obrigatório."
     validates_presence_of 		:valor, 	   :message => "Valor é um campo obrigatório."
     validates_presence_of 		:area, 		   :message => "Área é um campo obrigatório."
-
-    def self.atualiza_imovel(qtde_dias)
-      if self.data_fim < Date.today
-        self.data_inicio = Date.today
-        self.data_fim = qtde_dias.from_now
-        self.visivel = true
-        self.save
-      end
-      if self.data_fim >= Date.today
-        self.data_fim += qtde_dias.days
-        self.visivel = true
-        self.save!
-      end
-    end
-
-    def self.verifica_vencimento
-      properties = Property.where('visivel = ?', true).all
-      properties.each do |property|
-        # Verifica se falta 1 semana para o vencimento
-        if property.data_fim == 1.week.from_now
-          # Enviar email para o dono do imóvel avisando
-          PropertiesMailer.expira_em_uma_semana(property.id).deliver
-        end
-        # Verifica se é o ultimo dia do imóvel
-        if property.data_fim == 1.day.from_now
-          PropertiesMailer.expira_amanha(property.id).deliver
-        end
-
-        # Verifica se acabou hoje!
-        if property.data_fim == Date.today
-          # Verifica se usuário já enviou um novo pagamento
-          if property.status == 'iniciado' or property.status == 'em análise' or property.status == 'autorizado'
-            property.data_fim += 2.days
-            property.save
-            PropertiesMailer.fim_extendido(property.id).deliver
-          else
-            # Envia email para o dono avisando
-            property.visivel = false
-            property.save
-            PropertiesMailer.fim_anuncio(property.id).deliver
-          end
-
-        end
-      end
-    end
 
 end
 

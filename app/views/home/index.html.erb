@@ -14,7 +14,7 @@
     </div>
 	<% else %>
 	<div id="sortlinks">
-	  <p>Classificar por:</p>
+	  <p>Ordenar por:</p>
 		<%= sort_link @search, :valor, "Preço" %>
 		<%= sort_link @search, :created_at, "Data de criação" %>
 		<div id="per_page_p">
@@ -36,11 +36,11 @@
 			</div>
 			<div class="info_property">
 				<% imovel = home.tipoImovel + " para " + home.negocio %>
-				<div class="valor"><%= link_to "#{number_to_currency(home.valor, :precision => 2, :unit => "R$ ", :delimiter => ".", :separator => ",")}", :search => {:valor_lteq => "#{home.valor}"} %></div>
+				<div class="valor"><%= link_to "#{number_to_currency(home.valor, :precision => 2, :unit => "R$ ", :delimiter => ".", :separator => ",")}", {:search => {:valor_lteq => "#{home.valor}"}}, :title => "Pesquisar imóveis com valores menores ou iguais a esse" %></div>
 				<h2><%= link_to imovel, home %></h2>
 					<p><b>Cidade:</b> <%= home.cidade %>, <%= home.estado %></p>
+					<p><b>Logradouro:</b> <%= home.logradouro %></p>
 					<p><b>Bairro:</b> <%= home.bairro %></p>
-					<p>Data de criação: <%= (home.created_at).strftime("%d-%m-%Y") %></p>
 			</div>
 		</div>
 	<% end %>
@@ -52,11 +52,14 @@
 
 <div id="side">
 	<div class="ads">
-	<script type="text/javascript"><!-- google_ad_client = "ca-pub-1283818748762554";
-    /* Página Inicial (Retangulo) */
-    google_ad_slot = "4990170457"; google_ad_width = 300; google_ad_height = 250; //-->
-  </script>
-  <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+	  <script type="text/javascript">
+      google_ad_client = "ca-pub-1283818748762554";
+      google_ad_slot = "6338029783";
+      google_ad_width = 336;
+      google_ad_height = 280;
+    </script>
+    <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+
 	</div>
 </div>
 <% content_for :foot do %>

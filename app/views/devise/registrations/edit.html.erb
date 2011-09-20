@@ -24,7 +24,7 @@
   	  <div id="avatarinput">
   	  <div class="user_avatar_upload"><%= f.file_field :avatar %><span>Escolher foto</span></div>
   	  <p>A imagem será redimensionada (e cortada se necessário) para 200x200px.</p>
-  	  <p>Tamanho máximo do arquivo - 500Kb.</p>
+  	  <p>Tamanho máximo do arquivo - 1mb(1024Kb).</p>
   	  </div>
   </div>
   <div id="edit_info">
@@ -44,7 +44,7 @@
 			  <%= f.text_field :celular %></p>
 			  <p><label>Email</label><br />
 			  <%= f.text_field :email %></p>
-			  <p id="publicar"><label title="Permite exibir seus telefones ao público">Tornar telefones públicos</label><%= f.check_box :publico %></p>
+			  <p id="publicar"><label title="Permite exibir seus telefones ao público">Tornar contatos públicos</label><%= f.check_box :publico %></p>
 		  </div>
 	  </div>
   </div>

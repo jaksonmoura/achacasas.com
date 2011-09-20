@@ -12,7 +12,7 @@
 		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
 		  <%= devise_error_messages! %>
 		  <div class="field">
-		  <p><%= f.label "Nome/Empresa" %><br />
+		  <p><%= f.label "Seu nome ou de sua empresa" %><br />
 		  <%= f.text_field :nome, :class => "validate[required]", :autofocus => true %></p>
 		  </div>
 		  <div class="field">
@@ -27,8 +27,11 @@
 		  <p><%= f.label "Confirmação da senha" %><br />
 		  <%= f.password_field :password_confirmation, :class => "validate[required,minSize[6],password[user_password]]" %></p>
 		  </div>
-		  <p><label>Receber e-mails com novidades sobre imóveis</label><%= f.check_box :newsletter, :checked=>false%></p>
-		  <p id="termos">Ao cadastrar você está aceitando os <a href="#">Termos de Compromisso</a>.</p>
+		  <% if 1 == 0 -%>
+		    <p><label>Receber e-mails com novidades sobre imóveis</label><%= f.check_box :newsletter, :checked=>false%></p>
+		    <p id="termos">Ao cadastrar você está aceitando os <%= link_to "Termos e Regras", termos_path %>.</p>
+		  <% end -%>
+		  
 		  <div class="actions"><%= f.submit "Cadastre me" %></div>
 		<% end %>
 
@@ -46,7 +49,6 @@
 		<p>Imóveis com localização geográfica</p>
 		<p>Coloque até 10 fotos por imóvel</p>
 		<p>Saiba se alguem está interessado no seu imóvel</p>
-		<p>Pagamento rápido e seguro <i>(Através do MoIP)</i></p>
 	</div>
 </div>
 

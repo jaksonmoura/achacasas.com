@@ -7,6 +7,9 @@ div.field, div.actions {
     color: #222;
     padding: 5px 10px;
     border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
 }
 
@@ -20,6 +23,9 @@ div.field, div.actions {
 /* Padrão p/ fontes claros */
 .link, .link:hover, .linkright, .linkright:hover, .actions input, .actions input:hover{
 	text-shadow: 0 -1px 0 #444;
+	-o-text-shadow: 0 -1px 0 #444;
+	-ms-text-shadow: 0 -1px 0 #444;
+	-moz-text-shadow: 0 -1px 0 #444;
 	-webkit-text-shadow: 0 -1px 0 #444;
 }
 
@@ -64,6 +70,9 @@ div.field, div.actions {
 	width: 100%;
 	border-bottom: 1px #EBEB00 solid;
 	border-radius: 3px;
+	-o-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	background-color: #FFFF66;
 	padding: 5px 0px;
@@ -74,6 +83,9 @@ div.field, div.actions {
 .field_with_errors {
   padding: .1%;
   border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   background-color: #ffd617;
   display: table;
@@ -84,6 +96,9 @@ div.field, div.actions {
   width: 90%;
   border: 2px solid #0062d5;
   border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   padding: 0;
   background-color: #f0f0f0;
@@ -123,12 +138,15 @@ div.field, div.actions {
             filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#0080e2', EndColorStr='#005799'); /* IE6–IE9 */
   padding: 5px 12px;
   border-radius: 2px;
+  -o-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-    cursor: pointer;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  cursor: pointer;
 }
 
 .link{
@@ -140,7 +158,7 @@ div.field, div.actions {
 }
 
 .link:hover, .linkright:hover{
-	background-color: #007100;
+	background-color: #0066b5;
     background-image: -moz-linear-gradient(top, #0066b5, #005799); /* FF3.6 */
     background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #0066b5),color-stop(1, #005799)); /* Saf4+, Chrome */
     background-image: -webkit-linear-gradient(#0066b5, #005799); /* Chrome 10+, Saf6 */
@@ -151,6 +169,9 @@ div.field, div.actions {
 
 .link:active, .linkright:active{
     box-shadow: 0 0 15px #003e6d inset;
+    -o-box-shadow: 0 0 15px #003e6d inset;
+    -ms-box-shadow: 0 0 15px #003e6d inset;
+    -moz-box-shadow: 0 0 15px #003e6d inset;
     -webkit-box-shadow: 0 0 15px #003e6d inset;
 }
 
@@ -170,8 +191,11 @@ div.field, div.actions {
     background-image: linear-gradient(top, #007100, #004b00);
             filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#007100', EndColorStr='#004b00'); /* IE6–IE9 */
 	padding: 5px 12px;
-	-webkit-border-radius: 2px;
 	border-radius: 2px;
+	-o-border-radius: 2px;
+	-ms-border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
 	margin: 0 7px 0 0;
 }
 
@@ -186,6 +210,9 @@ div.field, div.actions {
 
 .actions input:active{
 	box-shadow: 0 0 15px #003300 inset;
+	-o-box-shadow: 0 0 15px #003300 inset;
+	-ms-box-shadow: 0 0 15px #003300 inset;
+	-moz-box-shadow: 0 0 15px #003300 inset;
 	-webkit-box-shadow: 0 0 15px #003300 inset;
 }
 
@@ -266,6 +293,9 @@ div.field, div.actions {
 
 #filtros li{
 	border-radius: 3px;
+	-o-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	margin: 2px;
 }
@@ -283,6 +313,9 @@ div.field, div.actions {
 	float: right;
 	background-color: #004b00;
 	border-radius: 0 0 5px 5px;
+	-o-border-radius: 0 0 5px 5px;
+	-ms-border-radius: 0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
 	-webkit-border-radius: 0 0 5px 5px;
 	padding: 5px;
 	margin: -10px 50px -15px 0;

@@ -36,7 +36,7 @@ class Announce < ActiveRecord::Base
     self.save!
   end
 
-  def self.exclui_anuncios
+  def exclui_anuncios
     announces = Announce.where("updated_at = created_at").all
     announces.each do |announce|
       announce.destroy

@@ -13,7 +13,6 @@ gem 'meta_search'
 gem 'tiny_mce'
 gem "friendly_id"
 gem "jquery-rails"
-gem 'pagseguro'
 gem 'kaminari'
 gem "delocalize"
 gem 'whenever', :require => false

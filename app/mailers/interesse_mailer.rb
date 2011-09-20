@@ -1,5 +1,5 @@
 class InteresseMailer < ActionMailer::Base
-  default :from => "contato@conptus.com"
+  default :from => "robot@achacasas.com"
   def novo_interessado(user_i, imovel)
     @user = user_i
     @site = "http://achacasas.com"

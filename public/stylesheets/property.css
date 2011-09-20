@@ -1,8 +1,21 @@
 #property_logradouro, #property_numero, #property_bairro, #property_estado,
-#property_referencia, #property_cidade, #property_cep, #area, #property_tipoImovel,
+#property_pontoreferencia, #property_cidade, #property_cep, #area, #property_tipoImovel,
 #property_negocio, #valor{
 	margin-right: 5px;
 }
+
+#property_logradouro, #property_numero, #property_bairro, #property_estado,
+#property_cidade, #property_cep, #property_tipoImovel, #property_negocio, #valor{
+	border-left: 2px solid orange;
+}
+
+#ex_req{
+    color: orange;
+    width: 4px;
+    height: 20px;
+    background: orange;
+}
+
 #property_descricao{
 	width: 500px;
 }
@@ -27,7 +40,7 @@
 	width: 55px;
 }
 
-#property_referencia{
+#property_pontoreferencia{
 	width: 283px;
 }
 
@@ -39,7 +52,7 @@
 	width: 81px;
 }
 
-#property_tipoImovel{
+#property_tipoImovel, #field_tipoImovel{
 	width: 130px;
 }
 
@@ -223,14 +236,18 @@
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff', endColorstr='#ccc',GradientType=0 ); /* ie */
 }
 
+#map_canvas, #publico{
+    border-radius: 3px;
+    -ms-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+
 #map_canvas{
     width: 355px;
     height: 300px;
     border: 2px #007100 solid;
-    border-radius: 3px;
-    -moz-border-radius: 3px;
-    -o-border-radius: 3px;
-    -webkit-border-radius: 3px;
 }
 
 #clear{
@@ -249,5 +266,18 @@
     padding: 2px 5px 2px 5px;
     margin: 1px 1px 1px 5px;
     float: left;
+}
+
+#publico{
+    float: left;
+    background: #ace5ff;
+    padding: 5px;
+    font-size: 12px;
+    width: 520px;
+}
+
+#publico p{
+    padding: 0;
+    margin: 0;
 }
 

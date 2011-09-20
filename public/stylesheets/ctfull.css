@@ -128,28 +128,41 @@ hr{
     padding-left: 10px;
 }
 
-#faqinfo{
+#sideinfo{
     background: #d7d7d7;
     border: 1px #aaa solid;
     border-radius: 3px;
+    -o-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
     display: block;
     float: right;
     margin-left: 10px;
     width: 250px;
     padding: 5px;
+    text-shadow: 1px 1px 0px #f1f1f1;
+    -o-text-shadow: 1px 1px 0px #f1f1f1;
+    -ms-text-shadow: 1px 1px 0px #f1f1f1;
+    -moz-text-shadow: 1px 1px 0px #f1f1f1;
+    -webkit-text-shadow: 1px 1px 0px #f1f1f1;
 }
 
-#faqinfo ul{
+#sideinfo ul{
     margin: 5px 0 0 -30px;
 }
 
-#faqinfo li{
+#sideinfo li{
     font-size: 12px;
     margin-left: 20px;
 }
 
 .planoM, .planoT, .planoS, .planoA{
     border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
     color: #fff;
     cursor: pointer;
     float: left;
@@ -553,3 +566,139 @@ hr{
     margin: 0 5px 0 0;
 }
 
+#quembusca, #quemanuncia, #help_faq, #help_problems, #help_flag, .tipbox{
+    border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+#quembusca, #quemanuncia{
+    color: #333;
+    width: 490px;
+    padding: 5px;
+    background: #e3edf5;
+    margin: 0 0 5px 0;
+
+    text-shadow: 1px 1px 0px #fff;
+    -o-text-shadow: 1px 1px 0px #fff;
+    -ms-text-shadow: 1px 1px 0px #fff;
+    -moz-text-shadow: 1px 1px 0px #fff;
+    -webkit-text-shadow: 1px 1px 0px #fff;
+}
+
+#quembusca h3, #quemanuncia h3{
+    color: #0062d5;
+}
+
+#help_faq, #help_problems, #help_flag{
+    float: left;
+    margin: 0 10px 10px 0;
+    padding: 10px;
+    width: 280px;
+    height: 120px;
+}
+
+#help_faq a, #help_problems a, #help_flag a{
+    color: #0061d5;
+}
+
+#help_faq h3, #help_problems h3, #help_flag h3{
+    color: #222;
+    font-size: 23px;
+}
+
+#help_faq p, #help_problems p, #help_flag p{
+    font-size: 15px;
+}
+
+
+#help_faq{
+    background: #e3edf5 url(../images/help_faq.png) no-repeat;
+    background-position: 180px 20px;
+}
+
+#help_flag{
+    background: #e3edf5 url(../images/help_flag.png) no-repeat;
+    background-position: 180px 20px;
+}
+
+#help_problems{
+    background: #e3edf5 url(../images/help_problems.png) no-repeat;
+    background-position: 180px 20px;
+}
+
+#flag_content, #contact_content{
+    width: 60%;
+    margin: 0 auto;
+}
+
+#flag_form, #contact_form{
+    width: 400px;
+    margin: 0 auto;
+
+}
+
+#flag_mensagem, #contato_mensagem{
+    height: 100px;
+}
+
+#help_tips{
+    float: left;
+    width: 100%;
+    padding: 0 10px;
+}
+
+#help_tips p{
+    float: left;
+    padding: 0;
+    margin: 0 20px 20px 0;
+    font-size: 12px;
+}
+
+#help_tips a{
+    font-size: 16px;
+}
+
+#help_tips a{
+    color: #0062d5;
+}
+
+#security_tips a{
+    background: url(../images/sec_tips.png) left center no-repeat;
+    padding-left: 16px;
+}
+#search_tips a{
+    background: url(../images/search_tips.png) left center no-repeat;
+    padding-left: 18px;
+}
+
+#tips_list{
+    float: left;
+    width: 70%;
+}
+
+#tips_list img{
+    border: 1px solid #ddd;
+}
+
+#tips_list ul{
+    font-size: 15px;
+}
+
+#tips_list li{
+    margin: 0 0 5px 0;
+}
+
+.tipbox{
+    float: left;
+    width: 300px;
+    margin: 0 10px 10px 0;
+    padding: 5px;
+    background: #e3edf5;
+}
+
+#fb_like{
+    float: left;
+}

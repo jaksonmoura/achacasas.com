@@ -1,35 +1,35 @@
 class PropertiesMailer < ActionMailer::Base
-  default :from => "info@achacasas.com"
+  default :from => "robot@achacasas.com"
 
-  def expira_amanha(property_id)
-    @imovel = Property.find_by_id(property_id)
-    @user = User.find_by_id(@imovel.user_id)
-    mail(:to => @user.email,
-         :subject => "Acha-Casas | Fim do período de anuncio")
-  end
+  #def expira_amanha(property_id)
+  #  @imovel = Property.find_by_id(property_id)
+  #  @user = User.find_by_id(@imovel.user_id)
+  #  mail(:to => @user.email,
+  #       :subject => "Acha-Casas | Fim do período de anuncio")
+  #end
 
-  def expira_em_uma_semana(property_id)
-    @imovel = Property.find_by_id(property_id)
-    @user = User.find_by_id(@imovel.user_id)
-    mail(:to => @user.email,
-         :subject => "Acha-Casas | Falta apenas uma semana")
-  end
+  #def expira_em_uma_semana(property_id)
+  #  @imovel = Property.find_by_id(property_id)
+  #  @user = User.find_by_id(@imovel.user_id)
+  #  mail(:to => @user.email,
+  #       :subject => "Acha-Casas | Falta apenas uma semana")
+  #end
 
   # Se chegar ao fim do anuncio
-  def fim_anuncio(property_id)
-    @imovel = Property.find_by_id(property_id)
-    @user = User.find_by_id(@imovel.user_id)
-    mail(:to => @user.email,
-         :subject => "Acha-Casas | Fim do período de anuncio")
-  end
+  #def fim_anuncio(property_id)
+  #  @imovel = Property.find_by_id(property_id)
+  #  @user = User.find_by_id(@imovel.user_id)
+  #  mail(:to => @user.email,
+  #       :subject => "Acha-Casas | Fim do período de anuncio")
+  #end
 
   # Se o usuário pagou perto do vencimento e a transferência está pendente
-  def fim_extendido(property_id)
-    @imovel = Property.find_by_id(property_id)
-    @user = User.find_by_id(@imovel.user_id)
-    mail(:to => @user.email,
-         :subject => "Acha-Casas | Fim do período de anuncio")
-  end
+  #def fim_extendido(property_id)
+  #  @imovel = Property.find_by_id(property_id)
+  #  @user = User.find_by_id(@imovel.user_id)
+  #  mail(:to => @user.email,
+  #       :subject => "Acha-Casas | Fim do período de anuncio")
+  #end
 
   def enviar_amigo(property_id, nome_contato, email_contato, nome_amigo, email_amigo, mensagem)
       @imovel = Property.find_by_id(property_id)

@@ -1,6 +1,6 @@
 AchaCasas::Application.routes.draw do
 
-  resources :announces
+  #resources :announces
   resources :photos
 
   # :path modifica o caminho, no caso de "/users" para "/u"
@@ -22,18 +22,26 @@ AchaCasas::Application.routes.draw do
   match '/notfound', :to => 'search#notfound', :as => :notfound
   match '/properties/interessado', :to => 'properties#interessado', :as => 'interessado'
   match '/interesses/destroy', :to => 'interesses#destroy', :as => 'desinteressado'
-  match '/escolher_plano', :to => 'announces#new', :as => 'escolher_plano'
-  match '/pagamento', :to => 'announces#pagamento', :as => 'pagamento'
+  #match '/escolher_plano', :to => 'announces#new', :as => 'escolher_plano'
+  #match '/pagamento', :to => 'announces#pagamento', :as => 'pagamento'
   match '/comoanunciar', :to => 'properties#como_anunciar', :as => 'como_anunciar'
-  match '/checkout', :to => 'properties#checkout', :as => 'checkout'
+  #match '/checkout', :to => 'properties#checkout', :as => 'checkout'
   match '/interessados', :to => 'users#interessados', :as => '/interessados'
-  match '/confirmacao_de_pagamento', :to => 'announces#confirmacao_de_pagamento', :as => "confirmacao_de_pagamento"
-  match 'announces/payment', :to => 'announces#payment_return', :as => 'announces/payment'
+  #match '/confirmacao_de_pagamento', :to => 'announces#confirmacao_de_pagamento', :as => "confirmacao_de_pagamento"
+  #match 'announces/payment', :to => 'announces#payment_return', :as => 'announces/payment'
   match 'i/:id/falarcomdono', :to => 'properties#falarcomdono', :as => 'falarcomdono'
   match 'i/:id/indicar', :to => 'properties#indicar', :as => 'indicar'
   match 'contato_amigo', :to => 'properties#contato_amigo'
   match 'contato_dono', :to => 'properties#contato_dono'
   match '/denunciar', :to => 'properties#denunciar'
+  match 'ajuda', :to => 'supports#index', :as => 'ajuda'
+  match '/suporte/contato', :to => 'supports#contato', :as => 'contato'
+  match '/suporte/contato_mail', :to => 'supports#contato_mail'
+  match '/suporte/flag', :to => 'supports#flag'
+  match '/suporte/denuncie', :to => 'supports#denuncie', :as => 'denuncie'
+  match '/suporte/seguranca', :to => 'supports#security', :as => 'seguranca'
+  match '/suporte/busca', :to => 'supports#search', :as => 'dicas_busca'
+  match 'termos', :to => 'supports#terms', :as => "termos"
 
   # Necessário para que qualquer caminho que não existe (ex.: http://localhost:3000/nada)
   # seja redirecionado para a página estática do "erro 404"

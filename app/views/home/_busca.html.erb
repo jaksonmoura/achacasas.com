@@ -5,63 +5,67 @@
 			  <%= f.search_field :bairro_or_cidade_or_logradouro_or_referencia_or_cep_or_tipoImovel_contains, :id => "campo_busca", :placeholder => "Pesquise por logradouro, bairro, cidade, referência ou CEP", :title => "Pesquise por logradouro, bairro, cidade, referência ou CEP" %>
         <%= f.select(:estado_like, properties_for_select, :prompt => 'UF') %>
 			  <%= f.submit "Buscar", :id => "btn_busca", :title => "Pesquise por logradouro, bairro, cidade, estado, CEP ou tipo de imóvel", :name => ''%>
-      </div>
+     </div>
   </div>
   	<div id="filtros">
 			  <div id='tipo'>
-			    <p>TIPO DE IMÓVEL</p>
+			    <p>Procuro...</p>
       			<ul>
-      				<% f.checks :tipoImovel_contains, [['Casa'], ['Apartamento'], ['Terreno']] do |check| %>
+      				<% f.checks :tipoImovel_contains, [['Casa'], ['Apartamento'], ['Terreno'], ['Fazenda'],['P. Comercial'], ['Sala']] do |check| %>
 			          <li><%= check.label %><%= check.box %></li>
       				<% end %>
+      				<label>Outros:<br/></label>
+      				<li><%= f.text_field :tipoImovel_like %></li>
       			</ul>
   			</div>
 				<div id="negocio">
-				  <p>NEGÓCIO</p>
+				  <p>Disponível para...</p>
     			<ul>
-    				<% f.checks :negocio_contains, [['Vender'], ['Alugar']] do |check| %>
+    				<% f.checks :negocio_contains, [['Vender'], ['Alugar'], ['Alug. temporada']] do |check| %>
 			        <li><%= check.label %><%= check.box %></li>
     				<% end %>
     			</ul>
   			</div>
   			<div id="carac">
-  				<p>CARACTERÍSTICAS</p>
+  				<p>Que tenha...</p>
 				  <ul>
-					  <% f.checks :quartos_lt, [['1-2 quartos', 3]] do |check| %>
+					  <% f.checks :quartos_lt, [['até 2 quartos', 3]] do |check| %>
 					    <li><%= check.label %><%= check.box %></li>
 					  <% end %>
-					  <% f.checks :quartos_gte, [['Mais de 2 quartos', 3]] do |check| %>
+					  <% f.checks :quartos_gte, [['3 ou + quartos', 3]] do |check| %>
 					    <li><%= check.label %><%= check.box %></li>
 					  <% end %>
-					  <% f.checks :wc_lt, [['1-2 banheiros', 3]] do |check| %>
+					  <% f.checks :wc_lt, [['até 2 banheiros', 3]] do |check| %>
 					    <li><%= check.label %><%= check.box %></li>
 					  <% end %>
-					  <% f.checks :wc_gte, [['mais de 2 banheiros', 3]] do |check| %>
+					  <% f.checks :wc_gte, [['3 ou + banheiros', 3]] do |check| %>
 					    <li><%= check.label %><%= check.box %></li>
 					  <% end %>
 				  </ul>
 				  <ul>
-					  <% f.checks :suites_lt, [['1-2 suites', 3]] do |check| %>
+					  <% f.checks :suites_lt, [['até 2 suites', 3]] do |check| %>
 					    <li><%= check.label %><%= check.box %></li>
 					  <% end %>
-					  <% f.checks :suites_gte, [['Mais de 2 suites', 3]] do |check| %>
+					  <% f.checks :suites_gte, [['3 ou + suites', 3]] do |check| %>
 					    <li><%= check.label %><%= check.box %></li>
 					  <% end %>
-					  <% f.checks :vagas_lt, [['1-2 vagas', 3]] do |check| %>
+					  <% f.checks :vagas_lt, [['até 2 vagas', 3]] do |check| %>
 					    <li><%= check.label %><%= check.box %></li>
 					  <% end %>
-					  <% f.checks :vagas_gte, [['mais de 2 vagas', 3]] do |check| %>
+					  <% f.checks :vagas_gte, [['3 ou + vagas', 3]] do |check| %>
 					    <li><%= check.label %><%= check.box %></li>
 					  <% end %>
 				  </ul>
 			  </div>
 			  <div id="advanced">
-			    <p>AVANÇADO</p>
+			    <p>Busca avançada</p>
 			    <div id="fields"><span>Valor entre</span><%= f.text_field :valor_gte, :onKeyUp => "this.value = mascara_global('[###.]###,##', this.value)", :onBlur => "this.value = mascara_global('[###].##', this.value)" %> <span>e</span> <%= f.text_field :valor_lte, :onKeyUp => "this.value = mascara_global('[###.]###,##', this.value)", :onBlur => "this.value = mascara_global('[###].##', this.value)" %></div>
+			    <div id="ref_search"><span>Referência</span><%= f.text_field :referencia_equals %></div>
+			    <span><i>O código de referência é <u>único</u>.</i></span>
 			  </div>
+			  <% end %>
 		</div>
-  	<p id="filtros_link">Filtros de pesquisa &raquo;</p>
-      <% end %>
+  	<p id="filtros_link">Filtros de busca &raquo;</p>
 </div>
 <% content_for :foot do %>
   <%= javascript_include_tag 'mascara' %>

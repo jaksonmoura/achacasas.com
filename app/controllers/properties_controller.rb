@@ -15,10 +15,10 @@ class PropertiesController < ApplicationController
     if user_signed_in? and current_user.id == @property.user_id
       donologado = true
     end
-    if @property.visivel or donologado
+    if @property.publico or donologado
       if user_signed_in?
           @userint = Interessado.where("user_id = ? and property_id = ?", current_user.id, @property.id)
-          @last_user_flag = Flag.where("user_id = ? AND flaggable_id = ?", current_user.id, @property.id).last
+          #@last_user_flag = Flag.where("user_id = ? AND flaggable_id = ?", current_user.id, @property.id).last
       end
 
       respond_to do |format|
@@ -34,6 +34,7 @@ class PropertiesController < ApplicationController
   def new
   	@search = Property.search(params[:search])
     @property = Property.new
+    @tipos = Type.find(:all, :order => "tipo")
     @next = 1
     10.times { @property.photos.build }
 
@@ -46,6 +47,7 @@ class PropertiesController < ApplicationController
   def edit
   	@search = Property.search(params[:search])
     @property = Property.find(params[:id])
+    @tipos = Type.find(:all, :order => "tipo")
 
     # Se o usuário atual for dono da propriedade
   	if current_user.id == @property.user_id
@@ -65,15 +67,17 @@ class PropertiesController < ApplicationController
   def create
     @property = Property.create(params[:property])
     @property.user_id = current_user.id
-    @property.status = "Criado"
     @property.referencia = (Date.today.year.to_s + @property.id.to_s).to_i
     @property.latitude = params[:latitude]
     @property.longitude = params[:longitude]
-    @property.visivel = false
 
     respond_to do |format|
       if @property.save
-        format.html { redirect_to new_announce_path(:const => SecureRandom.hex(16) + @property.id.to_s), :notice => 'Seu imóvel foi criado! Você precisa agora anunciá-lo!' }
+        if @property.publico
+        format.html { redirect_to property_path(@property), :notice => 'Olha só! Seu imóvel foi criado, agora mostre pra todo mundo!' }
+        else
+        format.html { redirect_to user_path(current_user), :notice => 'Ótimo! Seu imóvel foi criado! Mas lembre-se que ainda só você pode vê-lo!' }
+        end
         format.js
         format.xml  { render :xml => @property, :status => :created, :location => @property }
       else

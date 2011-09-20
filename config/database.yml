@@ -12,7 +12,7 @@ development:
   database: acha-casas_development
   pool: 5
   username: root
-  password: 1q2w3e
+  password: qwe123
   host: localhost
 #Cpts2011Bsw
 # Warning: The database defined as "test" will be erased and

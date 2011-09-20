@@ -1,0 +1,34 @@
+<% content_for :head do %>
+  <% content_for :title do %>Dicas de segurança - <% end %>
+  <%= stylesheet_link_tag "ctfull" %>
+<% end %>
+
+<div id="ctfull">
+  <h1>Dicas para um uso mais seguro do Acha-Casas</h1>
+  <p>Seguindo essas recomendações você terá mais segurança nas negociações com o anunciante do imóvel.</p>
+
+  <div id="tips_list">
+    <ul>
+      <li>Se possível, visite o imóvel pessoalmente.</li>
+      <li>Nunca pague antes de firmar o acordo.</li>
+      <li>Exija a Nota Fiscal original.</li>
+      <li>Os dados dados pessoais do anunciantes não garantem sua.</li>
+    </ul>
+    <h3>Desconfie se...</h3>
+    <ul>
+      <li>O anunciante faz pressão.</li>
+      <li>Alguém pede informações bancárias ou do cartão de crédito.</li>
+      <li>O imóvel parece ser muito bom e com preço muito baixo.</li>
+      <li>Tiver que pagar um parcela do imóvel sem que você tenha nada assinado.</li>
+      </ul>
+  </div>
+  <div id="sideinfo">
+    <h3>Veja também</h3>
+    <ul>
+      <li><%= link_to "Termos e Regras", termos_path %></li>
+      <li><%= link_to "Dicas de busca", dicas_busca_path %></li>
+      <li><%= link_to "Denuncie", denuncie_path %></li>
+    </ul>
+  </div>
+</div>
+

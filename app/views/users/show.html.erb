@@ -26,9 +26,9 @@
 					<% unless @user.celular.blank? %>
 						<li><div id="user_phone"></div><%= @user.celular %></li>
 					<% end %>
-				<% end %>
-				<% unless @user.email.blank? %>
-					<li><div id="user_mail"></div><%= link_to "#{truncate(@user.email, :length => 23, :truncate_string => "...")}", "mailto:#{@user.email}", :title => @user.email %></li>
+					<% unless @user.email.blank? %>
+					  <li><div id="user_mail"></div><%= link_to "#{truncate(@user.email, :length => 23, :truncate_string => "...")}", "mailto:#{@user.email}", :title => @user.email %></li>
+				  <% end %>
 				<% end %>
 			</ul>
 		</div>
@@ -54,8 +54,6 @@
 			      <div class="info_user_property" title="Detalhes do imóvel">
 			        <div class="right_data">
 			          <%= link_to "#{number_to_currency(home.valor, :precision => 2, :unit => "R$ ", :delimiter => ".", :separator => ",")}", home, :class => "user_valor" %>
-			          <%= link_to "Status anúncio: #{home.status}", confirmacao_de_pagamento_path(:pid => home.id), :id => "statuspag", :title => "Ver mais detalhes sobre o status desse imóvel" if @donologado %>
-			          <span id="imovel_publico"><%= "Imóvel público até #{home.data_fim.strftime("%d/%m/%Y")}" if home.visivel and @donologado %></span>
 			        </div>
 
 				      <h4><%= link_to "#{home.tipoImovel} para #{home.negocio} - #{home.referencia}", home %></h4>

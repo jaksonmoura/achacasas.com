@@ -1,0 +1,50 @@
+<% content_for :head do %>
+  <% content_for :title do %>Dicas de busca - <% end %>
+  <%= stylesheet_link_tag "ctfull" %>
+<% end %>
+
+<div id="ctfull">
+  <h1>Dicas de busca no Acha-Casas</h1>
+  <p>Apesar de não ser tão visível, existem outras <u>formas rápidas</u> para pesquisas no Acha-Casas. Abaixo você tem a relação delas.
+  <br/><small>Nota: O campo de busca só aceita uma entrada por vez, então, não é possível pesquisar, por exemplo, uma rua e um bairro ao mesmo tempo</small>.
+  </p>
+
+  <div id="tips_list">
+
+    <div class="tipbox">
+      <h3>Por localização</h3>
+      <%= image_tag "../images/central_ajuda/busca_local.png" -%>
+      <p>As informações de localização do imóvel torna fácil a busca por imóveis no mesmo bairro, cidade, estado, etc.<br/><small>Característica vista na <b>página de detalhes do imóvel</b>.</small></p>
+    </div>
+
+    <div class="tipbox">
+      <h3>Por valor</h3>
+      <%= image_tag "../images/central_ajuda/busca_valor.png" -%>
+      <p>O valor do imóvel exibido na <b>Página Inicial</b> é um atalho para pesquisas, assim, ele buscará por imóveis mais baratos ou do mesmo valor.</p>
+    </div>
+
+    <div class="tipbox">
+      <h3>Por tipo de imóvel</h3>
+      <%= image_tag "../images/central_ajuda/busca_tipo.png" -%>
+      <p>Busque por imóveis do mesmo tipo daquele que você está vendo.<br/><small>Característica vista na <b>página de detalhes do imóvel</b>.</small></p>
+    </div>
+
+
+    <div class="tipbox">
+      <h3>Por características</h3>
+      <%= image_tag "../images/central_ajuda/busca_carac.png" -%>
+      <p>Você pode usar as características como parâmetros de buscas a partir de uma delas em um determinado imóvel.<br/><small>Característica vista na <b>página de detalhes do imóvel</b>.</small></p>
+    </div>
+
+  </div>
+
+  <div id="sideinfo">
+    <h3>Veja também</h3>
+    <ul>
+      <li><%= link_to "Termos e Regras", termos_path %></li>
+      <li><%= link_to "Dicas de segurança", seguranca_path %></li>
+      <li><%= link_to "Denuncie", denuncie_path %></li>
+    </ul>
+  </div>
+</div>
+
