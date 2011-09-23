@@ -1,0 +1,16 @@
+<div style="width: 600px; margin: 0 auto;">
+  <div style="float: left; width: 100%; height: 50px; margin-bottom: 10px;">
+  <%= link_to image_tag ("http://achacasas.com/images/achacasas_logo_email.png"), "http://achacasas.com", {:title => "Acha-Casas - Onde você encontra seu lugar"} %>
+  </div>
+  <p>Oi, <%= @user.nome %>! Tudo bem?</p>
+  <p>O anúncio de seu imóvel de refêrencia <b><i><%= @imovel.referencia %></i></b> expira amanhã, porém, como você
+  já deu entrada no pagamento de um novo anúncio, vamos esperar mais 2 dias com seu imóvel visível
+  que o tempo necessário para o processo de pagamento se completar.</p>
+  <p>Até mais!</p>
+  <p style="float: left; width: 100%; padding: 0; margin: 0;">--<br/>
+  Acha-Casas<br/>
+  <%= link_to "contato@achacasas.com", "mailto:contato@achacas.com", {:title => "Fale com a gente!"} %><br/>
+  <div style="float: left; height: 20px; margin: -5px 0 0 0; padding: 0; width: 100%;"><span style="float: left; margin: -5px 10px 0 0; padding: 0 5px 0 0;">Um serviço </span><%= link_to image_tag ("http://achacasas.com/images/logo_conptus.png"), "http://conptus.com", {:title => "Conptus Soluções Web"} %></div>
+  </p>
+</div>
+

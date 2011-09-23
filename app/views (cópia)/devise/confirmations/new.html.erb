@@ -1,0 +1,23 @@
+<% content_for :head do %>
+    <% content_for :title do %>Re-enviar e-mail de confirmação - <% end %>
+    <%= javascript_include_tag "jquery.validationEngine-en.js" %>
+	<%= javascript_include_tag "jquery.validationEngine.js" %>
+	<%= stylesheet_link_tag 'validationEngine.jquery' %>
+	<script>jQuery(document).ready(function(){jQuery("#user_new").validationEngine({promptPosition : "centerRight"});});</script>
+    <%= stylesheet_link_tag 'users' %>
+<% end %>
+<div id="form_login">
+	<div id="campos">
+			<h3>Re-enviar e-mail de confirmação</h3>
+			<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
+      <%= devise_error_messages! %>
+      <p id="passos">Insira seu e-mail no campo abaixo para enviarmos os passos para você confirmar seu cadastro.</p>
+		  <div class="field">
+		    <p><label>E-mail</label><br />
+		    <%= f.text_field :email, :class => "validate[required,custom[email]]" %></p>
+		  </div>
+			  <%= f.submit "Re-enviar confirmação", :class => "link" %>
+			<% end %>
+	</div>
+</div>
+

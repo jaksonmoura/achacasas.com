@@ -168,7 +168,7 @@ class PropertiesController < ApplicationController
   def contato_amigo
     if params[:nome_contato] && !params[:nome_contato].blank? && params[:email_contato] && !params[:email_contato].blank? && params[:nome_amigo_contato] && !params[:nome_amigo_contato].blank? && params[:email_amigo_contato] && !params[:email_amigo_contato].blank? && params[:mensagem] && !params[:mensagem].blank?
       PropertiesMailer.enviar_amigo(params[:property_id], params[:nome_contato], params[:email_contato], params[:nome_amigo_contato], params[:email_amigo_contato], params[:mensagem]).deliver
-      redirect_to :back, :notice => "Seu e-mail foi enviado!"
+      redirect_to Property.find(params[:property_id]), :notice => "Seu e-mail foi enviado!"
     else
       redirect_to :back, :notice => "Não foi possível enviar este e-mail! Algum campo não foi inserido?"
     end
@@ -177,7 +177,7 @@ class PropertiesController < ApplicationController
   def contato_dono
     if params[:nome_contato] && !params[:nome_contato].blank? && params[:email_contato] && !params[:email_contato].blank? && params[:mensagem] && !params[:mensagem].blank?
       PropertiesMailer.falar_com_dono(params[:property_id], params[:nome_contato], params[:email_contato], params[:mensagem]).deliver
-      redirect_to :back, :notice => "Seu e-mail foi enviado!"
+      redirect_to Property.find(params[:property_id]), :notice => "Seu e-mail foi enviado!"
     else
       redirect_to :back, :notice => "Não foi possível enviar este e-mail! Algum campo não foi inserido?"
     end

@@ -50,6 +50,9 @@ header{
 	background-color: #fff;
     width: 100%;
     padding-top: 10px;
+    border-width: 0px 1px 1px 1px; 
+    border-color: #ccc;
+    border-style: solid;
 
 }
 
@@ -681,6 +684,7 @@ footer ul{
 	float: left;
 	list-style: none;
 	margin: 9px 0 0 0;
+    padding-left: 10px;
 }
 
 footer li{
@@ -703,13 +707,13 @@ footer li:last-child{
 #dev_by{
 	color: #999;
 	float: right;
-	margin: 7px 0 0 0;
+	margin: 9px 0 0 0;
 }
 
 #conptus{
 	color: #999;
 	float: right;
-	padding: 5px;
+	padding: 5px 10px 5px 5px;
 }
 
 .pagination{
@@ -857,3 +861,17 @@ footer li:last-child{
     margin: 3px 0 3px 0;
 }
 
+.f_content_right{
+    float: right;
+    width: 350px;
+}
+
+.f_content{
+    float: left;
+}
+
+#fb_home_like{
+    float: left;
+    margin-top: 7px;
+    width: auto;
+}

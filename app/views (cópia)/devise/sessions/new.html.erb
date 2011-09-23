@@ -1,0 +1,34 @@
+<% content_for :head do %>
+    <% content_for :title do %>Entrar - <% end %>
+    <%= javascript_include_tag "jquery.validationEngine-en.js" %>
+	<%= javascript_include_tag "jquery.validationEngine.js" %>
+	<%= stylesheet_link_tag 'validationEngine.jquery' %>
+	<script>jQuery(document).ready(function(){jQuery("#user_new").validationEngine({promptPosition : "centerRight"});});</script>
+    <%= stylesheet_link_tag 'users' %>
+<% end %>
+<div id="form_login">
+	<div id="campos">
+			<h2>Entrar no Acha-Casas</h2>
+			<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+			<%= devise_error_messages! %>
+			<% if flash[:alert] %>
+			  <div id="form_errors"><%= flash[:alert] %></div>
+			<% end %>
+			  <div class="field">
+			    <p><label>E-mail</label><br />
+			    <%= f.text_field :email, :class => "validate[required,custom[email]]", :autofocus => true %></p>
+			  </div>
+			  <div class="field">
+			    <p><label>Senha</label><br />
+			    <%= f.password_field :password, :class => "validate[required]" %></p>
+			  </div>
+			  <%= link_to "Não consegue acessar?", problemas_conta_path, :id => "forgot_pass" %>
+				<p id="remember"><%= f.label "Lembre de mim" %> <%= f.check_box :remember_me %></p>
+				<div id="link_actions">
+				  <%= link_to "Novo por aqui? Cadaster-se!", new_user_registration_path, :id => "registration" %>
+				</div>
+			  <%= f.submit "Entrar", :class => "linkright" %>
+			<% end %>
+	</div>
+</div>
+

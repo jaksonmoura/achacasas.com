@@ -62,14 +62,30 @@
     </div>
     <footer>
     	<div id="footer">
-			<ul>
-				<li><%= link_to "Início", root_path, :title => "Ir para o início"%></li>
-        <li><%= link_to "Como anunciar", como_anunciar_path, :title => 'Como anunciar no Acha-Casas' %></li>
-				<li><%= link_to "Central de ajuda", ajuda_path, :title => "Ajuda"%></li>
-				<li><%= link_to "Sobre", about_path, {:title => 'Sobre'} %></li>
-			</ul>
-			<a id="conptus" href="http://conptus.com" title="Conptus - Soluções Web"><img src="/images/logo_conptus.png" alt="Conptus"/></a>
-			<p id="dev_by">Acha-Casas © 2011 - por</p>
+            <div class="f_content">
+    			<ul>
+    				<li><%= link_to "Início", root_path, :title => "Ir para o início"%></li>
+                    <li><%= link_to "Como anunciar", como_anunciar_path, :title => 'Como anunciar no Acha-Casas' %></li>
+    				<li><%= link_to "Central de ajuda", ajuda_path, :title => "Ajuda"%></li>
+    				<li><%= link_to "Sobre", about_path, {:title => 'Sobre'} %></li>
+    			</ul>
+            </div>
+            <div class="f_content_right">
+                
+            </div>
+            <div class="f_content_right">
+                <div id="fb_home_like">
+                  <iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FAcha-Casas%2F157938364265610&amp;
+                    layout=button_count&amp;show_faces=false&amp;width=150&amp;action=like&amp;
+                    font=arial&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none;
+                    overflow:hidden; width:100px; height:21px;" allowTransparency="true">
+                </iframe>
+                </div>
+    			<div id="copy_info">
+                    <a id="conptus" href="http://conptus.com" title="Conptus - Soluções Web"><img src="/images/logo_conptus.png" alt="Conptus"/></a>
+                <p id="dev_by">Acha-Casas © 2011 - por</p>
+                </div>
+            </div>
     	</div>
     </footer>
 </div>
