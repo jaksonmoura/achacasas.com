@@ -6,7 +6,6 @@ class Property < ActiveRecord::Base
     :latitude, :longitude
     belongs_to :user
     has_many :photos, :dependent => :destroy
-    has_many :announces
     has_many :interessados, :dependent => :destroy
     has_one :capa, :class_name => "Photo", :conditions => {:miniatura => true}
     accepts_nested_attributes_for :photos, :allow_destroy => true

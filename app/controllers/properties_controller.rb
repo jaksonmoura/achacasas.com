@@ -134,27 +134,7 @@ class PropertiesController < ApplicationController
     end
   end
 
-  def anunciar
-      @property = Property.find(params[:id])
-      @property.status = 1;
-      @property.save
-       respond_to do |format|
-          if @property.save
-            format.html { redirect_to(:back, :notice => 'Você acabou de anunciar!') }
-            format.js
-            format.xml  { head :ok }
-          end
-        end
-  end
-
   def como_anunciar
-  end
-
-  def pagamento
-    @imovel = Property.find(params[:const][32, params[:const].length - 32])
-    unless session[:sha] == params[:const]
-      redirect_to(session[:imv], :notice => "Houve algum erro que o impediu de acessar a página!")
-    end
   end
 
   def indicar
