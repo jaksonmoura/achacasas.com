@@ -1,5 +1,5 @@
 class PropertiesController < ApplicationController
-   before_filter :authenticate_user!, :except => [:show, :como_anunciar, :contato_dono, :contato_amigo, :indicar, :falarcomdono]
+   before_filter :authenticate_user!, :except => [:show, :como_publicar, :contato_dono, :contato_amigo, :indicar, :falarcomdono]
    before_filter :dono_logado, :only => [:edit, :destroy]
    uses_tiny_mce :options => {:theme => 'simple', :language => 'pt',
                               :theme_advanced_resizing => true,

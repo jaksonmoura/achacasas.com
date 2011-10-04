@@ -3,13 +3,13 @@
   <%= link_to image_tag ("http://achacasas.com/images/achacasas_logo_email.png"), "http://achacasas.com", {:title => "Acha-Casas - Onde você encontra seu lugar"} %>
   </div>
   <p>Seja bem-vindo ao Acha-Casas, <%= @resource.nome %>!</p>
-  <p>Agora você só precisa confimar seu e-mail, clicando no link abaixo:</p>
+  <p>Estamos felizes que você se cadastrou, agora você pode publicar seus imóveis a hora que quiser!</p>
+  <p>Você só precisa confimar seu e-mail, clicando no link abaixo:</p>
   <p><%= link_to 'Confirmar meu e-mail', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
-  <p>Obrigado! Tenha um bom dia!</p>
+  <p>Obrigado e até mais!</p>
   <p>--<br/>
   Acha-Casas<br/>
   <%= link_to "contato@achacasas.com", "mailto:contato@achacas.com", {:title => "Fale com a gente!"} %><br/>
   <div style="height: 20px; margin: -5px 0 0 0; padding: 0; width: 100%;"><span style="float: left; margin: -5px 10px 0 0; padding: 0 5px 0 0;">Um serviço </span><%= link_to image_tag ("http://achacasas.com/images/logo_conptus.png"), "http://conptus.com", {:title => "Conptus Soluções Web"} %></div>
   </p>
 </div>
-

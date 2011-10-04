@@ -1,0 +1,24 @@
+<%= content_for :head do %>
+    <% content_for :title do %>Como publicar - <% end %>
+    <%= stylesheet_link_tag 'ctfull' %>
+<% end %>
+<div id="ctfull">
+    <h1>Como publicar no Acha-Casas?</h1>
+    <p><big>Para publicar no Acha-Casas é muito simples e em poucos passos você tem seu imóvel no ar, além do mais é <b>grátis</b>.</big></p>
+    <div class="passo">
+        <div id="passo1_text"></div>
+        <%= link_to "", new_user_registration_path, :id => "passo1_s" %>
+        <p><%= link_to 'Crie uma conta', new_user_registration_path%>, ela é necessária para você criar imóveis.</p>
+    </div>
+    <div class="passo">
+        <div id="passo2_text"></div>
+        <%= link_to "", new_property_path, :id => "passo2_s" %>
+        <p><%= link_to 'Adicione um novo imóvel', new_property_path%> no Acha-Casas de forma fácil e prática.</p>
+    </div>
+    <div class="passo">
+        <div id="passo3_text"></div>
+        <div id="passo3_s"></div>
+        <p>Seu imóvel já está no ar, agora divulgue para todos!</p>
+    </div>
+</div>
+
