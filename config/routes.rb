@@ -24,7 +24,7 @@ AchaCasas::Application.routes.draw do
   match '/interesses/destroy', :to => 'interesses#destroy', :as => 'desinteressado'
   #match '/escolher_plano', :to => 'announces#new', :as => 'escolher_plano'
   #match '/pagamento', :to => 'announces#pagamento', :as => 'pagamento'
-  match '/comoanunciar', :to => 'properties#como_anunciar', :as => 'como_anunciar'
+  match '/comopublicar', :to => 'properties#como_publicar', :as => 'como_publicar'
   #match '/checkout', :to => 'properties#checkout', :as => 'checkout'
   match '/interessados', :to => 'users#interessados', :as => '/interessados'
   #match '/confirmacao_de_pagamento', :to => 'announces#confirmacao_de_pagamento', :as => "confirmacao_de_pagamento"
